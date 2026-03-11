@@ -28,7 +28,9 @@ def parse_instructions(instruction_str):
             raise ValueError("Empty instruction line.")
         op = parts[0]
         if op in instructions_dict:
-            indices = list(map(lambda x: x - 1, map(int, parts[1:])))  # Convert to 0-based index
+            indices = list(
+                map(lambda x: x - 1, map(int, parts[1:]))
+            )  # Convert to 0-based index
             instructions.append((op, indices))
         else:
             raise ValueError(f"Unknown instruction: {op}")
