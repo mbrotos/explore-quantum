@@ -1,0 +1,4 @@
+RNG 1
+RNG 2
+CCNOT 1 2 3
+CCNOT 2 3 4

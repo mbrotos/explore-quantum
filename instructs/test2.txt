@@ -1,0 +1,4 @@
+RNG 1
+CNOT 1 2
+CNOT 2 3
+CNOT 3 4

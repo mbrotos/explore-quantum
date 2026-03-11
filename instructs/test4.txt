@@ -1,0 +1,5 @@
+RNG 1
+NOT 2
+CNOT 1 2
+CCNOT 1 2 3
+NOT 4

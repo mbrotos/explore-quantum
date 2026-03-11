@@ -1,35 +1,18 @@
 import argparse
-import math
+from fractions import Fraction
 
 
-class Probability:
-    def __init__(self, prob=1 / 2):
-        self.prob = prob  # Prob of being 1
-
-    def __add__(self, other):
-        if isinstance(other, Probability):
-            Probability(self.prob + other.prob)
-        else:
-            raise ValueError("Cannot add prob with bit.")
-
-    def __mul__(self, other):
-        if isinstance(other, Probability):
-            Probability(self.prob * other.prob)
-        else:
-            return Probability(self.prob * other)
-
-
-def toggle_bit(bits, i):
+def toggle_bit(i, bits):
     bits[i] = 1 - bits[i]
 
 
 def random_bit(i, bits):
-    bits[i] = Probability(1 / 2)
+    bits[i] = Fraction(1, 2)
 
 
 def CNOT_prob(i, j, bits):
-    if isinstance(bits[i], Probability) and bits[i].prob > 0.0:
-        if isinstance(bits[j], Probability):
+    if isinstance(bits[i], Fraction) and bits[i] > 0:
+        if isinstance(bits[j], Fraction):
             bits[j] = bits[j] * bits[i]
         elif bits[j] == 0:
             bits[j] = bits[i]
@@ -38,19 +21,19 @@ def CNOT_prob(i, j, bits):
         else:
             raise ValueError("Invalid bit value.")
     elif bits[i] == 1:
-        toggle_bit(bits, j)
+        toggle_bit(j, bits)
     else:
         return
 
 
 def CCNOT_prob(i, j, k, bits):
     conjunction_prob = None
-    if isinstance(bits[i], Probability) or isinstance(bits[j], Probability):
+    if isinstance(bits[i], Fraction) or isinstance(bits[j], Fraction):
         conjunction_prob = bits[i] * bits[j]
 
-    if isinstance(conjunction_prob, Probability):
-        if conjunction_prob.prob > 0.0:
-            if isinstance(bits[k], Probability):
+    if isinstance(conjunction_prob, Fraction):
+        if conjunction_prob > 0:
+            if isinstance(bits[k], Fraction):
                 bits[k] = bits[k] * conjunction_prob
             elif bits[k] == 0:
                 bits[k] = conjunction_prob
@@ -61,7 +44,7 @@ def CCNOT_prob(i, j, k, bits):
         else:
             return
     elif bits[i] == 1 and bits[j] == 1:
-        toggle_bit(bits, k)
+        toggle_bit(k, bits)
     else:
         return
 
@@ -116,13 +99,15 @@ def main():
     for op, indices in instructions:
         instructions_dict[op](*indices, bits_probs)
 
-    # Invert probs so that its the prob of being 0
-    bits_probs = [1 - prob for prob in bits_probs]
+    # Invert probs so that it's the prob of being 0
+    bits_probs = [1 - Fraction(prob) for prob in bits_probs]
 
-    # Multiply probs
-    prob = math.prod(bits_probs)
+    # Multiply probs as Fractions
+    prob = Fraction(1, 1)
+    for p in bits_probs:
+        prob *= p
 
-    print("Prob of |000...0>: ", prob)
+    print("Prob of |0...0>: ", prob, "= ", float(prob))
 
 
 if __name__ == "__main__":
