@@ -1,3 +1,14 @@
+"""Probabilistic bit-circuit simulator (first-order approximation).
+
+This implementation tracks only per-bit marginals and assumes the joint
+distribution factorizes across bits (i.e., bits are independent). Multi-bit
+operations (e.g., CNOT/CCNOT) therefore use products of marginals as a
+first-order approximation and do not model correlations/entanglement.
+
+For an exact version that tracks the full bitstring distribution, see
+`src/ex7.1_exact.py`.
+"""
+
 import argparse
 from fractions import Fraction
 

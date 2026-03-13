@@ -3,6 +3,9 @@ name = "explore-quantum"
 version = "0.1.0"
 description = "Exploring quantum computing and software engineering."
 requires-python = ">=3.10"
+dependencies = [
+    "black"
+]
 
 [tool.black]
 line-length = 88
