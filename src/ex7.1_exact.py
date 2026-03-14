@@ -35,8 +35,29 @@ def apply_NOT(dist, i, n):
 
     TODO: Move probability mass from each bitstring to the bitstring with bit i
     flipped.
+
+    Known bug: the current in-place update drops probability mass when a state
+    flips into another state that is also still waiting to be processed in the
+    same loop.
+
+    Example:
+        apply_NOT({0: Fraction(1, 2), 8: Fraction(1, 4)}, 3, 4)
+        should swap the two states, but the current implementation loses one of
+        them because it mutates ``dist`` while iterating over the original
+        items.
     """
-    raise NotImplementedError
+
+    if i >= n:
+        raise IndexError("Cannot apply NOT to i=", i, " since n=", n)
+
+    mask = 1 << i # only the bit with index i from the right is 1.
+
+    for k,v in list(dist.items()):
+        new_state = k ^ mask
+        dist[new_state] = v + dist.get(new_state, Fraction(0,1))
+        dist.pop(k)
+    
+    return dist
 
 
 def apply_CNOT(dist, i, j, n):
