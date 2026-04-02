@@ -4,9 +4,14 @@ version = "0.1.0"
 description = "Exploring quantum computing and software engineering."
 requires-python = ">=3.10"
 dependencies = [
-    "black"
+    "black",
+    "pytest"
 ]
 
 [tool.black]
 line-length = 88
 target-version = ["py310"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,6 +1,6 @@
 """Probabilistic bit-circuit simulator (exact / full joint distribution).
 
-Unlike `src/ex7.1.py` (first-order, independent-bit approximation), this script
+Unlike `src/ex7_1.py` (first-order, independent-bit approximation), this script
 is intended to track the full probability distribution over all 2^n bitstrings.
 
 # Representation suggestion:
@@ -33,31 +33,21 @@ def parse_instructions(instruction_str):
 def apply_NOT(dist, i, n):
     """Apply NOT (X) gate to bit i.
 
-    TODO: Move probability mass from each bitstring to the bitstring with bit i
+    Move probability mass from each bitstring to the bitstring with bit i
     flipped.
-
-    Known bug: the current in-place update drops probability mass when a state
-    flips into another state that is also still waiting to be processed in the
-    same loop.
-
-    Example:
-        apply_NOT({0: Fraction(1, 2), 8: Fraction(1, 4)}, 3, 4)
-        should swap the two states, but the current implementation loses one of
-        them because it mutates ``dist`` while iterating over the original
-        items.
     """
 
-    if i >= n:
-        raise IndexError("Cannot apply NOT to i=", i, " since n=", n)
+    if not (0 <= i < n):
+        raise IndexError(f"Cannot apply NOT to i={i} since n={n}")
 
     mask = 1 << i # only the bit with index i from the right is 1.
+    dist_new = {}
 
-    for k,v in list(dist.items()):
-        new_state = k ^ mask
-        dist[new_state] = v + dist.get(new_state, Fraction(0,1))
-        dist.pop(k)
+    for k, v in dist.items():
+        toggled_state = k ^ mask
+        dist_new[toggled_state] = v # Move probability mass
     
-    return dist
+    return dist_new
 
 
 def apply_CNOT(dist, i, j, n):

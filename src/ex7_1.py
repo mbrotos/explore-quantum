@@ -6,7 +6,7 @@ operations (e.g., CNOT/CCNOT) therefore use products of marginals as a
 first-order approximation and do not model correlations/entanglement.
 
 For an exact version that tracks the full bitstring distribution, see
-`src/ex7.1_exact.py`.
+`src/ex7_1_exact.py`.
 """
 
 import argparse
