@@ -2,6 +2,13 @@
 
 A small project for learning quantum-computing ideas through simple bit-circuit simulators.
 
+## Course References
+
+Lecture and exercise content in this repo is based on Ryan O'Donnell's CMU quantum computing course materials:
+
+- YouTube playlist: https://www.youtube.com/watch?v=XtDJXHYQ41U&list=PLm3J0oaFux3bF48kurxGR6jrmPaQf6lkN
+- Ryan O'Donnell (CMU): https://www.cs.cmu.edu/~odonnell/
+
 ## Setup
 
 ```bash
@@ -51,5 +58,7 @@ Indices in instruction files are 1-based.
 ## Project Layout
 
 - `src/`: simulator code
+- `resources/lectures/`: lecture-related materials
+- `resources/exercises/`: exercise-related materials
 - `resources/instructs/`: example instruction files
 - `tests/`: test suite
