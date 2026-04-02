@@ -21,13 +21,13 @@ pytest
 Approximate simulator:
 
 ```bash
-python src/ex7_1.py 4 instructs/i1.txt
+python src/ex7_1.py 4 resources/instructs/i1.txt
 ```
 
 Exact simulator:
 
 ```bash
-python src/ex7_1_exact.py 4 instructs/i1.txt
+python src/ex7_1_exact.py 4 resources/instructs/i1.txt
 ```
 
 ## Example Instruction File
@@ -51,5 +51,5 @@ Indices in instruction files are 1-based.
 ## Project Layout
 
 - `src/`: simulator code
-- `instructs/`: example instruction files
+- `resources/instructs/`: example instruction files
 - `tests/`: test suite

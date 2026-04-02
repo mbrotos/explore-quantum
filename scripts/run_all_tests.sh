@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INSTRUCTS_DIR="instructs"
-SCRIPT="src/ex7.1.py"
+INSTRUCTS_DIR="resources/instructs"
+SCRIPT="src/ex7_1.py"
 NUM_BITS=4
 
 for file in $INSTRUCTS_DIR/test*.txt; do
