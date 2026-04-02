@@ -1,3 +1,10 @@
+"""Simple bit-circuit simulator for deterministic instruction execution.
+
+This module applies instruction files made of NOT, CNOT, CCNOT, and RNG
+operations to a classical bit register. Instruction indices are read as 1-based
+in the input file and converted to 0-based indices internally.
+"""
+
 import argparse
 import random
 
