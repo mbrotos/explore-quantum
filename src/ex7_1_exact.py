@@ -14,18 +14,23 @@ import argparse
 from fractions import Fraction
 
 
-def parse_instructions(instruction_str):
+def parse_instructions(instruction_str, num_bits):
     """Parse an instruction file into a list of (op, indices).
 
     Indices are converted to 0-based.
     """
     instructions = []
-    for line in instruction_str.strip().splitlines():
+    for i, line in enumerate(instruction_str.strip().splitlines()):
         parts = line.split()
         if not parts:
             raise ValueError("Empty instruction line.")
         op = parts[0]
         indices = list(map(lambda x: x - 1, map(int, parts[1:])))
+        for indx in indices:
+            if not (0 <= indx < num_bits):
+                raise IndexError(
+                    f"Line {i+1} contains an bit index which is out of range."
+                )
         instructions.append((op, indices))
     return instructions
 
@@ -37,25 +42,35 @@ def apply_NOT(dist, i, n):
     flipped.
     """
 
-    if not (0 <= i < n):
-        raise IndexError(f"Cannot apply NOT to i={i} since n={n}")
-
-    mask = 1 << i # only the bit with index i from the right is 1.
+    mask = 1 << i  # only the bit with index i from the right is 1.
     dist_new = {}
 
     for k, v in dist.items():
         toggled_state = k ^ mask
-        dist_new[toggled_state] = v # Move probability mass
-    
+        dist_new[toggled_state] = v  # Move probability mass
+
     return dist_new
 
 
 def apply_CNOT(dist, i, j, n):
     """Apply CNOT with control i and target j.
 
-    TODO: For each bitstring, if control bit is 1, flip the target bit.
+    For each bitstring, if control bit is 1, flip the target bit.
     """
-    raise NotImplementedError
+
+    mask_control = 1 << i
+    mask_target = 1 << j
+    dist_new = {}
+
+    for k, v in dist.items():
+        if k & mask_control > 0:
+            # control bit is 1
+            k_new = k ^ mask_target
+            dist_new[k_new] = v
+        else:
+            dist_new[k] = v  # No change
+
+    return dist_new
 
 
 def apply_CCNOT(dist, i, j, k, n):
@@ -107,9 +122,13 @@ def main():
     with open(args.instructions_path, "r") as f:
         instruction_str = f.read()
 
-    instructions = parse_instructions(instruction_str)
+    instructions = parse_instructions(
+        instruction_str,
+    )
 
     for op, indices in instructions:
+        if not (0 <= indices < n):
+            raise IndexError(f"Cannot apply NOT to i={indices} since n={n}")
         dist = apply_instruction(dist, op, indices, n)
 
     # Probability of the all-zeros state is just the mass on bitstring 0.
