@@ -35,7 +35,7 @@ def parse_instructions(instruction_str, num_bits):
     return instructions
 
 
-def apply_NOT(dist, i, n):
+def apply_NOT(dist, i):
     """Apply NOT (X) gate to bit i.
 
     Move probability mass from each bitstring to the bitstring with bit i
@@ -52,7 +52,7 @@ def apply_NOT(dist, i, n):
     return dist_new
 
 
-def apply_CNOT(dist, i, j, n):
+def apply_CNOT(dist, i, j):
     """Apply CNOT with control i and target j.
 
     For each bitstring, if control bit is 1, flip the target bit.
@@ -75,15 +75,15 @@ def apply_CNOT(dist, i, j, n):
     return dist_new
 
 
-def apply_CCNOT(dist, i, j, k, n):
+def apply_CCNOT(dist, i, j, k):
     """Apply CCNOT (Toffoli) with controls i, j and target k.
 
-    TODO: For each bitstring, if both control bits are 1, flip the target bit.
+    For each bitstring, if both control bits are 1, flip the target bit.
     """
 
     if i == j or j == k or i == k:
         raise ValueError("CCNOT indices must be unique.")
-    
+
     mask_control_i = 1 << i
     mask_control_j = 1 << j
     mask_target_k = 1 << k
@@ -101,25 +101,38 @@ def apply_CCNOT(dist, i, j, k, n):
     return dist_new
 
 
-def apply_RNG(dist, i, n):
+def apply_RNG(dist, i):
     """Randomize bit i to be 0/1 with probability 1/2 each.
 
-    TODO: Split probability mass for each bitstring into two outcomes where bit
+    Split probability mass for each bitstring into two outcomes where bit
     i is forced to 0 vs forced to 1.
     """
-    raise NotImplementedError
+    mask = 1 << i
+    dist_new = {}
+
+    for k, v in dist.items():
+        new_state = k ^ mask  # get the forced state
+        new_prob = v / 2  # split prob mass
+        dist_new[k] = (
+            dist_new.get(k, Fraction(0, 1)) + new_prob
+        )  # untoggled states get 1/2 the prob
+        dist_new[new_state] = (
+            dist_new.get(new_state, Fraction(0, 1)) + new_prob
+        )  # toggled gets 1/2 + current
+
+    return dist_new
 
 
-def apply_instruction(dist, op, indices, n):
+def apply_instruction(dist, op, indices):
     """Dispatch one instruction to the appropriate transition."""
     if op == "NOT":
-        return apply_NOT(dist, indices[0], n)
+        return apply_NOT(dist, indices[0])
     if op == "CNOT":
-        return apply_CNOT(dist, indices[0], indices[1], n)
+        return apply_CNOT(dist, indices[0], indices[1])
     if op == "CCNOT":
-        return apply_CCNOT(dist, indices[0], indices[1], indices[2], n)
+        return apply_CCNOT(dist, indices[0], indices[1], indices[2])
     if op == "RNG":
-        return apply_RNG(dist, indices[0], n)
+        return apply_RNG(dist, indices[0])
     raise ValueError(f"Unknown instruction: {op}")
 
 
@@ -142,12 +155,10 @@ def main():
     with open(args.instructions_path, "r") as f:
         instruction_str = f.read()
 
-    instructions = parse_instructions(
-        instruction_str, n
-    )
+    instructions = parse_instructions(instruction_str, n)
 
     for op, indices in instructions:
-        dist = apply_instruction(dist, op, indices, n)
+        dist = apply_instruction(dist, op, indices)
 
     # Probability of the all-zeros state is just the mass on bitstring 0.
     p0 = dist.get(0, Fraction(0, 1))
