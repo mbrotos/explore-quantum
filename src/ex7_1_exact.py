@@ -57,6 +57,8 @@ def apply_CNOT(dist, i, j, n):
 
     For each bitstring, if control bit is 1, flip the target bit.
     """
+    if i == j:
+        raise ValueError("CNOT indices must be unique.")
 
     mask_control = 1 << i
     mask_target = 1 << j
@@ -78,7 +80,25 @@ def apply_CCNOT(dist, i, j, k, n):
 
     TODO: For each bitstring, if both control bits are 1, flip the target bit.
     """
-    raise NotImplementedError
+
+    if i == j or j == k or i == k:
+        raise ValueError("CCNOT indices must be unique.")
+    
+    mask_control_i = 1 << i
+    mask_control_j = 1 << j
+    mask_target_k = 1 << k
+
+    dist_new = {}
+
+    for k, v in dist.items():
+        if k & mask_control_i > 0 and k & mask_control_j > 0:
+            # control bits i and j are 1
+            k_new = k ^ mask_target_k
+            dist_new[k_new] = v
+        else:
+            dist_new[k] = v  # No change
+
+    return dist_new
 
 
 def apply_RNG(dist, i, n):
@@ -123,12 +143,10 @@ def main():
         instruction_str = f.read()
 
     instructions = parse_instructions(
-        instruction_str,
+        instruction_str, n
     )
 
     for op, indices in instructions:
-        if not (0 <= indices < n):
-            raise IndexError(f"Cannot apply NOT to i={indices} since n={n}")
         dist = apply_instruction(dist, op, indices, n)
 
     # Probability of the all-zeros state is just the mass on bitstring 0.
