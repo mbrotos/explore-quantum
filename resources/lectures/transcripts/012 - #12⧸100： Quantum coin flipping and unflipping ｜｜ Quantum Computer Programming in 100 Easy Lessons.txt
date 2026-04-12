@@ -1,0 +1,173 @@
+ So, let's do some shorter examples that illustrate some interesting phenomena.
+ They may and well, like, leave us philosophically more mystified than we were before, but it
+ is what it is, I'd say.
+ Right, so I'm going to write some really short snippets of code and we'll do the same process
+ and think about it a little bit.
+ So, maybe this one I'll call quantum flip coin.
+ But don't take the names of these subroutines too seriously.
+ And this will just be like new qubit A, Hadamard A.
+ Okay, so this is literally, you know, only one instruction, so it's a bit overkill to
+ draw the whole tree for it, if, you know, we're just going to figure out what is the
+ final state.
+ Kind of know the final state, but let's just go ahead and draw the whole tree.
+ So, okay, we have one qubit, all our nodes are just going to be zero or one.
+ It's initially zero, and then we have Hadamard on zero, so that's, you get the zero or one.
+ This is amplitude root of half, this is root of amplitude root of half, and that's it.
+ Like, the final state is, there's no collating to do, like, you know, each outcome here only
+ appears one time, so, okay, I should say, we write the final amplitudes at the bottom,
+ this is, we multiply it everything along the path, there's only one thing, multiply everything
+ along the path, there's only one thing, there's no collating to do, because each outcome only
+ occurs once, so we're done, you know, final state is like root of half amplitude on zero,
+ root of half amplitude on one.
+ Okay, and if we were to now hypothetically do extract all, you know, it would be like
+ 50/50, whether we got zero or one.
+ Okay, so, from outsider's perspective, you run this code, with ends with extract all,
+ just half the time prints, zero half the time prints one.
+ Okay, now I'm going to do some similar example over here, but I'm just going to throw a toggle
+ in as the first step, so effectively I'm just going to, like, watch what happens when you
+ do Hadamard on a one, which we kind of already know what happens, but let's do it, let's do
+ quantum flip coin part two, so we'll do new qubit A, and then we'll toggle it, pull like
+ go ahead and do the whole tree, so again, there's one qubit, it's zero, and then we toggle
+ it, so, with all the amplitude, amplitude one, you go to one, and now we Hadamard, zero,
+ one, with Hadamard one goes to zero with amplitude root of half, and one goes to one
+ with amplitude root minus a half, okay, now we're done, now we write the final amplitude
+ outcomes at the bottom, so here we have one times root of half, here we have one times
+ minus root of half.
+ Now we do also here, do the collation step, but there's nothing to collate, so we're
+ kind of done, and the final state is root half amplitude on zero, root half amplitude,
+ sorry, minus root half amplitude on one, there's a different state than we got before, on the
+ other hand it is true that if we were to do extract all now, it would again be like 50-50,
+ whether we get zero or one.
+ This came up last time, this is possible that like, you know, you get to two different states,
+ but like the visible output you see is the same, and if these were the only experiments
+ that the physics has had to like explain way back in like 1910, then probably they wouldn't
+ like work out this mathematical model for the underlying states because they lead to the
+ same outcome, 50-50.
+ From the point of view that you have so far, you would just probably save yourself, or
+ another model that would explain this is just the Hadamard instruction just like wipes
+ out the qubits value and replaces it 50-50 by zero or one, it's exactly like a coin flip.
+ That's a model that physicists could have come up with that explains this behavior
+ so far.
+ So now I'll show you some more examples that you can physically do, which would like refute
+ the hypothesis that that's how Hadamard works, and they confirm that Hadamard works while
+ this way I'm actually doing with the trees and everything.
+ So now let me show you some more code that you can do that would kind of reveal to you
+ that it's not just the case that like Hadamard wipes out your qubit and replaces it with
+ like a random bit.
+ So I'll call this quantum unflip coin.
+ And here's the code, new qubit, A, Hadamard A, so so far it looks like quantum flip coin.
+ This instruction Hadamard A again, that's it.
+ Okay, so again this physically corresponds to like I don't know you take your photon
+ and you get it vertically polarized, that's maybe this, and then you pass it through some
+ quartz slab of a certain thickness and that corresponds to doing a Hadamard and then you
+ pass it through another quartz slab of the same thickness and that corresponds to doing
+ Hadamard again or something like that.
+ If it's electrons then you fire some microwaves at them for a certain amount of time.
+ Okay, so yeah let's just draw the tree for this, so okay, new qubit A, so again we start
+ out at zero, A, and then Hadamard A, so it's going to look exactly like this to start,
+ so we could have just continued that tree over there but let's redraw it.
+ Two to half, three to half, okay, but now we do another Hadamard, so okay in this world
+ where it's zero it's going to look like a copy of this, zero, one, root of half, root
+ of half, and one, well it's going to look like this, well the bottom part of this, zero,
+ one, root of half, and root of root of half.
+ Okay, so now let's finish with the instructions, now we do the thing where we write the final
+ amplitude outcomes down here by multiplying along the path, so this is root of half times
+ root of half, which is half, this is root of half times root of half which is also half,
+ root of half times root of half which is half, root of half times negative root of half which
+ is negative half.
+ Okay, I'm still not finally done because like we've got to now do the collation, so like
+ the final state, final state, it has like some amplitude on zero and some amplitude on one,
+ and how much is on zero, well we've got half plus a half, so that's one, and how much amplitude
+ on one, we've got half plus negative a half which is zero, remember this is like an amplitude,
+ but a number this is like the basic value.
+ So that's the final state with this code, and you know it's conventional again like if
+ you have an amplitude zero on something you just don't mention it, and also it's conventional
+ if you have an amplitude one on something you just don't say the one, so like this is also
+ just sometimes called zero.
+ So how do we end this code, it starts the new cube at a zero, you do how to mark twice
+ in a row the new state is zero, so in particular that means if you were to do like you know
+ extract all, you'd see a hundred percent of the time you'd see zero.
+ And this might refute your hypothesis if you had it before that like Hadamard just like
+ takes a bit and like randomizes it because like we randomize it, we randomize it again
+ it should still be 50-50, but it's not.
+ You run this code 100% of the time you see zero, I mean you do this physical experiment
+ you always see zero.
+ So now you have to get into like some kind of crazy you know if you want to stick with
+ like the hypothesis that like the Hadamard instruction like randomizes a bit you'd also
+ have to add that like okay randomize the bit, but maybe it remembers that it used to be zero,
+ it's not like that like this is what it's really like, but it's by doing these experiments
+ that you know the physicists in the 1910s or whatever figured out that this is how nature
+ works.
+ This is like a extremely I think well it's pretty philosophically similar to like the
+ double slit experiment that people always talk about, I never really understood exactly
+ what the double slit experiment was trying to explain to you like somehow it's supposed
+ to explain that something funny is happening I always think they should explain this one
+ and like this one it's more clear what is happening and that like a surprising thing
+ is happening, yep.
+ Yeah probably I'm exaggerating a little because this is maybe what like in an alternate universe
+ that is easier to explain maybe what physicists were doing also if people correct me if I'm
+ wrong because I don't know that much about physics or history of physics, one thing that
+ is always frightening to me about physics is that you know here we're working with like
+ bits or qubits and like for every if you have two qubits there's like four possibilities
+ if you have and like a superposition state is like four numbers one for each of the possibilities.
+ If you go to a physics class and like learn quantum mechanics like their very first example
+ instead of talking about like the polarization state of a photon which is like zero or one
+ has two possibilities they'll talk about maybe the position of the photon, the position of
+ a photon going to your point is like some number on like the real line right so they're
+ uncountably infinitely many possibilities for it and then like a superposition state
+ has like uncountably many amplitudes it's like very scary it's like oh like I know how
+ to like add up little numbers and like now by like example one in physics like we're
+ already like uncountably infinitely many amplitudes that are like canceling in things.
+ So that's why like I think it's easier to like talk about qubits and things.
+ By historically I think they were more like analyzing again I don't know history of physics
+ so well but like things like you know the position and with momentum of like you know
+ subatomic particles that they can probe in this way and so it was like even harder
+ on them because I had to figure out these rules where there's like uncountably many
+ infinite amplitudes and things don't even know if there were experiments that like
+ let them to exactly this.
+ I know this like Stern-Gurlach experiment which is like from the 30s where you really
+ have just like one electron and it has like a basic state with two possibilities spin
+ upwards, spin down it's really about just putting an electron through like an electromagnetic
+ field and watching if it deflects this way or that way but I guess like historically
+ it wasn't quite like this neat little story I'm telling but I should figure out exactly
+ I mean I think it was complicated how they were led to these rules.
+ Okay let me tell one more example just going to be the same but like we're going to put
+ a toggle in basically we're going to do two Hadamards in a row but starting from one rather
+ than starting from zero.
+ Okay so I'll draw the diagram here relatively quickly and you can check to see if I made
+ a mistake or not.
+ Okay get to zero, get to one, this is root of half, this is root of half, this is minus
+ root of half, root of half, zero, one.
+ Okay this path we have a half, this path we have a half, this path we have minus a half,
+ this path we have plus a half okay so the final state as amplitude okay on zero we have a
+ half and negative a half so we have amplitude zero on zero and on one we have half and half
+ so we got amplitude one on one okay and similarly this is like all the amplitude is on one and
+ no amplitude on zero so like that's also just called one okay so in short here we kind of
+ started this is basically to like start the qubit in state one we saw that if you start
+ the qubit in state one and do two Hadamards you get to one again and so again if you were
+ to extract all you would see a hundred percent chance of seeing one.
+ So again there's a couple points to make here I guess it's really kind of emphasizes
+ that like again you know if you do Hadamard it might look like oh it's like if you just
+ do Hadamard and get into like state root half amplitude on zero and root half amplitude
+ on one you might sort of try to think about like how is this different from flipping a
+ coin and let me try to say this maybe it won't resonate with you that much yet but
+ I'll say it anyways let's say you flip a coin heads of zero and tails is one you flip
+ a coin it lands on the table but you cover it up and you don't look at it yet so it would
+ be mathematically reasonable for you to say I describe this situation as half probability
+ on zero and half probability on one that statement is quantifying your lack of knowledge of the
+ true state and it's fine you can reason about what will happen if a computer were to do
+ future things on this but at the same time in the background you might say well actually
+ the true state is either a hundred percent zero or a hundred percent one I mean it's
+ actually either heads or tails like I just by saying it's fifty fifty heads or tails
+ just reflecting my lack of knowledge of the true state I haven't looked at it yet but
+ like when you get out of cubit and you had a marty and get it to this state it's not
+ like it's secretly decided like this cubit is not like I'm zero like if you measure me
+ I'm going to be zero or that's like I've decided to be one like if you measure me I'm
+ going to become one it's true state is this like this is a true genuine physical state
+ it doesn't you know involve like our lack of knowledge of is it really zero is it really
+ one like this superposition is the actual physical state of it and you just gotta accept
+ that and these kinds of experiments are a way to like verify that because like it hasn't
+ decided it's zero one yet because if you start in this state and do another had a mart it
+ goes to a hundred percent zero or a hundred you know all amplitude on zero but if you
+ start in this state and like do another had a marty goes to all its amplitude on one so
+ that's that's the way it is

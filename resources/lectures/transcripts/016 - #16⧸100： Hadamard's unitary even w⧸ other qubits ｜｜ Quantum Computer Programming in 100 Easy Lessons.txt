@@ -1,0 +1,170 @@
+ You might think that we're now done for the task
+ Of verifying that all the programs that we can build up from the basic instructions have the unitary property.
+ Because I said this thing, which sounded very correct, which is that, you know,
+ If all the basic instructions have the unitary property, then, you know,
+ This valid state's like always stay valid.
+ And so anything you build up from them will also have the unitary property.
+ I a little bit slipped something past you there.
+ And it's true, by the way, that we check this for the classical reversible operations and for Hadamard.
+ But I did slip a little something past you there, which is that sometimes we perform, let's say,
+ Hadamard A in a situation where there's more than one qubit.
+ Like, you know, we're going to have, like, three qubits.
+ And then we perform Hadamard A, which is like Hadamard just on the first one.
+ And then we do Hadamard C, like, just on the third one.
+ And so, you know, we'll have, like, a wider amplitude tree to analyze there.
+ If there's, like, three qubits, there'll be, like, maybe eight amplitudes.
+ But, like, Hadamard is only, like, operating on, like, one qubit.
+ So, like, it doesn't seem clear immediately that still the, some of the squares of the amplitudes doesn't change.
+ If this is, like, making, if it's a little unclear, like, I'm going to check it right now.
+ I just want to say there is something more to check, and let's check it for a couple of reasons.
+ First, we ought to check it to make sure that this law of quantum transformation is holding good.
+ And it's also useful to remind yourself how this works sometimes.
+ Like, sometimes even I, like, kind of forget a little bit about, you know, you say,
+ "Oh, this is the definition of Hadamard.
+ Here's how it operates on one qubit."
+ Or, "This is the definition of clockwise.
+ Here's how it operates on one qubit."
+ But you got to remember, like, yeah, but what if there are more than one qubit?
+ Like, then, how does it work?
+ Well, the answer is just amplitude trees.
+ Just remember the amplitude trees.
+ But let's, let's do it so that we get a good, we get familiar with it.
+ Okay. So, I'll do, like, the simplest possible next case, which is that, like, we have two qubits,
+ but we do Hadamard only on one of them.
+ Okay? I mean, everything I will say generalizes to you have, like, any number of qubits.
+ And you do Hadamard on one of them, but let's just do two.
+ So, okay, let's say you have a and b are two qubits.
+ And they have some state.
+ And we'll just give letters, again, to all the amplitudes.
+ So, like, q, amplitude on 0, 0, and r, amplitude on 0, 1.
+ And s amplitude on 1, 0.
+ And t, amplitude on 1, 1.
+ Okay, you have two qubits, and somehow, eventually, you get them to, like, this state.
+ And then you do Hadamard on the first one.
+ Okay, so what's the new state?
+ So, I'd be, like, getting, like, a little tired.
+ Like, oh, man, he's going to do, like, another computation with the amplitude trees.
+ But, like, we'll get something out of this one, trust me.
+ What's the new state?
+ Okay, so it's going to be kind of like this, but, you know, it'll be wider,
+ because we have, like, two qubits.
+ And as we do this one, actually, we're going to maybe stop quite doing it
+ like the amplitude tree way, or this, based on this way.
+ And we're going to try to do it a little bit more based on this slogan,
+ because this slogan, except for this last line, which is very annoying,
+ this slogan is, like, somehow, much more memorable, I feel, than the actual definition.
+ So, let's do that.
+ Okay, so we got this, uh, incoming state, and, uh, maybe there's some hypothetical
+ amplitude tree, and we got, uh, to 0, 0, 0, 1, 1, 0, and 1, 1.
+ And the amplitude's with which we got there, where q, r, s, and t.
+ Okay.
+ Now, you might say, like, okay, we're doing Hadamard on A.
+ So, A is like the first qubit, so we're going to go through all of these,
+ put in the little tree, you know, this one, what happens here?
+ Okay, 0 doesn't change, this 0 goes to, like, 0, some amplitude,
+ this 0 goes to 1, with some amplitude, I guess it's both root 1/2, root 1/2.
+ Okay, we can do a list for all of them, and, like, start to multiply and add up.
+ But now I want to, like, I don't know, like shortcut it a little bit.
+ So, uh, here, so you have to, like, think a little bit to check that, like,
+ what I'm saying, it's equivalent to what you would get if you did everything full out.
+ So, the way to look at it is like this, you're like, okay, I'm doing Hadamard on A.
+ That means, like, B is not changing.
+ Okay, B is not changing, and if there's, like, I don't know, 10 qubits, like,
+ B, C, D, E, et cetera, B, C, D, E, et cetera would not be changing.
+ The only thing that's varying is A. Okay?
+ So, you kind of want to separate the worlds into, like,
+ um, you want to pair them up based on the B value, the value that's not changing.
+ So, here's the world where B is 0, this is like B equals 0 world.
+ Okay? And with, like, a different color, I'll demonstrate the world where B is 1.
+ This is B is like 1.
+ And you should really pair these up in your mind.
+ Okay, so you should really think, like, all right, I'm going to kind of pair up these pieces in my mind.
+ Because this is a world where, like, B is 0.
+ And if there's, like, um, two qubits, B and C, you pair up all the unchanging ones together.
+ So, like, all the ones where, like, B equals 0 and C equals 0, that's a pair.
+ All the ones where B equals 0 and C equals 1, that's a pair, et cetera.
+ So, you get it, so you're, like, so now, like, kind of in this, like, red world,
+ there's basically one qubit again.
+ It's A, it's the first one, the one that we're operating on.
+ And then you're, like, yeah, and you just stick 0 at the end.
+ That's not changing.
+ So, now, it's kind of like this picture, where you have two amplitudes coming in,
+ Q and S. And, like, you do this operation on it, well, this would be Q, this would be S.
+ But, like, you're, like, ah, I got to stick my B equals 0 here.
+ Just, like, you annoyingly write 0 everywhere.
+ That's what's going on on this red bit.
+ And similarly, separately, you'll be like,
+ I'm going to also focus on this world.
+ This is the world where B is one.
+ But now it looks like I just have one qubit that's free,
+ that's changing. We got the zero on one with the amplitudes R and T.
+ So it really again looks like this picture with R and T,
+ and it's just you're like, yeah,
+ and they're like right like one everywhere here,
+ one, one, one, one, one, one, one, one, one, one.
+ Okay. So you can just like do this thing,
+ well, you can do this thing for every pair.
+ And you're going to apply this little slogan to every pair.
+ So I'll do that, but let me first maybe write in words what's going on.
+ So when you have multiple qubits.
+ Okay. So pair up the basic states based on the like unchanging part.
+ Okay. Which in this example is B.
+ Okay. And then you have like a bunch of pairs.
+ You have a bunch of just like a piece where you have the zero on
+ the one in the varying qubit.
+ And then you do the one qubit instruction on each pair.
+ Okay. So let's do that.
+ Okay. So in this picture we have the pairs start with
+ like the B equals zero pair. That's the red one.
+ And what are the amplitudes coming in?
+ Well, it's like Q and S.
+ This is like on zero, on one.
+ So they're like on A equals zero and A equals one.
+ Okay. And then we can use this slogan to remember what happens.
+ So there's going to be like a new amplitude on zero and new amplitude on one.
+ And the new amplitude on zero will just be the sum of the two old amplitudes.
+ And the new amplitude on one will just be the difference.
+ Except that we have to do this like stupid root two, root half thing.
+ So like, you know, maybe using the slogan.
+ Okay. The amplitude is coming out, if you will.
+ Well, we'll have Q plus S times this root half on zero and Q minus on one.
+ Time's root half.
+ Okay. And this will be a part of the final state.
+ I say a part because then you'll be like, this is the world where like everything else is B equals zero.
+ So like in the final final state, you'll be like, yeah, yeah, there's like also like a zero here and a zero here.
+ But I'll put that in, well, I'll just leave it like that.
+ Okay. Now, let's do the other part.
+ Do the green part. This is the world where B equals one.
+ Okay. We'll do the same analysis.
+ So here are the amplitudes in.
+ Because here we got amplitude R on zero and T on one.
+ So it's like R on zero equals zero T on a equals one.
+ And by this slogan, you see that the amplitude's coming out.
+ Okay. It's just R plus T and R minus T, basically R plus T times this root half, R minus T times this down root half.
+ And that's on, you know, zero and on one.
+ And again, we can remember like, oh, this is really zero and then like the B was zero. Sorry, the B was one.
+ Okay. And therefore, we can put it all together and get the final state.
+ Which, all right. And notice that like, you know, when you're kind of like collating this all together,
+ all these pieces will always be different because like they have different B parts.
+ So they will never be the same and you won't need to collate anything.
+ So kind of like all these calculations are happening separately.
+ Okay. So I'll just write it out. The final state is, well, like Q plus S on zero, zero times this down root half.
+ Q minus on one zero, kind of writing them in a slightly unusual order, R plus T on one zero, R minus T on one one.
+ Okay. Phew. We did it. It seemed a little elaborate. Yeah? Oh, thank you.
+ So used to writing one zero first. Yeah. They're not like in a little bit of an out of order, but, you know, that's okay.
+ Okay. So if you remember, like one reason we were doing this was I was like, oh, we should still check that like the sum of the squares and the
+ amplitudes is one. You know, this should also be unitary. And, you know, it wasn't as obvious as it was before when we just squared these things and add them up.
+ But actually it's true because of this situation. So you see, like, we kind of did like Hadamard on like this piece at Q and S coming in and we got to this piece, which had, well, these same numbers with Q and S instead of X and Y here.
+ And we know by the calculation we did before that like, you know, this piece has total squared amplitude, it's exactly the calculation we did before.
+ It's Q squared plus S squared. Q squared plus S squared. Okay. Now Q and S squared, sorry, Q squared plus S squared is not necessarily one.
+ It's probably not one because Q and S are like only a piece of the original state. But sort of the fact that you go from Q and S to these two numbers, that didn't depend on Q squared plus S squared equaling one.
+ That was just like what you got when you do the amplitude trees. And this piece for same reason has total squared amplitude R squared plus T squared.
+ Okay. So this piece is total squared amplitude was preserved. And the other piece is total squared amplitude was preserved.
+ So like the total final squared amplitude is Q squared plus S squared plus R squared plus T squared.
+ Okay. I'll put like a check mark that verifies that this was indeed a unitary transformation as we expected.
+ Because if we started with a valid state with one unit of squared amplitude Q squared plus R squared plus S squared plus T squared equals one, then we also ended with like one unit of squared amplitude.
+ Any questions about this? Okay. So we'll really see that like this is like a bit of a more enjoyable way to do computations when Hadamard is involved.
+ So like take all your amplitudes on all the states. And whenever you do like a Hadamard, you kind of like group them together into little pairs where in the pairs of basic states, like there's only one position where you have a difference, like a zero and a one.
+ And you kind of do this slogan on each of these pairs. And that's how you get the new state.
+ Okay. So hopefully you're now maybe fully convinced that indeed like all the operations, the basic operations we do don't change the total squared amplitude and their unitary and that's all good.
+ So we can let's go ahead and actually do some stuff like we're over like the basic definitions of how quantum works.

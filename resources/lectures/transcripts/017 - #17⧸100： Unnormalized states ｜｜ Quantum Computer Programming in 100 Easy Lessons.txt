@@ -1,0 +1,390 @@
+ But I want to tidy things up a bit more because you see I'm
+ always like a slandering this number root of half and I
+ really want to get rid of it.
+ So like now is the time when we get rid of it.
+ So you notice where does this root of half come from?
+ Like you notice like every time you have a probability tree,
+ or sorry, an amplitude tree, where you do a Hadamard
+ instruction, you collect up like this like root of halves.
+ So you're going along.
+ You're doing some analysis.
+ You have some like, I have three qubits, like this.
+ And then I'm like doing Hadamard on, I don't know, B or
+ something, the second qubit.
+ You're like, all right, I have like root of half, root of half.
+ There's going to be like maybe some minus root of halves.
+ But like literally every single branch picks up a root of half.
+ And if you have like five Hadamard instructions and like five
+ times, like on every row, you'll have like root of halves,
+ like all the way across the row.
+ And you'd be like, you know, when I do that last step of like
+ multiplying along all the branches, I'll be multiplying
+ by root half like five times.
+ So what if you're just like, what if I just don't write
+ the root of half?
+ And then I'll just make like note to self, put in five
+ copies of root of half at the end.
+ This is what I want to now like sanction, like approve of.
+ So this is our bold idea for the day.
+ Maybe you just don't write the root of halves.
+ And we're going to take this step in even further based on
+ the fact that we're now like fully convinced of this like
+ unitary property that like if we did everything correctly
+ and properly, our state would always have the property that
+ the sum of the squares of the amplitudes is one.
+ So for example, like what if we started to do things
+ improperly and we were like, oh, now that some of the squares
+ of the amplitudes is four, well, you just like
+ fix it back up to one.
+ Let me explain that a little bit more clearly.
+ So this is like one bold idea.
+ Just like don't write the root halves.
+ And then at the very end, like if you did this step like
+ three times, then put three factors of root of half in.
+ But let me take it to the next level where just like, I
+ don't know, whatever you want, if some constant multiple is
+ annoying you, just don't put it.
+ So this is the bolder version of the idea.
+ And what I'm going to describe here is only for your
+ convenience and mathematical analysis.
+ There's no physics or anything happening here.
+ It's just mathematical convenience.
+ So what if at some point in your analysis you just like
+ accidentally on purpose multiply all the amplitudes
+ by the same number of C?
+ OK, some constant C of your choice.
+ OK, maybe it shouldn't be zero.
+ Don't do that.
+ But you're going along.
+ Maybe you've got some like amplitudes.
+ You've got this whole list of amplitudes and you're like,
+ you know what?
+ I'm going to multiply them all by three.
+ Well, first of all, let's say you do that.
+ What will the new sum of squares of amplitudes be?
+ The new sum of squares of amplitudes will be?
+ Yes?
+ Yes, that's right.
+ It will go up by a factor of three squared.
+ So then the sum of squares of amplitudes will be not one,
+ like it's supposed to be, will be like C squared.
+ But like, first of all, if you did this and then you were
+ halfway through your work and you multiplied all the things
+ by C and you handed this piece of paper to your friend and
+ said, please continue the calculation for me.
+ Your friend would like first double-check that the
+ squares of the amplitude is like added up to one and they'd
+ be like, no, it doesn't.
+ It adds up to C squared.
+ Then your friend would just be like, okay, they'd probably
+ just like multiply it all the amplitudes by C.
+ I know how to fix it.
+ Just divide all the amplitudes by C.
+ And you can even do that, like to fix up whenever you want.
+ Because like, if you take a bunch of like amplitudes and
+ multiply them all by C and then do some more operations,
+ like that factor of C just like collects up here, like
+ sitting on the branch as like a dumb like time C.
+ And you just have like C's, extra on all your path
+ everywhere.
+ And so you can like divide them out later.
+ So we're just going to let ourselves do that for
+ mathematical convenience.
+ So we're just going to be cool about this.
+ We'll call this is not necessarily one.
+ We'll call these states "unnormalized states."
+ So an unnormalized state is just like a list of amplitudes
+ for each basic state.
+ But maybe the sum of the squares doesn't equal one.
+ That equals something else.
+ But the convention here is that this like always stands for
+ like the true quantum state that you get if you just like
+ fixed it back up so that the sum of the squares of the
+ amplitudes is one by dividing by the appropriate number.
+ And you can always tell like what number to divide by, just
+ by like doing the sum of the squares.
+ And if it's like C squared, then divide by C.
+ Yeah, in fact, you saw like when we were checking all the
+ like unitary properties, we never really checked.
+ We never merely checked that if the sum of the squares of
+ the amplitudes coming in was one, the sum of the squares of
+ the amplitudes coming out was also one.
+ It always happened to be the case that we were like whatever
+ the sum of the squares of the amplitudes is coming in, maybe
+ q squared plus r squared plus s squared plus t squared, you
+ get the sum of the same sum of the squares of the
+ amplitudes coming out, q squared plus r squared plus s
+ squared plus t squared again.
+ So if you have like an unnormalized state and you do an
+ operation, you'll still have an unnormalized state with the
+ same sum of the squares of amplitudes.
+ So here's the upshot of all this.
+ Let me get a nice color.
+ Upshot is, I'm now allowing you for mathematical
+ convenience whenever you want to say I choose to work with
+ unnormalized states.
+ And that means you relax the condition that the sum of
+ the squares of the amplitudes is one, but like when push comes
+ to shove, you're like, I'll fix it back to a proper quantum
+ state by multiplying by all the amplitudes by the same
+ number.
+ So upshot, this new mathematical convenience is like
+ whenever you like, you can multiply all amplitudes by
+ the same constant, not 0.
+ And say, like on your piece of paper, or say to the reader
+ or the person you're talking to, I am working with
+ unnormalized states.
+ And there's always the time to stop working with
+ unnormalized states.
+ And that's when you're about to do an extract all, or
+ analyze an extract all.
+ Because when you do extract all, right, like the rule
+ there is the probability you see a basic state as the
+ square of the amplitude.
+ But that should really be like the square of the real
+ amplitude, not the one you mess around with.
+ So like if you're about to do extract all, that's the time
+ when you could take your unnormalized state and be like,
+ I will now fix it so that the sum of the squares of the
+ amplitudes is one by dividing by the appropriate constant,
+ namely the square root of whatever the sum of the squares
+ of the amplitudes happens to be.
+ Then you'll have a normalized state where the sum of the
+ squares of the amplitude is one, and you can do the
+ extract all rule like you always do.
+ So this is all just a mathematical bookkeeping trick.
+ I mean, yep.
+ So you could do a question is like, can you do multiple
+ constants, or do you do different constants?
+ Yeah, it's OK if you're analyzing 10 steps, like up to
+ the third one, you're like, you know what, I'd like to
+ multiply all these amplitudes by root 1/2.
+ And you basically just can put a note to yourself by
+ root 1/2 on the side.
+ And then you might be like, later, you know what, I want
+ to multiply all these constants by pi.
+ So let me do that.
+ And you might collect them like some constants, c1, c2, c3.
+ And then maybe if the last instructions extract all,
+ you're like, OK, I better fix this back to a normalized state.
+ And you can either remember all the constants you
+ multiply by and divide by all of them, like one after the
+ other, or you can even forget all of them.
+ Because you kind of know what to divide by at the end.
+ You're like, ah, forget what constants I use.
+ But you multiply, or you compute the sum of the
+ squares of the amplitudes.
+ And if it's like 64, you're like, OK, time to divide
+ everything by 8.
+ I don't know how I got here.
+ Maybe I did times 2 and times 4 or something.
+ But this is how I fix it back to 1.
+ So yeah, just like an example of that, here's, I mean, let
+ me just, like at one point, emphasize, you really got to
+ multiply all the amplitudes by the same amount.
+ But right now, you won't be understanding why I'm
+ emphasizing this so much.
+ You'd be like, yeah, I multiply all of them.
+ But like, possibly later, you'll be tempted to only multiply
+ some of the amplitudes by the same constant.
+ And I'll be like, no, no, no.
+ You've got to multiply all of them.
+ So I'm just making this warning now.
+ It's exactly the same as fractions.
+ Remember fractions from third grade, maybe?
+ It's kind of like we now have multiple names for the same
+ true state.
+ So you remember in fractions, like 6 over 8, that's the same
+ as like 60 over 80.
+ And like, that's the same as like 3 over 4.
+ These are all the same number, but you're like, you know,
+ maybe this is the best name for the number, but you're
+ allowed to multiply all the numbers by the same amount.
+ Like you couldn't say, I'm going to multiply all the
+ numbers by 20.
+ And you get like a new pseudonym for the number.
+ And that's OK.
+ Same deal with states, except if you have two qubit states,
+ there'll be like four numbers.
+ If you multiply all the numbers by the same number, that's
+ the same state, just with like a different name.
+ OK, so great.
+ So now we have this like mathematically sanctioned
+ system whereby if we want, we can like change all the
+ amplitudes by the same constant to make ourselves less
+ annoying.
+ So finally, we're like, great, let's just delete this line
+ out of the stupid Hadamard rule.
+ And then it'll be so nice.
+ And that's like an example of doing this, because you know,
+ when you apply Hadamard on one qubit, every single
+ amplitude gets multiplied by this root half factor.
+ Like I guess multiply by root half here, here, here, here.
+ So we are by like canceling this out.
+ We do cancel it from like every single amplitude in our
+ computations.
+ So just so it's very clear, I like to, when I delete this
+ line, I like to give a new name to the instruction.
+ It's the same instruction.
+ It's Hadamard.
+ But like by giving it a new name, like maybe you will
+ remember we're going to work with
+ un-normalized states.
+ So yeah, here's my new name.
+ I call it add and different.
+ So like a bunch of times, if I say Hadamard a, I'll be
+ like, you know what now?
+ Let's do add and difference a.
+ Add and diff on a.
+ Now this literally, OK, so let me say what this means.
+ What is the definition of this instruction?
+ Well, I'm going to define it just like this.
+ So it's like if the old amplitudes on 0 and 1 are x and
+ y, then the new or outgoing amplitudes on 0 and 1 are x
+ plus y and x minus y.
+ So it's exactly this definition by struct the last
+ multiply by root 1/2.
+ And like this, I like, because you can remember it.
+ It's very clear.
+ It's very pleasant.
+ In the end, you can start to try to have some intuitive,
+ derived some intuitive understanding of it.
+ There's what we like to do in the future.
+ And so often, instead of Hadamard, we'll just think of
+ this instruction.
+ And by writing this instruction, we're reminding
+ ourselves, all right, we've switched this world of
+ unnormalized states, but it's cool.
+ We know how to handle it.
+ And I do want to emphasize that like, this is really the
+ same instruction as this.
+ It's just like we're going to do some bookkeeping a
+ little bit differently.
+ So like we see this, it's still the same instruction to
+ operate on your physical qubit the same way you operated
+ on it in Hadamard.
+ It's just we're going to do the math to keep track of what's
+ going on a little different.
+ So let me emphasize that this is physically the same as
+ Hadamard A.
+ And another thing I just want to emphasize, since we're
+ here, I mean, you've got to remember, still, you've got
+ to remember one thing with this, that like, okay, it's the
+ sum that goes on to 0, and it's the difference that goes
+ on to 1.
+ Got to remember that.
+ Moreover, when you're writing down the difference on 1,
+ you're like, wait a minute, is x minus y, or is it y minus x?
+ Well, it's the amount on x minus the amount on y.
+ So somehow, minusing is always associated with 1.
+ So let's do a tiny example of this to get used to it.
+ And then once we do that, we'll kind of be ready to actually
+ get into some algorithms.
+ So we'll go back to mystery toggles a little bit, and then
+ we'll actually, in future lectures, really start to do
+ quantum algorithms.
+ But yeah, first, a little example.
+ So remember, once we first learned about Hadamard, we
+ were like, let's do some examples, and kind of see the
+ mysteries of Hadamard.
+ We had this quantum coin flip, and quantum coin
+ unflip.
+ And one thing we saw is that you have a state in state 0.
+ And then you do Hadamard.
+ If you were to measure then, you'd get a 50/50 result.
+ But if you were to instead Hadamard again, it goes back to
+ basic state 0.
+ That was quantum coin flip, unflip, I think.
+ Well, let's just go over that calculation again with our
+ new mechanism.
+ So here's some example code.
+ Step one, new qubit A. Step two, Hadamard on A. Step
+ three, Hadamard on A. Step four, extract all.
+ So this is a code we saw before.
+ And we saw that if you run this code, it'll 100% of the
+ time print 0.
+ So now let's say, OK, we're going to do the same way, but
+ we're going to do add indifference.
+ A here, add indifference, A here.
+ And that'll make our lives easier.
+ So now I'm not even going to draw a tree.
+ I'm just going to draw like lists of amplitudes.
+ So let's figure out the amplitudes after the various
+ lines.
+ Line number 1, 2, 3.
+ And there'll be some amplitude on 0.
+ And there'll be some amplitude on 1.
+ OK, so what are the amplitudes after line 1?
+ Well, after line 1, we've got this new qubit A. It starts
+ out in basic state 0.
+ So like all the amplitude, all one of the
+ amplitudes is on 0, there's no amplitude on 1.
+ OK, now we do add indifference on A.
+ So we're like, oh, great.
+ Here's the rule.
+ The new amplitude on 0 is the sum of these two numbers.
+ That's 1.
+ The new amplitude on 1 is the difference of these two
+ numbers.
+ That's 1.
+ See how much nicer that was?
+ It's nicer.
+ Great.
+ Then we're like, OK, step 3.
+ Add indifference on A.
+ OK, so the new amplitude on 0 is the sum of these two
+ numbers.
+ That's 2.
+ And the new amplitude on 1 is the difference of these two
+ numbers.
+ That's 0.
+ And now we're done.
+ Well, we're almost done.
+ Remember, of course, these are not
+ valid normalized states.
+ These are now unnormalized states.
+ This is like 1 amplitude on 0, 1 amplitude on 1.
+ Here the sum of the squares of the amplitudes is 2.
+ So if we were to fix it back up to a normalized state, we'd
+ have to multiply all the amplitudes by square root of 1/2.
+ But we're like, let's not do that.
+ And here all the amplitudes, squares, add up to 4.
+ So we're like, yep, it's definitely an
+ unnormalized state.
+ But you can fix it up to a normalized state by dividing
+ all the amplitudes by 2.
+ And let's do that.
+ Because like now, we're like, oh, time to extract all.
+ This is probably the point where we should get back to a
+ normalized state.
+ So we'll be like, ah, we'll divide all the amplitudes by 2.
+ And we get back to 1, 0.
+ And that's a proper normalized state.
+ And you see, it's like before.
+ We have like all 1 amplitude on ket 0 and our basic state 0
+ and all, no amplitude on basic state 1.
+ OK, that's the computation.
+ OK, and so then if we were to extract all, the printing
+ probabilities are just the squares of these.
+ So the printing problems would be like 1 squared, which is 1,
+ 100%.
+ And this is 0 squared, which is 0%.
+ OK, any questions?
+ Yeah.
+ Yeah, you knew this.
+ So now I think I see what you're saying.
+ At this point, you have like an unnormalized state.
+ And you're like, I'm going to find out what the printing
+ probabilities for extract all is.
+ Another thing you could say is the printing probabilities
+ are proportional to the squares of the amplitudes.
+ That summarizes everything.
+ So you could be like, I'm going to square all the amplitudes
+ in preparation for extract all and get like 4 and 0.
+ And then say like, oh, the probability
+ of printing each of these things is proportional to these numbers
+ 4 and 0.
+ That's really just saying like, you better add up those numbers
+ to find the constant proportionality and divide by that.
+ But that's another way to do the same calculation, yeah.
+ [MUSIC PLAYING]

@@ -1,0 +1,322 @@
+ So, where were we? We were, we had just realized that, okay,
+ we knew all the rules of how to like analyze quantum code,
+ and we were going to like draw the amplitudes on this diagram,
+ and we were analyzing mystery toggles.
+ It's like a, you know, crazy thing,
+ this toggles detective algorithm that can somehow determine
+ like all the contents of this mystery toggles subroutine,
+ even though it only calls it once,
+ and there's, you know, any number of bits it's got to learn about.
+ Now, we're doing the special case where there are like only two possible toggles,
+ x1 and x2, just because we wanted to keep it small.
+ Well, that way we have three qubits.
+ We can draw a three-dimensional picture.
+ Feel four qubits. You can try to draw a four-dimensional picture, right?
+ Where you make a copy of this, another copy of this,
+ and like the fourth direction, like goes from this side to that side.
+ There are five qubits here on your own.
+ But luckily, we only have three here.
+ Okay, so we were trying to remember how it worked,
+ and we were doing like one specific case,
+ the case where mystery toggles, let's say, does toggle based on x1,
+ and doesn't toggle based on x2.
+ Actually, last time we checked that the case where it doesn't toggle based on anything,
+ like this is empty, that case checked out.
+ And now we're going to check this case,
+ and then the other two cases you can check for yourself.
+ And yeah, just remember, like, you know,
+ so it's on the board, so we know what we're shooting for.
+ In this specific case, the final output is supposed to be
+ like 1, 0, and then 1.
+ Okay, so answer, this ants qubit is always output 1,
+ but like this 1, 0 is the main part.
+ It signifies that yes, 1, the first guy is in there,
+ and the second toggle is not in there.
+ So that's what we're hoping gets printed out at the end.
+ And yeah, let's do it, to check that it happens.
+ As I said, like, you maybe won't really understand like why it happens,
+ but we just want to confirm that it does indeed happen,
+ and then, you know, that's what we're going to get into,
+ like the y's of like what's going on here.
+ Okay, so let's see, so let's just trace through this thing
+ step by step, so we make these three qubits,
+ and then we toggle the answer, qubit.
+ So at this point, after line two, what is the state?
+ After line two, the state is just, you know, 0, 0, 1,
+ so after line two, and we decided it would be a good idea
+ to plot all the amplitudes, or make a diagram
+ with all the amplitudes, because there could potentially
+ be eight of them, so here's my fine diagram
+ of all the eight three-bit strings arranged on a cube
+ with like each qubit corresponding to one of the three
+ directions, and we, you know, describe our states
+ by putting the amplitudes here.
+ So this really stands for one amplitude on 0, 0, 1,
+ which is up here, and 0 everywhere else.
+ Imagine I drew a red 0 in all the other seven bubbles.
+ I'm not going to do it, because I'm going to change it
+ in a second, I don't want to erase too much.
+ Okay, so good.
+ Then last time, we actually worked
+ through these three steps as well.
+ I'm going to fast forward that, because anyway,
+ we're going to like do these ones in detail,
+ so allow me to fast forward this.
+ So we did these three steps, the add and different steps,
+ one in like every direction, and let me just remind you
+ what you get to.
+ Yeah, you get to the situation where
+ you have negative one amplitude on all the back face,
+ and a positive one on all the front face.
+ I'm sorry, one, one, one, one.
+ Okay, you can go back and later remind yourself
+ that that's what you get to after you do these instructions.
+ And again, these instructions really
+ are like Hadamard alls, and therefore like there's really
+ these like square root halves.
+ And so actually all of these numbers
+ should be multiplied by square root 1/8,
+ if you're doing it precisely, but we got over that.
+ We were like, you know what, we're going to be chill,
+ and allow ourselves to multiply all the amplitudes
+ by a constant to keep things nice.
+ And that's why this actually represents an unnormalized state.
+ The sum of the squares of the amplitudes
+ is 8 rather than 1, but we know that we can just fix that up
+ at the end when we need to.
+ Okay, so let's say that's where we got to,
+ and like now I'll finish it.
+ Any questions to getting up to this point?
+ Okay, so I did actually do this step last time,
+ but I'll do it again because let's be a little bit careful here.
+ So, okay, so we call mystery toggles.
+ And luckily for us, mystery toggles only has one instruction.
+ It's this one, so if x1 then toggle ants.
+ And as I said last time, I mean like,
+ it's kind of clear how this works.
+ You know what happens, let's say here,
+ you just go through all the basic states,
+ and like you do the if x1 then toggle ants operation on it.
+ x1 is the first one, x3 is, sorry, ants is the third one.
+ So for example, this one, 1, 1, 0, would change to 1, 1, 1.
+ And this one, conversely, 1, 1, 1, would change to 1, 1, 0.
+ So you could just like make that change.
+ I mean, all right, I'll erase this and write 1, 1, 1,
+ and I'll erase this and write 1, 1, 0.
+ But let's not quite do that because that messes up your diagram.
+ I mean, your diagram would still be correct,
+ but it would be drawn in like now a confusing manner
+ where like the vertex labels would no longer be
+ corresponding to this picture.
+ So instead of like, you know,
+ changing this to 1, 1, 1, and this to 1, 1, 0,
+ like swapping these two labels,
+ we'll just swap the amplitudes instead.
+ That's the same thing, right?
+ So that's what we'll do.
+ So in fact, what we'll do is like swap this amplitude
+ with that amplitude.
+ So this becomes minus 1 and this becomes plus 1.
+ And a similar thing happens here.
+ This is labeled 1, 0, 0.
+ So if I do if x1, then toggle ants,
+ this would become 1, 0, 1, which is that.
+ And conversely, 1, 0, 1 goes to 1, 0, 0.
+ So instead of swapping these labels,
+ we'll just swap these two amplitudes.
+ So this becomes plus 1, this way it becomes minus 1.
+ You see in general, we're sort of swapping
+ along these like in out edges,
+ but we don't do this swaps up here
+ because here's where x1 is 0.
+ So like, 0, 0, 0, just stays 0, 0, 0,
+ because x1 is 0 and all the ones that start with 0,
+ which are all the ones on the top face because of this,
+ they don't change at all.
+ So they just stay the same.
+ Let me write plus though, just for consistency.
+ I have two different fonts for my numeral ones.
+ I don't know what to do about that.
+ Okay, so I did this swapping.
+ And so like, this is the state
+ after, well after mystery toggles.
+ Now, had we not commented out this line
+ and like mystery toggles contain both these toggles,
+ then we would have this if x2, then toggle ants.
+ And I guess, you know, how would that work?
+ Only things would happen for the bit strings
+ that have x2 being 1, which is everything on this right face.
+ And then you'd simply toggling ants,
+ which is like in and out direction.
+ So I guess you'd be like toggling,
+ or so you'd be like swapping like these in and out edges,
+ but only on the right face.
+ If you were to do that, which, you know,
+ we're not in this example.
+ Okay, let's do that, let's do that.
+ Okay, so now, let's do the Hadamard stuff.
+ Not a big practice, 'cause I mean,
+ this is like the most interesting step
+ where we do this like Hadamard,
+ or add indifference on all the directions.
+ And here, you know, you'll basically see
+ what this does is it makes some cancellation happen.
+ Right now, we have like an equal amount of amplitude,
+ at least in magnitude, there's some sign thing,
+ but we have like an equal amount of magnitude
+ on like all eight possibilities.
+ But somehow, these instructions
+ are gonna like start collapsing stuff,
+ and it's been carefully designed
+ so that exactly, you know, cancels in such a way
+ that we get like all the amplitude on the correct answer
+ and no amplitude on the wrong answer.
+ And somehow, this is a lot of the magic
+ of quantum computation.
+ You kind of like, you know,
+ compute something for every possible string,
+ but then you cleverly arrange it
+ so that they like cancel each other out,
+ the pluses and minuses,
+ and you get like all or most of the amplitude
+ on the correct answer.
+ So let's watch as that happens.
+ And later in the class,
+ we'll figure out like why it happened,
+ or maybe in the next few lectures.
+ Okay, so let's work on this.
+ Add and diff on ants.
+ Now, how does that work?
+ Again, ants is the varying part.
+ The in-out direction is the varying part.
+ X1 and X2 are the unchanging part,
+ so you kind of like pair up all the three bit strings
+ according to the first two bits being the same.
+ So like, these two are a pair
+ 'cause it starts with zero, zero,
+ and starts with zero to zero here,
+ and we have like just zero on one.
+ So you kind of like just squint
+ and imagine the only two things in your world
+ is plus one amplitude here on zero
+ and minus one amplitude here on one,
+ and then you do the add and difference rule.
+ And what does that indifference rule?
+ Well, the add, the sum goes on to the zero part,
+ which is here,
+ and the difference goes on to the one part, which is here.
+ So we have to replace this with the sum of these two things,
+ which is zero,
+ and we have to replace this one with the difference,
+ which is one minus negative one, which is two.
+ Okay?
+ Please watch me 'cause I may get the signs wrong
+ and I don't want to.
+ We have to do that for all the edges.
+ So again, it's gonna be like these in-out edges
+ 'cause we're add and diffing on the ants direction.
+ Like here, the unchanging part is one zero,
+ the changing part is this last one,
+ so we've got this edge,
+ we put the sum over here,
+ sum is gonna be zero,
+ and the difference is minus one,
+ minus plus one, which is minus two.
+ So this is zero, this is minus two.
+ And I guess probably all the sums are gonna be zero.
+ So let's do that,
+ all the sums are gonna be zero.
+ And the difference is,
+ well, okay, this was plus one, minus minus one,
+ that's two.
+ And I think this one would be like minus one,
+ you have to remember, sorry,
+ minus plus one, which is like minus two.
+ What I should have done is like written them like in green,
+ like the new values in green
+ and then like copied all the greens into the reds,
+ but oh well.
+ Okay, so we did that step, any question?
+ Okay, this is kind of fun,
+ I wish I could go on for more,
+ but we only have two left, sadly.
+ Okay, so we're doing add and diff on X2,
+ the X2 is like the horizontal direction.
+ So again, let's just look at it.
+ I mean, we're gonna be pairing up all the edges
+ into the sort of four horizontal edges
+ and we're doing add and difference on them.
+ Okay, so the ones that are like zero, zero,
+ they're just gonna stay zero, zero.
+ And then, okay, the other horizontal ones,
+ the add of these two is four
+ and the difference is zero.
+ So this is gonna become four, zero.
+ Let's do it.
+ Four, zero.
+ Okay, and the add of these two is minus four
+ and the difference is zero.
+ So this will be minus four, difference is zero.
+ And got it.
+ Okay, last one, X1.
+ So we're doing the up and down direction.
+ Now we pair up all the bit strings
+ into the up and down direction,
+ the X1 varying direction.
+ Most of them are zero, zero already,
+ so zero plus zero is zero, zero minus zero is zero.
+ Let's see.
+ Oh, what's going on?
+ Oh, X1, yeah.
+ So we put the add here.
+ So four plus four, minus four is zero.
+ And we put the difference.
+ This is four minus negative four, which is eight.
+ That goes on to the one side.
+ So this becomes eight.
+ Okay, and actually you see,
+ like the phenomenon, I promise, happened,
+ like a ton of cancellation magically occurred.
+ And all the amplitude now is just on one basic state,
+ one, zero, one.
+ God, I hope it's the right one.
+ Oh, it is good.
+ Yeah, so like the state, well, the unnormalized state,
+ at this point,
+ you know, is like eight amplitude on one, zero, one,
+ and no amplitude on all the other ones,
+ so I won't write it.
+ And then finally, we're like, extract all time.
+ You know, now it's maybe the time
+ where we should like fix up the state to a normalized state.
+ So we know what the printing probabilities are.
+ It's pretty easy here.
+ It's just obvious that you should divide
+ all the amplitudes by eight.
+ And then you get, you know, amplitude one on one, zero, one,
+ and amplitude zero on anything else.
+ And therefore, you print one, zero, one
+ with probably the square of one, which is a hundred percent.
+ And so, indeed, ta-da, like it revealed
+ the exact contents of mystery titles.
+ Okay.
+ Good.
+ So, I really wanted to go through that
+ because like that's, you know, the mechanics
+ of how, you know, you analyze code with quantum instructions
+ and keep track of all the amplitudes
+ and like see this phenomenon of cancellation happening.
+ Of course, you probably write to feel like,
+ I have no idea what just happened.
+ Like we did a long calculation and yes,
+ like the miracle occurred.
+ And like, he promised me that if I did
+ the other two cases, like the same miracles would occur,
+ but why?
+ How does one come up with this?
+ Or why does this work?
+ Okay, that's what we're going to try to explain
+ in the next couple of weeks.
+ Like why and how, the why and how of this?
+ And similar things.
+ (upbeat music)

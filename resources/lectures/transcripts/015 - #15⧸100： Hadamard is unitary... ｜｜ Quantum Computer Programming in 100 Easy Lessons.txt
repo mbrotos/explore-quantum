@@ -1,0 +1,224 @@
+ Okay, good morning. Quantum enthusiasts.
+ Today I'm very happy and excited because my least favorite number is going to fade away into obscurity.
+ That's root of half today because we're going to talk all about
+ Hadamard instruction. And we're mostly going to talk about the Hadamard instruction today.
+ It's the most important instruction in quantum computing.
+ And we'll get like a new perspective on it.
+ We'll come to like it even more than we used to like it, which is great.
+ And, you know, this lecture is maybe the last lecture, at least for a while,
+ Where we kind of like go over the basics of how things work in quantum.
+ And, you know, in something that probably the next lecture,
+ We're going to try to like actually do some stuff, like maybe do some new kind of
+ Algorithm or something, some real programming.
+ But today we'll, you know, get the footing all set up.
+ And we'll also get a little bit back to mystery toggles.
+ And we'll see what was going on there.
+ Well, we won't see why it works.
+ Maybe we'll at least see how it's working.
+ Okay, so we were a little bit in the middle of something.
+ Last time we were talking.
+ We were talking about this thing, this unitary property.
+ This is a special property that you didn't know all the instructions,
+ The pseudocode instructions had, had, what it does.
+ But they do. That was a terrible sentence.
+ Anyway, so unitary property is a property that, let's say,
+ Well, a hypothetical instruction, let's say given by its matrix,
+ May or may not have.
+ And what is the property? The property is that, like,
+ It's quite magical that whenever you put into it a quantum state,
+ That's a valid state in the sense that the sum of the squares of the
+ Amplitudes is one.
+ Now you do the operation, the resulting state will also have
+ Some of the squares of amplitudes one.
+ And we saw last time actually that all the classical reversible
+ Operations have this property, and they kind of have it for, like,
+ A pretty reasonable reason.
+ They just shuffle the amplitudes around, which doesn't change the
+ Sum of the squares of the amplitudes.
+ But Hadamard also has this property.
+ And, well, today we'll start by seeing why that's true.
+ The reason we're interested in this property is this law of quantum
+ Mechanics, which basically says the candidate instructions,
+ The candidate matrices are path diagrams that have the
+ Planetary properties, are exactly those transformations that are
+ Physically possible in the world.
+ So the legal quantum operations are the ones that you can
+ Program are all the ones that have this unitary property,
+ Which they kind of have to have, because the laws of quantum
+ Mechanics say, like, the state of a system always has some of
+ Squared of amplitudes one, so your transformation is better
+ Preserve this property.
+ Okay, so what we're going to do now is check that -- well,
+ We want to check that all the programs we ever built up from the
+ Pseudo code instructions have this property.
+ So it's enough to check that the basic instructions have this
+ Property, and we checked it for all the classical reversible ones.
+ So we really just need to check it now for Hadamard, which is
+ Like the main superposition creating one.
+ I mean, we should also check it for, like, maybe clockwise and
+ Counterclockwise and these controlled Hadamard instructions
+ That were basically just in there for illustrative purposes.
+ But I'll leave that basically to you, and we'll focus on Hadamard.
+ So let's try to answer now, why does Hadamard operation have
+ This property?
+ So first of all, let's remember the matrix for Hadamard looks
+ Like this.
+ Well, this is the paths diagram, but the paths diagram is just
+ The same thing as a matrix drawn in a different way.
+ So it maps zero to zero with amplitude root of half.
+ It maps zero to one with amplitude root of half.
+ It maps one to zero with amplitude root of half.
+ And maps one to one with amplitude root minus half.
+ You can see why it's sort of annoying to draw these diagrams,
+ And eventually people just put the labels into a box and
+ Write a matrix instead.
+ Okay, so we want to check that you have this property,
+ This unitary property.
+ So, okay, we'll just do, like, the obvious check.
+ So let's say you have one qubit, a, and it's in this state.
+ You know, x amplitude on basic state zero.
+ And y amplitude on basic state one.
+ Okay, and x and y could be any two numbers,
+ These squares add up to one.
+ Okay, and then you do Hadamard.
+ We want to check that the resulting state also has the sum of
+ The squares of its amplitudes equal to one.
+ So, well, we've got to find out what is the sum of the squares
+ And the amplitudes when we do the Hadamard instruction.
+ So let's calculate that.
+ For which we use, you know, some amplitude tree.
+ So, you know, the incoming state is like x amplitude on zero
+ And y amplitude on one.
+ So, basically, you can just sort of pretend that, like,
+ There was some hypothetical amplitude tree up here that did
+ Some stuff and eventually got you to zero with amplitude x
+ And got you to one with amplitude y.
+ Okay, you know, maybe you did some code and this was the end of
+ It, but now we're going to, like, add Hadamard a on the end.
+ So, how do you add Hadamard a on the end?
+ Well, you just continue the tree.
+ And, like, basically, this is the rule that you use to
+ Continue the tree. So, you say to yourself, all right,
+ If I'm at zero, then with amplitude root of half,
+ I go to zero, amplitude root of half, I go to one,
+ And if I'm at one, then with amplitude root of half,
+ I go to zero, and with amplitude minus root of half,
+ I go to one. Okay, and therefore, you know,
+ Sort of the final amplitude outcomes here, we get by this path
+ Product rule, so that's root of half x, root of half y,
+ Root of half y, and minus root of half y.
+ Okay, and then we're not really done because, yeah.
+ Oh, thank you, yeah.
+ Yeah, please just instantly correct me as soon as I turn around.
+ Okay, so we're not fully done because we have to, you know,
+ Do this collation or this summing.
+ So, like, the total amplitude on zero is this piece plus this
+ Piece, and the total amplitude on one is, you know, this piece
+ Plus this piece. So, let's write this over here.
+ So, the new amplitude on zero is root of half x plus root of
+ Half y. Okay, so I'll just factor out the root of half.
+ My least favorite quantity.
+ Three and a half times x plus y.
+ And what is the new amplitude on one?
+ Okay, well, it's root of half x minus root of half y.
+ Okay, which is root of half, oops, times x minus y.
+ Okay, and really want you to remember, like, this.
+ This is like actually a shortcut when you're doing
+ Computations, and, like, this is the way you should get to know
+ Hadamard a little bit better, actually.
+ Instead of focusing on, like, you know, what does Hadamard
+ Like do two zero on one, like, focus on, like, how much
+ Comes into zero one, so, like, wherever you were, if you had
+ Amplitude x and y, the new amplitude is on zero is this,
+ And the new amplitude on one is that.
+ And I would like to think of this as, like, a little slogan for
+ Hadamard, which is kind of like zero gets the sum, x plus y,
+ And one gets the difference, x minus y.
+ And then there's, like, the stupid part.
+ And you stupid, I mean, okay, I'll just, I won't slander it
+ On the board in words, but you're like, you multiply by
+ Square root of half. Okay, so this is kind of like
+ The rule, or the slogan, how you can do this, like,
+ Hadamard computation a little bit more quickly.
+ And we're going to come back to this later.
+ Okay, so we have the new amplitudes, and we should check
+ That their squares add up to one.
+ That was the purpose of this digression.
+ Although, actually, since it's here on the board, let me just say
+ For the people who are, you know, doing the homework and
+ Who love linear algebra, I don't know if you notice, but
+ What we're secretly doing in this computation, this picture is
+ Literally the same as this matrix vector multiplication.
+ We're literally computing this.
+ Well, it's equals this and this.
+ Okay, but, you know, you don't need to use matrices and
+ Linear algebra if you don't want to.
+ You know, just so you can think of these, like, amplitude trees.
+ Okay, so, right, so we're trying to finish this calculation.
+ So the last thing we better do is check one of the squares of
+ These amplitudes, and hopefully it'll be one.
+ So let's check that.
+ Well, I'll check it down here.
+ Okay, so the new total squared amplitude.
+ Okay, well, if we square this, then we get like half times the
+ Square of this, and similarly, so we get half times x plus y
+ Squared. If we square this, we get a half
+ Times x minus y squared.
+ Okay, I guess we can factor out the halves again.
+ Half x squared plus two xy plus y squared plus the square of
+ This x squared minus two xy plus y squared.
+ Okay, these cancel. We get two x squared, two y
+ Squared, but times a half. So that's x squared plus y
+ Squared. And that's a check mark.
+ So why is it a check mark? Well, you know, we assume that the
+ Input state was valid, which means x squared plus y squared
+ Equals one, and the new total squared amplitude is x squared
+ Plus y squared, which is also one.
+ Okay, so it has the unitary property.
+ And you should even maybe a little bit remember in the back of
+ This one, because it's going to come up like if x squared plus y
+ Squared didn't equal one. Well, anyway, this number would
+ Still be x squared plus y squared.
+ Okay, any question about this?
+ So let me just say as an exercise for you.
+ You can remember this funny instruction that we mentioned
+ Earlier called clockwise. You literally only cooked it up
+ Sort of to have another one qubit operation to talk about
+ Besides just Hadamard. But it had this path's diagram
+ Or matrix. Two goes to one.
+ Honestly, I have to check my notes.
+ Point eight minus point six, point six, point eight.
+ And, you know, if you get bored while i'm talking, you should
+ Also check that this thing has the unitary property by the same
+ Methodology. Uh-huh.
+ Oh, yeah, this is terrible. Thank you.
+ It's a little early in the morning.
+ So it stays one, zero. Okay, great.
+ And let me also add that, like, you might be like, hey, how
+ Can i tell if a matrix is going to have the unitary property?
+ I mean, especially if it's like a four by four matrix because
+ It's a two qubit instruction or like an eight by eight matrix
+ Because it's a three qubit instruction.
+ Well, in some sense, it's like kind of a magical property.
+ And, like, there's not really a shorter shortcut than just
+ Literally doing this. Like, just be like, okay, let's
+ Hypothetically say the amplitudes are x, y, z and w.
+ Let's multiply everything out and check that the sum of the
+ Squares of the amplitudes turns out to be, well, it will turn
+ Out to be x squared plus y squared plus z squared plus w
+ Squared if it's a unitary. But maybe on the next homework,
+ I'll show you like a shortcut. It's actually not even a shortcut.
+ It's like a long cut, but it helps you conceptually understand
+ This unitary property a bit. Um, turns out an operation is
+ Unitary, like a hypothetical operation that could be a valid
+ Quantum operation is unitary. If, when you reverse all the
+ Arrows, and thereby getting like a new hypothetical operation,
+ If this new hypothetical operation is the undo of this one,
+ Then they're both unitary. But you'll check that on the
+ Homework. And in particular, that implies
+ That all unitary operations, all the valid quantum transformations
+ Have an undo, which is something we checked for the classical
+ Reversible operations. They're all undoable.
+ It's also true for all quantum operations.
+ So, like the undo of how to mark this itself, the undo of
+ Clockwise is this counterclockwise.

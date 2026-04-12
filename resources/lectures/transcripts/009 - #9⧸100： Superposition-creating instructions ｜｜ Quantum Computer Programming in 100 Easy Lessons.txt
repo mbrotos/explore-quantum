@@ -1,0 +1,181 @@
+ Okay, great. So these are kind of the boring instructions in quantum computing these classical reversible instructions and like now
+ Let's talk about the interesting instructions the exciting instructions the superposition creating instructions
+ Which you know I call them that just because they have this they don't have the basic state in basic state out property
+ If like you give them a basic state they will
+ produce something that's like a real superposition like some non-trivial amplitude on
+ Zero and some non-trivial amplitude on one or a basic state. So these are superposition
+ Creating instructions
+ These are the ones that really allow you to do like the magic of quantum computing and
+ To be honest, there's really only one well, okay, you can have any number of them
+ But like you sort of only need one. There's like one famous one. It's sort of like the only one you ever need
+ Okay, it's this famous one called Hadamard
+ It's named after some mathematician
+ And it's a one-cubit instruction to only operate on one qubit. That's very convenient simple
+ so I'm gonna usually call it that one qubit a and
+ We kind of saw this in lecture one
+ You know we have this instruction in lecture one called Hadamard all and that was just like my pseudocode shorthand for
+ Just doing the one qubit Hadamard instruction on all the qubits
+ Turns out we'll see later that if you you're gonna do like this Hadamard on all the qubits
+ It doesn't matter in which order you do them. So it's fine to just call it Hadamard all
+ But really Hadamard is like just a one qubit instruction
+ Okay, so let me just I mean put up the definition of the Hadamard instruction and like you just have to memorize this
+ I mean, it's the only one that where you really just need to memorize it. So
+ please memorize it
+ So if you do Hadamard
+ On basic state zero and it's like the question asked like
+ I'm only gonna define what happens when you do Hadamard on something that's in basic state zero or basic state one
+ But later I'll tell you how to infer what it does to a qubit in any state
+ So Hadamard on zero
+ yields
+ Like the new superposition state of a is square root a half
+ amplitude
+ On zero and square root a half amplitude on one
+ And that's valid
+ I mean, it's possible because remember for this to be a valid superposition state the squares of the amplitudes have to add up to one
+ So the squares of the amplitudes are a half plus a half that adds up to one. So
+ It's it's possible. That makes sense and if you do Hadamard on a qubit. That's in basic state one
+ it yields
+ This superposition state square root a half amplitude
+ on
+ zero and
+ negative square root a half amplitude on
+ basic state one
+ And again, that's the valid quantum state because the square of this plus the square of this is a half plus a half which is
+ one
+ Okay, so this is the definition of Hadamard
+ Just got a number eyes it like there's square root of halves everywhere and then like there's a negative sign here
+ Let me do a little side note on the number of square root a half
+ It's like my least favorite number. I really hate it a square of a half
+ It's like to me. It's like the moist of numbers like I wish we didn't have to talk about it
+ But we have to talk about it because it appears in this instruction. It's very annoying
+ Most people actually will write it like this one over square root two
+ Of course, that's the same number
+ You know the square root of a over B is square root of a over square root of B
+ So this is they're all equal to like square root of one over square root two
+ and
+ Sometimes when I'm feeling like particularly like enraged by like the annoying to this number like I dream about just calling it
+ 0.7. This is basically 0.7 and like I prefer to call it 0.7
+ But for a while we're just gonna be proper and like constantly deal with this like annoying number a square root of a half
+ Later because I don't like it so much. I'll show you some trick that we'll use that will allow us to like never mention it again
+ But you know for now like I don't want to add any extra tricks
+ So we'll just deal with the fact that we have this
+ tedious number square root of a half always hanging out
+ Okay, so
+ Just like every other instruction like this has like a paths diagram representation which itself is equivalent to a
+ Matrix representation, which I will now tell you. Yeah question
+ Yeah, that's a great question the question was like, you know, I
+ Mean how does this amplitude come in and like how does like I mean why did we even bother?
+ Why is it important that we have a negative sign here?
+ I mean the thing we know about absolute one thing we like know about amplitudes now is like if you know all the amplitudes of a
+ Superposition state and then you do this extract all or measure on it
+ It tells you the probabilities you can compute the probabilities
+ You'll see all the possibilities and when you're doing this computation like you square all these amplitudes and
+ Those are the probabilities and you're like well a negative amplitude squared is the same as a positive amplitude squared
+ So I mean what do we need these like negatives? It should be the same thing
+ It comes in as we'll get to by the end of this lecture hopefully
+ once we start combining these instructions like once we do like some code that has like a sequence of like, you know
+ A mixture of instructions like toggles and if then toggles and how to Mars and things
+ We'll see that the amplitudes kind of like multiply against each other and add against each other and they kind of get mixed around in an arithmetic way and
+ Yeah, so you know whether they're positive or negative will make a difference to this and
+ Really like all of quantum programming is like designing your like sequence of instructions
+ to like manipulate these amplitudes in a really like, you know a smart way and
+ So we'll see shortly
+ How some being positive and some being negative is really actually like the key to
+ quantum computation and the fact that like
+ Sometimes you can arrange for like a positive amplitude to add with a negative amplitude and become zero
+ This is like one of the magic aspects of quantum computing
+ But we won't see that quite yet. We're still like, you know, just defining instructions
+ So let's sort of make the truth table. If you will of this like Hadamard instruction
+ Right, so it still looks kind of the same we have like zero and one. These are the possible incoming
+ States and zero and one are sort of the possible outgoing states, but now we need like full like labels on everything
+ so the way it works is
+ If you're in basic state zero, this is what you go to root half amplitude on zero. So we draw
+ This we write root half on it and you get root half amplitude on one. So we draw this
+ We write root half on it and
+ Similarly, if you're in basic state one you get root half amplitude on zero. We draw this
+ yeah, these are already kind of cluttered and
+ You get minus root a half amplitude on one
+ Okay, so this
+ diagram is like equally encoding this information
+ And
+ Sometimes the okay, let me say that later
+ We can also equally encode exactly the same information, which is effectively four numbers
+ We can arrange them into like a four by four box and form the matrix representation
+ Where'd I put the eraser
+ It's in winded there we go
+ Yeah, so let's do the matrix for how to hard
+ Just to really hammer it home
+ It's gonna be a two by two matrix and it's gonna have like a root half
+ root half
+ root half
+ minus root half
+ And they're arranged in this pattern because you know, this is zero
+ One kind of going this way zero
+ one
+ Okay, so this is like these four numbers are the same as these four numbers
+ Okay, so these are all like the definition of the Hadamard instruction
+ The assembly language style, you know short hand for Hadamard is just H
+ So sometimes like we just say oh this instruction Hadamard H is like is this matrix or like is this
+ path diagram
+ and
+ Math petitions had already studied like this particular matrix maybe without the root halves but with like plus plus plus minus and like
+ Jacques Hadamard studied this matrix and therefore that's why it's called Hadamard instruction
+ Okay, so in some sense like this is like the main superposition creating instruction
+ It's the only one like you need if I like only gave you this instruction and no other superposition creating instructions
+ You'd be like no problem. I can still do all of quantum computing just with this Hadamard
+ I'm gonna give you like two more
+ Instructions or maybe three more instructions just so we have like more examples, but like really this is the main one
+ So
+ Another example which we will like
+ Basically never use but you know just to illustrate the point is
+ Here's another another instruction that you can use if a then Hadamard B
+ The valid quantum instruction that let's say I allow you to use it operates on two qubits
+ It's called like CH or controlled Hadamard if you're a real
+ Quantum enthusiasts, but we'll just call it if a then Hadamard B and
+ I'll just it does what you would think and I'll just draw its paths diagram and you can
+ Hopefully agree that this path diagram is consistent with what the name suggests it does
+ It does this and this really these have like labels of one
+ That's kind of like if a is zero then you don't do anything and otherwise it looks like Hadamard so root a half
+ minus root a half and then
+ root a half root a half
+ I just want to show you like a two qubit example
+ And it's not really easy to like build this example from the other instruction
+ So it's kind of if you really wanted this it's convenient that I just say like you can have it
+ But we're really not going to use it very much
+ And
+ Let me give you two more instructions
+ And these instructions again are just so we have something to play with
+ So we have like more than one example. We don't have to use like the Hadamard example like every single time
+ And I'll define them by their matrix just you know also to mix things up
+ So here's like a new instruction. This is a very
+ idiosyncratic name nobody uses this name, but it's in my personal pseudo code. I'm gonna call it the clockwise instruction
+ It operates on one qubit called a
+ And I'll draw you the matrix for it
+ It's got these you know famous numbers the only like non annoying numbers
+ Who squares add up to one
+ And that's the matrix so again
+ zero one zero one
+ Okay, so this says that like this instruction has the property that if you a is in basic state zero and
+ You do this clockwise instruction on it
+ The new state is point a to amplitude on zero and negative point amble negative point six amplitude on one
+ Okay, and an analogous lee if you start at one
+ And I'll give you one final instruction and counterclockwise
+ And a which has a similar looking matrix
+ That'll be really cool. I won't even write the edge row and column labels for you. You just have to remember them
+ That's like point eight and point six and negative point six and point eight
+ Now I get the very like bizarre names clockwise and counterclockwise maybe actually some you know a person out there in the audience knows
+ Has an idea why I call them this?
+ You
+ Yeah, this is your major thing going on if you remember your linear algebra. These are
+ rotation matrices in two dimensions and
+ More precisely, you know, we kind of know this fact that like every one cubic state looks like x amplitude on
+ zero and y amplitude on
+ one
+ Where x squared plus y squared equals one
+ So like every state you can think of is like a point x comma y and
+ This fact for example is telling you this column fact is telling you that like clockwise maps this point to like this point
+ And if you like plot this on like the xy plane and you plot like this fact on the xy plane
+ Well, maybe you'll see it's rotating things by like 37 degrees clockwise and similarly here
+ That's very intriguing maybe and we're gonna talk a lot more about the geometry of
+ quantum instructions later
+ (upbeat music)

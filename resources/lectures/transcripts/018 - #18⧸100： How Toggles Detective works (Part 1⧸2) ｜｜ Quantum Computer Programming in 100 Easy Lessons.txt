@@ -1,0 +1,253 @@
+ Let's do mystery toggles now. We finally did it. Like, we're finally ready to like analyze a real algorithm that's actually doing something.
+ So let's do it. Well, let's not quite do it because mystery toggles, you know, okay, let me remind you about mystery toggles.
+ Mystery toggles was some crazy programming task thing where there was like a mystery subroutine called mystery toggles,
+ which may or may not have like a bunch of instructions like if X1 then toggle ants, if X2 then toggle ants, if X3 then toggle ants and so forth.
+ And you like tried to figure out which ones of these instructions have had by calling this subroutine as few times as possible.
+ And we saw like this miraculous quantum algorithm that could figure out like the entire contents of mystery toggles with like a single call of mystery toggles using the magical power of quantum computing.
+ And now we're going to try to see how that's working, if not really the deeper why it's working.
+ But it's going to be very painful to do it with like all six variables.
+ I mean, you can do with any number of variables and it gets actually cooler and cooler like the more variables the X's there are because there could be 100 X's and still quantum can figure out all of mystery toggles with like one call.
+ But let's do it with two X's just because, okay, I don't want to write a billion symbols on the board.
+ So we're going to do it with like two X's, X1 and X2.
+ Okay, and ants, this is answer qubit.
+ So we're going to analyze the mystery toggles where there's three total qubits, X1, X2 and ants.
+ Okay, so I will now write down all the code.
+ So really I'm writing down, well, I'll write down the, you know, detective code.
+ So it looked like this.
+ So one, we got to initialize these two qubits on new qubits, X1, X2 and answer.
+ And if you remember, the very first thing you do is toggle answer.
+ And again, at the end of this lecture, you'd be like, why did, why did they toggle answer?
+ Like, I don't really understand.
+ We'll eventually get to that.
+ That would be the goal of like the next few lectures to understand like why this code is the way it is.
+ But today we'll just see what it is.
+ The next instruction was like what we called it at the time, Hadamard all.
+ So really this was just shorthand for like doing Hadamard individually on all the qubits in the world,
+ of which there are three.
+ So we could write like Hadamard X1, Hadamard X2, Hadamard Ants, but now let's not do that.
+ Let's do add and diff because it's more nice.
+ So this would be add and diff on X1, add and diff on X2, and add and diff on.
+ On X, go ants.
+ Okay, then the next thing we did was, this is where we made the call to mystery toggles.
+ If you will.
+ And this over here, you know, there's four possibilities for it.
+ You know, it might have if X1 then toggle ants.
+ And it might have if X2 then toggle ants.
+ But also like maybe potentially some of these are like, you know, commented out.
+ So like any subset of them could be commented out and therefore like there's four possibilities
+ for what it could be.
+ Okay, then the next possibility, or the next thing we did was we did Hadamard all again.
+ And I'll write that in a second, but like the last thing was where we printed.
+ It was extract all.
+ And again, we're going to change these Hadamards, which is really three Hadamard instructions
+ to these add and diffs.
+ Now I'm going to actually do them in the opposite order.
+ And actually this may raise a point to you, which is that like, is it the same if you do, like,
+ if you change the order?
+ And depending on how far you've gotten on working on the homework, you might be more or less
+ comfortable with the statement I'll make, which is that it doesn't matter the order.
+ So it turns out to be like a principle of quantum computation that just mathematically
+ follows really easily from analyzing amplitude trees.
+ That if you do like an instruction on some qubits and then you do another instruction
+ on a different set of qubits, then you get the same results if you did the instructions
+ on the opposite order.
+ It's like you can parallelize them.
+ Like you physically, you can do the one instruction on these qubits.
+ And these other qubits, you're not touching them.
+ So you, at the same time, you could be doing the other instruction on these other qubits.
+ If they're not overlapping sets of qubits, you could do that in physical real life.
+ And therefore, like, it kind of better be the same that it doesn't matter the order in which you do them.
+ And, you know, if you did part of the homework, you'll see, yeah, it doesn't matter the order that you do them.
+ And, therefore, you know, when you say how to mark all, you don't even have to say what order you're doing them in because the order doesn't matter.
+ And so I want to do them in this order here because, like, it's the opposite order.
+ And it's kind of like you're reversing this block is like the reverse of this block.
+ Okay, so this code has like, you know, one, two, three, four, five, six, seven, eight, nine, maybe ten or eleven.
+ So we have a lot of instructions, so we kind of want to analyze all these instructions.
+ So we need, like, a bit of a system to do this effectively.
+ And also, remember how it's supposed to work.
+ If you remember way back, the whole excitement of this is when you do extract all, it turns out like, you know, it'll print three bits, like zero, one, zero.
+ Well, actually, answer will always come out one, so you just ignore this part.
+ But, like, these two bits, like, tell you what's in mystery toggles.
+ If you remember, like, if this is zero, zero, it means, like, both lines are not appearing.
+ If this is, like, one, one, that's when, like, both lines appear.
+ If this is, like, one, zero, it's, like, the first line is in there, x one, and the second line is not in there, and so forth.
+ So this is what we're, like, shooting for, trying to understand why this happens.
+ Okay, so, let's kind of get started.
+ You'll see, like, right away, like, we're going to need some kind of good system to keep track of things.
+ So, okay, when we do the new qubits, we're just being the basic state, zero, zero, zero.
+ That's how it works.
+ And the first thing we do is toggle ants, so then we're just in the basic state, like, zero, zero, one.
+ Okay, so after line two, everything is pretty easy.
+ Like, after line two, you know, the state is just literally zero, zero, one.
+ Okay, I'm always going to write them in the order x one, x two, then ants.
+ Or, more fully, you would say, you know, amplitude one on zero, zero, one, and amplitude zero on the seven other basic states.
+ And now we start doing, like, these, like, add-in different operations.
+ So we need to get organized.
+ And as we're doing these, we're always going to have, like, eight amplitudes we're keeping track of.
+ One for all the eight possibilities.
+ So we need, like, a system for, like, depicting eight numbers.
+ Okay, so we're going to draw them on the corners of a cube.
+ Okay, so this is my life pro tip for you.
+ This is not, again, you don't have to do this.
+ This is, again, just a mathematically convenient way to organize your thoughts.
+ But my tip is that, like, if ever in, in analysis, you have up to three or four qubits.
+ It can be very helpful to arrange them, like, in a cubicle pattern.
+ So I'm going to draw this picture, like this.
+ Okay, let's draw, like, a three-dimensional cube.
+ Make this bigger.
+ Hopefully I can do this.
+ Okay, let's try to put the lines in.
+ Oh, shoot.
+ Oh, man.
+ Okay.
+ Okay, that's a three-by-three cube.
+ It's impossible to tell, but, like, try to, in your mind, visualize it so that, like, this is, like, the front.
+ And, like, this one is the back.
+ If you can, if you can make your brain do that.
+ Now, why do I draw a three-dimensional, or, yeah, like, three-dimensional cube?
+ It's because we have three qubits, and each qubit is associated with a direction.
+ So I'm going to use these directions.
+ Let me draw this, like, legend in the corner.
+ We have up and down, and that's going to be associated with x1.
+ We have left and right.
+ That's going to be associated with, like, x2, and we have, like, in and out, and that's going to be associated with ads.
+ Okay, so, like, and moreover, like, this is going to be, like, zero, one, one,
+ one.
+ So what I mean by that is, like, here, like, this corresponds to, uh, zero, zero, zero, which is, like, answers zero.
+ Sorry, x1 is zero, x2 is zero, and answers zero.
+ Okay?
+ And, like, let's, as I draw these, in your mind, like, try to also simultaneously figure out what, uh, string I'm going to write here.
+ So, like, this is x1 is on the bottom. It's, like, one, zero, zero.
+ And this one is one, zero, one.
+ This one, zero, zero, one.
+ Maybe I should intentionally make a mistake, and you try to fix the mistake.
+ Zero, one, one, one.
+ Zero, one, zero.
+ Okay, what mistake did I make? Oh, so good, yes?
+ Okay.
+ You might ask, like, oh, why is x1, like, up and down, and x2 is left and right, and answers in and out?
+ Doesn't matter. I just picked that. That doesn't matter.
+ You can draw however you want. And, like, y is, like, zero on top, and one on the bottom.
+ Doesn't matter. I just picked zero on top, one on the bottom.
+ But, you know, it's important that the three qubits are three different directions, and, like, there's a zero side and a one side.
+ Okay?
+ So, this depicts all the basic states, and let's write in the amplitudes for where we are.
+ So, right now, we're here, and we have one amplitude on zero, zero, one, which is somewhere.
+ Here, one, and we have zero amplitude on everything else.
+ So, let's just write zeros, okay?
+ Zero, zero, zero, zero, zero, zero.
+ Okay, so it's kind of a crazy diagram, but, like, this diagram is illustrating our current state.
+ And, like, as we go along, these red numbers, which are the amplitudes, will change to different numbers, and, like, it's indicating what state we're at.
+ Okay, but this, I hope, will help us. Any questions?
+ Okay. Okay, so, basically, I will, like, update this diagram as we, like, trace through all the lines of code.
+ So, like, we kind of did this one, and we did this one.
+ So, like, now, we're on this one.
+ Add a difference on x1.
+ Now, how the heck does this work?
+ Well, remember when I was, like, how does, I mean, if you're doing, like, Hadamard on one qubit, but there's, like, several qubits, how does it work?
+ We have this diagram up here, where, like, you pair the, you pair the basic states up, there's, like, red and green.
+ You pair the basic states up, according to the unchanging part.
+ Okay, so, add a difference of x1, we're operating on x1.
+ So, the unchanging part is x2 and ants.
+ So, we have to, like, pair everything up based on where x2 and ants are the same.
+ So, let's take a look here on, in, in color, green, all, like, underlined x2 and ants part.
+ That's the second two qubits.
+ And, actually, these two match up, right, because these are both zero, zero, zero, zero.
+ So, like, this edge, if you will, or this pair of basic states, this corresponds to, like, the world where, like, x2 is zero, ants is zero.
+ So, we just, like, forget those, those ones are both zero, and we have, like, zero and one, for x1.
+ And we're going to do add a difference on it.
+ Okay?
+ So, how does add a difference work?
+ Well, you put the sum of the amplitudes on the zero part, and you put the difference of the amplitudes on the one part.
+ Now, here's boring, because the two amplitudes are zero and zero.
+ So, their sum is zero, and their difference is also zero.
+ So, we don't actually have to change anything here.
+ The more interesting pair is this one, like, this is the interesting pair.
+ So, this is, like, the world where the unchanging part, x2 and ants, is zero, one.
+ So, everything there, they say zero, one.
+ But here we have, like, amplitude one on the zero part here, and amplitude zero on the one part here.
+ So, these two get paired together, and we put the sum on the zero part, and the difference on the one part.
+ So, the sum is one plus zero.
+ So, well, actually, that stays one, but the difference is one minus zero, the difference of one and zero is one.
+ So, this becomes one.
+ Okay? I just, like, did this pair. Is that clear?
+ Now, you kind of see it's always going to be the vertical pairs.
+ Like, these two pair up, because you end with one zero, one zero.
+ You have zero up here, and one down here, and the sum of, and difference of zero and zero is just zero and zero.
+ And similarly, these days, zero and zero.
+ Okay?
+ So, we did this step.
+ Is that okay?
+ You might be, like, a little bit forget, like, how this corresponds to the amplitude trees, but it does.
+ You know, maybe it's good for you to review it, but, like, eventually, we're just going to maybe even forget a little bit.
+ It won't be top of mind how we got to here from amplitude trees, but we'll be doing it in this way instead.
+ Okay, so now we got to do add and difference on x two.
+ So, it's the same thing. Now, x two is like what we're operating on.
+ x one and x, sorry, x one and aunts are unchanging.
+ So, we, like, pair up all the basic states according to, like, x two is the changing part, and x one and aunts are the unchanging part.
+ And we do the add and difference on all these pairs.
+ Okay, so now x two and ants, that's like the first and the third.
+ Okay, so let's just pick one of them. Let's say this one.
+ So, here's the first, x one is one, ants is one.
+ Here's the, it's pair where x one is one and ants is one, but, like, you know, you have zero over here and one over here.
+ So, these two are a pair, and we do add and difference on that pair.
+ So, well, the amplitudes are one and zero, so the add of that is one, and the difference of that is one.
+ So, we write one here, the zero part gets the sum, and we write one here,
+ because the one part gets the difference.
+ And I hope you can see that, like, for this x two, we'll always be operating in the x two directions.
+ So, we kind of pair things up according to, like, horizontal, and we do add and difference.
+ So, like, here, we do add and difference on zero and zero, that actually doesn't change anything.
+ Here, we do add and difference on zero and zero, that doesn't change anything.
+ And here, we do add and difference on one and zero, and that becomes one plus zero is one, one minus zero is one.
+ Okay, now we've done this step. Is it okay?
+ Okay, now let's do add and difference on the answer direction.
+ So, again, we pair the basic states up, and it's going to be pairing in the answer direction, so, like, the in and out direction.
+ So, for example, here's zero, zero, zero.
+ x one and x two are unchanging, so it gets paired up with this one, where x one and x two are unchanging,
+ and we have, you know, answers zero here and answers one here.
+ So, we're going to be doing the add and difference of zero and one.
+ Okay, so the add and difference of zero and one, zero plus one is one, and zero minus one is minus one.
+ Okay, the one side gets the difference.
+ So, again, you know, we're going to be looking at all the edges in the in and out direction and doing add and difference.
+ So, zero plus one is one, zero minus one is minus one.
+ In this direction, we have zero plus one is one, and zero minus one is minus one.
+ Zero plus one is one, zero minus one is minus one.
+ I can easily make a mistake when doing this, so please, again, if I make a mistake, you got to let me know.
+ Let's see if it checks out with my, yes, this checks out with my notes.
+ Okay, so this is good.
+ Actually, let me like pause.
+ This is like after line three C.
+ Okay, like all the basic states on the back face have minus one, all the basic states on the front face have plus one.
+ So, we definitely have an unnormalized state, for example.
+ The sum of the squares of the amplitudes right now is, well, every squared amplitude is one.
+ So, there's sum is eight.
+ And the reason that the sum is eight is because we kind of ignored like three copies of square root of half.
+ How do we put those three copies of square root of half in?
+ Some of the amplitudes would go down by an eighth, which would put us back to one.
+ But that's annoying. We don't do that. We just stick with this.
+ Okay, so now mystery toggles.
+ So, in principle, like we should now break into four cases for like all the possibilities for like what this could be and check that the right thing happens.
+ Obviously, I'm not going to do that. We have time to do like one or two cases.
+ And then I will be like, oh, I leave the remaining cases to you.
+ But let's do the easiest case.
+ Case one, mystery toggles contains nothing.
+ I want to do this case because I can do it in words.
+ How do I do this in words? Well, let's say you call mystery toggles and like both lines are commented out, so nothing happens.
+ So, in principle, you'd be like, okay, now we've got to just do this line, this line, this line, and check out what we get to.
+ But here, like an interesting thing happens.
+ Particularly if you remember that these are really Hadamard's under the hood.
+ And as we saw, Hadamard is its own undo. Hadamard is its own undo.
+ So, in your mind, if you think of these as Hadamard's, we just did Hadamard on ants.
+ Now, mystery toggles didn't do anything. So, the next instruction is mystery is Hadamard on ants.
+ So, like, this line undoes this line.
+ And then we did Hadamard on X2, so this line undoes this line.
+ And then we did Hadamard on X1, so this line undoes this line.
+ So, doing these two Hadamard alls in a row, when mystery toggles doesn't do anything, just literally undoes itself.
+ So, like, it's as though nothing happens, and you've jumped straight from line two to line six.
+ So, then, what is that? Well, we know after line two, you're in the state 001.
+ So, when mystery toggles is empty, this does some crazy stuff.
+ This, like, undoes all that crazy stuff, and you're back to 001.
+ And that's exactly what you're supposed to be back to. Remember? Like, remember? I wrote it? I don't know if I wrote it.
+ The way mystery to--this whole game works is, like, this one will always be one, but, like, these two tell you the contents of mystery toggles.
+ And, indeed, it checked out, like, 00, because none of them were in there.
+ So, like, that's how that case works.

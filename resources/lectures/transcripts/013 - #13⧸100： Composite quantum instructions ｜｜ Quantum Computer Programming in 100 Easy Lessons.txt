@@ -1,0 +1,287 @@
+ Let's talk about a slightly new thing.
+ But it's actually going to be based on something we just did.
+ I want you to observe something.
+ We're going to start starting for a moment, for example,
+ this block of code, this block of code.
+ So if you do-- you can just take several instructions in a row
+ and be like, these several instructions in a row,
+ they're like a subroutine.
+ There's like a composite instruction.
+ I could bundle it up into a package.
+ And whenever I want, I could do double Hadamard.
+ So it's like subroutines.
+ And some of this way, we get new instructions
+ or new physical things that we can do out of old physical things
+ that we could do.
+ So we're going to talk about that a little bit.
+ But one thing I want to mention right now is this particular one,
+ what do we just learn from these four examples?
+ This particular one we learned are these last two examples.
+ If you start at 0 and do double Hadamard, you get back to 0.
+ And if you start at 1, which we effectively did here,
+ and do double Hadamard, you get back to 1.
+ So actually, we learned how this subroutine, double Hadamard,
+ operates on the two possible basic states, 0 and 1.
+ And as I alluded to last time, it's, you know, once you know--
+ we'll see this soon enough.
+ Once you know, we've sort of already seen it.
+ Once you know how an instruction or a composite instruction
+ or a subroutine operates on all the possible basic states,
+ that defines how it operates on everything.
+ Because really, when you're eventually plugging into a big old amplitude tree,
+ you just need to know what happens on 0s and 1s.
+ So we could say, OK, if we make up this new composite instruction,
+ double Hadamard, which operates on one qubit,
+ it just does, you know, Hadamard, Hadamard.
+ I'll start writing had instead of Hadamard.
+ It's like a new instruction.
+ And remember, when we were describing instructions,
+ we kind of was like, oh, you can always write down, like, the sort of paths diagram
+ for them or the matrix, or the same thing, paths diagram or a matrix.
+ So we can have a paths diagram or a matrix for this.
+ So what is its paths diagram?
+ Well, we've kind of worked it out.
+ So it only operates on one qubit.
+ So the incoming possibilities are 0 and 1.
+ The outgoing possibilities are 0 and 1.
+ And we just saw 0 goes to 0 with amplitude 1 and 0 goes to 1 with amplitude 0.
+ So we're like, you know, let's not make this too cluttered.
+ We'll just erase this one.
+ And 1 goes to 1 also with amplitude 1.
+ Or if we were to make the matrix for it,
+ that's just arranging these four numbers differently.
+ These 1, 0 that we erased, the other 0 that we never even wrote.
+ And 1, it's kind of like going like this to 0 and 1.
+ 0 goes to 0 with amplitude 1 and goes to 1 with amplitude 0.
+ 1 goes to 1 with amplitude 1 and 0.
+ So that's the matrix for double Hadamard.
+ And this is equivalent, or this is the path diagram you would draw
+ for another instruction.
+ Or you might rather name this instruction like no op.
+ This is the instruction that does nothing.
+ So it's like really equivalent to, I don't know, no op on A.
+ Just nothing changes.
+ And actually, what that means is this, interestingly enough,
+ is that from this, you can infer that Hadamard is its own undo.
+ Hadamard is undoable.
+ And the undo of Hadamard is Hadamard.
+ That's exactly what I mean by this sentence is literally this.
+ If you do it twice in a row, it's equivalent to doing nothing.
+ OK, so let's do another example like this.
+ Just to drive home the phenomenon that any, let's say,
+ qubit manipulation subroutine, let's assume
+ there are no special instructions like new qubit or extract all.
+ You just have a block of code that
+ has the qubit manipulation instructions.
+ Any such block of code could be thought of as a composite
+ instruction, which has its own path diagram or a matrix.
+ And you could imagine just like a short-cutting--
+ once you knew that, if you built the tree for this code,
+ you could be like, this is just double Hadamard.
+ And instead of doing two layers,
+ I can just plug this in for like one layer.
+ Let's do a more non-trivial example.
+ So let's work out double clockwise.
+ So for this, you need to remember this funny clockwise
+ instruction that I invented sort of for illustrative purposes.
+ So how do you figure out-- if you were to think of this
+ as a composite instruction, how do you figure out its path
+ diagrams or its matrix?
+ Well, you just have to figure out what happens if you do this
+ to 0 and what happens if you do this to 1.
+ So OK, how do you figure out what happens if you do this to 0?
+ Well, it's amplitude trees.
+ You start at 0.
+ And then you're like, OK, like, I'm going to do clockwise.
+ And then I'm going to do clockwise again.
+ And we'll just see where we get to.
+ Now you have to remember what clockwise does.
+ I'll tell you.
+ 0 goes to 0 with amplitude 0.8.
+ And it goes to 1 with amplitude minus 0.6.
+ I told you that last time.
+ And actually, I'm just going to do it on 1 over here
+ at the same time.
+ So alternatively, if I'm going to figure out
+ how does it work by start at 1, again, this goes to amplitude 0
+ with-- or it goes to 0 with amplitude 0.6.
+ And it goes to 1 with amplitude 0.8.
+ OK, these four numbers are like the definition, actually,
+ of clockwise.
+ You'll see them in the path of diagram for--
+ basically, the path of diagram for clockwise
+ looks like this, only you squish these two things together
+ and show all four amplitudes at once.
+ OK, so that's the first instruction.
+ Now, OK, let me come back to this.
+ Let's say we're going to do clockwise again.
+ So all right, you know how this whole amplitude business
+ works.
+ OK, so if you're at 0, it goes to 0 with amplitude 0.8.
+ It goes to 1 with amplitude minus 0.6.
+ We're at 1, it goes to 0 with amplitude 0.6.
+ And it goes to 1 with amplitude 0.8.
+ OK, so now we're done.
+ So we still finish.
+ So this is 0.8 times 0.8 is 0.64.
+ 0.8 times minus 0.6 is minus 0.48.
+ Minus 0.6, so this is minus 0.36.
+ This is minus 0.48.
+ And we're still not done, because we
+ have to do this sort of collation.
+ So like the final state has amplitude something on 0.
+ And what is this something?
+ OK, we got to 0 with amplitude 0.64, and also negative 0.36.
+ So those add up to 0.28.
+ And we got to 1 with amplitude negative 0.48.
+ And another negative 0.48, that's negative 0.96.
+ OK, so double clockwise, when applied to 0,
+ gets you to this state.
+ And I encourage you to check on your calculator
+ that this number squared, plus this number squared,
+ happens to equal 1.
+ OK, we can similarly figure out what it does here.
+ If you do double clockwise on starting from 1,
+ try to do it really fast.
+ 0, this is like 0.8, minus 0.6, 0.6, 0.8.
+ This is 0.48, minus 0.36, 0.48, 0.64.
+ So final state, it's amplitude.
+ How much on 0, it's 0.48 and 0.48, so that's 0.96.
+ And on 1, we get minus this, that's 0.28, on 1.
+ OK, so this little exercise tells us kind of everything
+ you need to know about double clockwise,
+ if you want to now consider it like a new little subroutine
+ that you can plug in.
+ You know what it does to 0, and you know it does to 1.
+ And therefore, you could figure out,
+ you could understand what to do if you're
+ in the middle of a big amplitude tree,
+ that it's applying double clockwise,
+ because you only need to know how it acts on 0 and how it acts
+ on 1 to fill in your amplitude trees.
+ So we could say, OK, this thing, we finally
+ figured out its path diagram, which we draw like this.
+ 0, we got 1, we got 0, 1, and we just worked it out.
+ So from 0, you go to 0 with 0.28,
+ and you go to 1 with amplitude minus 0.96.
+ And from 1, you go to 0 with amplitude plus 0.96,
+ and 1 goes to 1 with amplitude 0.28.
+ So this is equivalent to a matrix.
+ It looks like 0.28, 0.28, minus 0.96, 0.96, 0.101.
+ OK, so we did it.
+ We sort of figured out, sometimes we figured out
+ the definition of double clockwise.
+ Any questions about this?
+ OK, let me just-- I know this is going to be kind of
+ calculational, but it's, of course, very good to practice
+ calculations when you're just learning how all these things
+ work.
+ So I'm going to do another--
+ I'm going to continue this in a bit of a calculational way.
+ So I might ask you the following, a calculational question.
+ Say you had two qubits, A and B.
+ And somehow, you got them to this superposition state.
+ Somehow, you read some code, and yada, yada, yada.
+ You ended up with 0.5 amplitude on 0, 0.
+ And let me just make sure I do my exact example.
+ Minus 0.5 amplitude on 0, 1.
+ Minus 0.5 amplitude on 1, 0.
+ And positive 0.5 amplitude on 1, 1.
+ OK, and this is possible, because the squares of these
+ numbers are 1/4, 1/4, 1/4, 1/4, that adds up to 1.
+ OK, so I just say, never mind how you did it, but I managed
+ you to manage to get your qubits, A and B, into this state.
+ And now I say, then you do double clockwise.
+ What do you get?
+ You know, what's the new state?
+ And just, you know, for clarity, to show you how these
+ calculations work, oh, now solve this problem.
+ And, you know, I'm kind of addressing here this question
+ of, like, OK, I know how double clockwise works on 0 and 1,
+ but, like, how does it work when you apply it to a state
+ that's in superposition?
+ And actually, here it's even a little bit more subtle,
+ because, like, double clockwise only operates on one qubit,
+ but now you have two qubits in superposition,
+ so it's like, you have two particles in some weird state.
+ And now you're doing the double clockwise operation
+ on one of them, like, what happens?
+ Well, amplitude tree is just-- to do the amplitude tree
+ is it's all fine.
+ So how does it work?
+ You just kind of, like, imagine, like, maybe we don't
+ exactly know how we got to this state that I said you start
+ in 0, 0, 0, 1, 1, 0, 1, 1.
+ But, OK, somehow you got to, like, this, like, a hypothetical
+ tree, where you got to this with amplitude 0.5
+ and minus 0.5 and minus 0.5 and 0.5.
+ And again, just like as if it were probabilities,
+ like, I don't know a code you did up here,
+ but eventually you eventually came to 0
+ with total probability half, and you came to 0.1
+ with total probability minus 0.5, well, that doesn't make sense,
+ because that can't be a probability.
+ But you just imagine saying the same words,
+ even though these are now amplitudes and so forth.
+ And then you just continue, like, the tree,
+ to see what happens.
+ So you're like, OK, I got here, and I'm
+ doing double clockwise on A. So all right,
+ I have to do it for each of the four worlds.
+ Here we are, A is 0, B is 0.
+ B is not changing.
+ B will always be 0, so this is going to--
+ we should write 0, 0, and 1, 0 here.
+ B is just going to stay 0, and A is 0.
+ And we know now what double clockwise does to 0.
+ Double clockwise, if you do it to 0,
+ you go to 0 with 0.28 and 1 with negative 0.96.
+ So this is negative 0.96.
+ This is 0.28.
+ OK, and here, kind of similar.
+ B just stays 1 in this world, but A can go to 0 or 1.
+ Again, A is 0, so this is going to be 0.28.
+ This is minus 0.96.
+ Here, B is just staying 0, but A could change to 0 or 1.
+ Now, A is 1, so you're like, OK, what happens with 1?
+ OK, you go to 0 with 0.96, so this is 0.96.
+ You go to 1 with 0.28.
+ OK, and last one, 0, 1, 1, 1.
+ 1 goes to 0 with 0.96, 0.28.
+ OK, and now you're like, it's annoying,
+ but I got to keep going.
+ So I'll annoy you by doing all the details.
+ So finally, to get the final value of that amplitude,
+ outcomes, we do the same thing we always do.
+ We multiply along the paths.
+ So this is 1/2 of 0.28, so that's 0.14.
+ This is minus 0.48, minus 0.14, positive 0.48,
+ minus 0.48, 0.14, 0.48, 0.14.
+ And now we're still not done, because we've
+ got to do the collation.
+ So final outcome, final state, it's
+ going to have some amplitude on 0, 0, on 1, 0, 0, 1, 0, 0, and 1, 1.
+ OK, and the final amplitude on 0, 0,
+ we add 0.14 and minus 0.48, which
+ is 0.34, minus 0.34, 0.34, 0.1, that's minus 0.14,
+ and 0.48, so that's positive 0.34.
+ 1, 0 is 14, and minus 0.48, yeah.
+ Hm.
+ Oh, this is minus.
+ Minus 0.14, and minus 0.48, so that's minus 0.62,
+ and this is 14, and this is positive 0.62.
+ OK, and this is the final state.
+ So it's kind of a pain, and there's
+ not like an intuition or anything.
+ We just had to calculate it.
+ OK, and if you, again, you can bust out your calculator
+ and be like, this squared is 0.1156,
+ 0.1156, this squared is 0.3844, this is 0.3844,
+ and by some awesome miracle, which
+ we'll explain shortly, this adds up to 1.
+ OK, so that explains how you can compute what happens.
+ If you somehow get to some arbitrary superposition state,
+ and then you do some composite instruction that
+ has this definition.
+ Any question?
+ This is like the sort of thing that you should get practice with.

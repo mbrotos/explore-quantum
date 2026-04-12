@@ -1,0 +1,293 @@
+ I mean, mathematically, you're like, okay, this is the rule.
+ Okay, fine, it's not so bad.
+ Okay, so what does it look like?
+ I mean, if I stare at a coin that's in this superposition state,
+ which the laws of physics tell us is possible, I mean, what's that about?
+ Well, here's the thing.
+ I guess like a coin lying on a table is never in the history of
+ the universe actually been in such a superposition state.
+ It turns out that for reasons that are like somewhat, but
+ maybe not fully understood, it's extremely hard for
+ macroscopic objects to be in superposition states other than
+ just like the basic states, like 0 and 1.
+ Somehow, if you have trillions and trillions of objects together,
+ it's hard for them to stay in these kind of amazing superposition states.
+ And they tend to quickly be in, or overwhelmingly likely,
+ to be just being like the good old basic states.
+ So that's why you've only ever seen a coin like face up or face down.
+ It's a little bit similar to like, I think in theory, right?
+ Like if I touch this table, there's like one in a quadrillion,
+ zillion, zillion percent chance that like all the atoms just like miss each other
+ and my hand goes right through the table.
+ Like I think theoretically, this is possible according to laws of physics.
+ But like practically speaking, that never ever happens, right?
+ And it's because like you have this macroscopic object with trillions and
+ trillions of particles in it.
+ Right, so then we might say that, so like, okay,
+ so what objects can exhibit these phenomena?
+ And it tends to be like objects that consist of like one particle.
+ It's not so crazy these days or impossible these days to coerce
+ like one microscopic particle of some kind of quantum type to exhibit these
+ like superposition states.
+ So let me talk about that a little bit and give you some actual example.
+ And actually, this will be like, in fact it's like the most we talk about physics in the course.
+ I want to give you some examples of like actual physical objects that do manifest
+ this phenomenon and it's not unusual to find them in like a superposition state.
+ Okay, so let me write that.
+ What objects do or can practically exhibit this phenomenon?
+ I don't know, superpositions.
+ And I'll give you a couple of examples.
+ So one is a photon, okay, a photon, you know, is a particle of light.
+ Okay, and just like on this like little table I raised, like this is the object,
+ but like it also has like a property.
+ In fact, there are several properties of photons, but like one property is the property
+ called linear polarization.
+ And what does this basically mean?
+ If you're looking at your phone screen or your laptop screen,
+ like millions of, or I don't know, trillions of like photons are coming out of the screen
+ and traveling towards your eyes, which lets you see what's on the screen.
+ And if they're, okay, so this is how linear polarization is explained at like a cartoon level.
+ Like if the photon is like traveling at your eye,
+ then it can be like wiggling like in a horizontal fashion as it's coming towards your eye.
+ So it's called like horizontal polarization.
+ Or like as it's coming towards your eye, it can be like vertically polarized.
+ It'll be wiggling like up and down.
+ It's called vertical polarization.
+ And actually the way like LCD screens work is it's like actually designed so
+ that like it should be that like all the photons coming out are one of these two,
+ I forget which one.
+ That's, it actually sends them like all out with this either horizontal or vertical I forget.
+ And you're like, cool.
+ So I have like this one tiny, teen tiny object, a photon has like two basic states,
+ like horizontal polarization or like vertical polarization.
+ And you could just be like great.
+ I mean, that's zero and that's one and it's cool.
+ Like if I can just sort of capture a photon and keep it around,
+ I can use that to store like one qubit.
+ And, you know, apparently according to, you know, the law of quantum mechanics that I told you.
+ It's also possible for it to be in a superposition state like this.
+ So let me just modify this of a photon.
+ And, you know, I'll really put in parentheses here.
+ Principal and also in practice can be in a superposition state that's like 0%
+ amplitude on like horizontal wiggling or horizontal polarization.
+ And negative 0.6 amplitude on like vertical wiggling.
+ So it's possible for it to be in that state.
+ And actually, when you put it that way, now you're like, maybe that's not so weird, right?
+ It's like 0.8 like this and like negative 0.6 like this.
+ Maybe it's just like some diagonal wiggling, you know?
+ Like it was like 0.8 this way and like minus 0.6 this way.
+ Like that's horizontal, that's vertical, then like maybe it's just wiggling like this.
+ And I guess kind of, yeah.
+ I mean, I guess, I guess there's like, you know, wiggling this way or that way is like a bit
+ like like a cartoon story they tell you to try to understand what polarization is.
+ But I think it is more or less like this.
+ And then you're like, oh, now I'm not like shocked or anything that you can have
+ superpositions of horizontal and vertical.
+ Okay, that's one example.
+ And I'll give it like another example involving another subatomic particle you probably heard
+ of, it's the electron.
+ Okay, so that's the object.
+ And then the object is supposed to have a property that has two basic states.
+ And the property I want to talk about for this electron is called spin.
+ And before I say like, what is spin?
+ In the same way I was like, oh, it's wiggling, you know?
+ Let me just say a few more things.
+ So there's two basic states here.
+ And electron can be like either, you know, so-called spin down or spin up.
+ And then, you know, once you know this fact, you're like, great, like this could also be a qubit.
+ I just decided to call spin down, you know, zero and I decided to call spin up one.
+ Great, that's my qubit.
+ And therefore it can also be in like a superposition state.
+ Like, again, I'll use my favorite example, like it's state is like 0.8 amplitude on spin down.
+ And a negative 0.6 amplitude on spin up.
+ Okay, and like that can be the state of your electron.
+ Okay, so now you might reasonably ask yourself,
+ so, yeah, like what is spin?
+ And okay, I guess like that sometimes in physics they're like, okay, we got to think of an analogy for spin.
+ And they're like, oh, it's sort of like the internal angular momentum of the electron.
+ And you're like, so it's spinning and they're like, no, it's not really spinning,
+ but like it has a property that's like kind of like angular momentum that we call spin.
+ And again, you might be like, but what is it?
+ But maybe you shouldn't ask the question so much.
+ Yeah, I like making analogy.
+ Again, bear in mind I don't know too much about physics, but like there's another property
+ that like electrons have that you more likely heard of like charge, right?
+ I guess like electrons are like negatively charged.
+ And so like, yeah, electron has this property called charge, but I feel like what is charge?
+ And what is, what is it truly charge?
+ But I don't know, it's charge like what you say is like, I don't know, but like it,
+ I know that it like manifests its certain self in like certain macroscopic ways
+ involving like electricity, like if you have like a bunch of like negatively charged electrons
+ in a balloon and you like put it near your hair, then your hair stands up.
+ Like that's, it's a, it's like a property that like causes things to happen.
+ And maybe you should think about like spin in the same way.
+ Just be like, well, I don't know, spin is like some property that like electrons can have.
+ And we call the two basic properties like spin up or spin down.
+ Maybe it's like positive and electric charge.
+ And you should just really care about like, how does it like manifest itself
+ in like the macroscopic world that we, you know, live in?
+ And similar to like the balloon and your hair, I mean, they kind of, you know,
+ discover this or like got a sense of this through some like ancient like famous experiment
+ in physics called Stern-Gerlach experiment.
+ I guess it's two people.
+ And they built like this like, you know, macroscopic device,
+ which I'll draw a hilarious cartoon of.
+ So this, this device, which is called a Stern-Gerlach device.
+ It's a very fancy name.
+ So basically, it's like a tube, it's like a tube of like metal or something.
+ It's like fits on a table.
+ It's like, you know, it's like a one meter long or something on the tube.
+ And, you know, you can, if you're like cool and like good at like experiments and stuff,
+ like you can, you know, basically isolate like one electron.
+ So you have this like electron here.
+ And you can like send it down this like tube.
+ And at the end of this tube, you have like two like little screens,
+ these little phosphorescent screens.
+ I don't know how to draw a screen, but I don't know.
+ They just like look black or something normally.
+ These are phosphorescent screens.
+ Okay, and maybe they're like two millimeters apart.
+ So like, I don't know, like this is like one millimeter up and like this is one
+ millimeter down.
+ Okay, you can really have this like on a table.
+ And then there's one more like ingredient, which is like you make an electromagnetic
+ field, B around the tube, I don't know how you do that, but like there's some kind
+ of like, I don't know what this is, but like this is an electromagnetic field.
+ Okay, so they like cook up this like apparatus in their lab, and then it turns
+ out that you send the electron down this tube, and what happens is if you take an
+ electron that spin state is spin down, then when you shoot it through this tube,
+ it like deflects downwards and it strikes this lower phosphorescent screen.
+ And like you see like a little glow, like you do this in the dark, and then you see
+ a little glow on the bottom screen.
+ And conversely, if you like, you know, like it either comes out like sort of
+ deflected this way or deflected this way, and one of these two screens lights up.
+ It turns out like, yeah, if you put in a spin down electron, then it'll like hit
+ this one, and if you put in a spin up electron, it'll like hit this one.
+ So that's how like, I don't know, spin manifests itself at like, I don't know,
+ the real world level that you can see as a human.
+ And we might say that like the lower screen, this apparatus is called like a
+ measurement.
+ You're trying to measure the spin of the electron.
+ I shouldn't say electronic, I should just say electron.
+ And like when the lower screen glows, you call that like measurement outcome zero.
+ You put like zero here, one here.
+ And when the upper screen glows, you call that measurement outcome one.
+ Okay, so that's somehow just like, okay, this is how charge, you know, manifests itself.
+ And you might be asking like, what happens if you put in an electron whose
+ spin state is not just like spin down or spin up, but it's like some kind of
+ superposition, I'll come back to that in a minute.
+ But before I come back to that, you can ask the same question about photons in
+ linear polarization, but linear polarization is like a little bit easier to
+ like mentally imagine, and we can imagine like wiggling, and that's why I kind of
+ like it, but still like, it's not like you just like look at a photon, like tell
+ what its polarization is, or like ask it, like, in order for this to make sense,
+ it has to like somehow also be manifesting itself in the physical world.
+ And like, you know, more precisely, you can ask like, what kind of, you know,
+ physical macroscopic device measures the polarization of photons, and actually,
+ there are several, but like maybe the most well-known one is, you know, sunglasses
+ with polarizing lenses, or if you're into like photography, you can buy these
+ like polarizing lenses for your cameras that like help you take a picture of a
+ fish inside a lake, it's like reduces some of the glow somehow.
+ So I'm trying to answer here like, what macroscopic device can, you know,
+ measure polarization?
+ Okay, so if you buy these sunglasses with polarizing lenses, so like, I don't get
+ less glare when you're driving on the highway, the lenses are just like a piece
+ of plastic, and like somehow, I don't know, they put these like filaments,
+ at some tiny microscopic level in it, I don't know how it physically works,
+ but it's just like a piece of plastic that acts as a so-called vertical
+ polarizing filter, and let me draw like also like a cartoon of that.
+ Okay, so you got your sunglasses here, I should make it bigger, oh well.
+ Okay, let's just like think of like one of these lenses.
+ Okay, so like again, like sometimes like a photon will come, here's like a photon,
+ and it'll come, it'll like strike your lens, and like what happens depends on
+ the polarization state of this photon.
+ So if this polarization state is like horizontally wiggling, like I don't know,
+ somehow it's like this, it's like horizontally wiggling, or has horizontal
+ polarization, so that's what we call zero, then what happens when it strikes the
+ lens is it just gets blocked, it doesn't come through to your eye, I guess like
+ somehow it like maybe slightly heats up the lens or something, but it gets blocked.
+ So that's, it's blocked, does not reach your eye, and conversely, we'll have to
+ draw the same picture, but if you have like a photon is like vertically polarized,
+ or it's one, and it like strikes your sunglasses lens, then it just passes
+ through, like passes through like no problem.
+ Okay, so then it passes through.
+ Okay, so then it goes in through and like shoots into your eye.
+ So yeah, that's like a, like a macroscopic object that like, you know, lets you
+ measure in some sense the polarization state of a photon, or detect something
+ about the polarization state of the photon.
+ Like if you have like, maybe you need like a very precise detector, I think human
+ eyes, it's debated whether or not they can sense a single photon, they really do
+ experiments with humans where they like literally put them in a dark room, and
+ they like shoot like one photon at them, and they're like, did you see anything?
+ And like, humans are like, maybe, so they're not exactly sure, like definitely like
+ ten photons are I can detect, and they also prove that like a frog eye can definitely
+ detect like one photon, but okay, basically you can easily detect whether like the
+ photon came through or not, if you get like a frog, or you have ten of these
+ photons.
+ Okay, so that's an example of detecting the polarization state of a photon, and it's
+ like a bit of a philosophical point that the reason that like, we say that the
+ photon is two basic states is actually because there are two basic outcomes that
+ can happen when you detect them in this way, like either be blocked or can be
+ transmitted, or there's two things that can happen here, like you know, because
+ they hit the top screen or the bottom screen. Okay. Right. Any questions right now?
+ All right, so there is still an obvious question to answer. I erased the law of
+ quantum mechanics, I was here, but it did say that like, well, not only can a photon
+ be horizontally polarized or vertically polarized, it can also be like any
+ superposition of this, it can have like x amplitude of horizontal wiggling and y
+ amplitude of vertical wiggling, and as long as x squared plus y squared equals
+ one, and so then you could take a photon like that if you could figure out how to
+ get the photon like that, and then you could shoot it at your polarizing
+ sunglasses lens, and what happens? Good question. And the thing is like, it's not
+ like the photon can like either like pass through, or they can like sort of pass
+ through, like it either passes through or it's blocked, that's the only two
+ possibilities, like you either see it or you don't. And similarly, like when you
+ put a superposition, as an electron with superposition spin state into this
+ tube, like there's only two things that can happen. It hits this one or it hits
+ that one, like it doesn't like half hit them or anything, or like slightly hit them.
+ It's just one or the other. So even though there's like all these like, you know,
+ continuously infinitely many possibilities for the superposition state, when you
+ measure it, there's only two possibilities for what you see. These, you know,
+ measurement outcomes zero or measurement outcome one. And what happens is, well,
+ like the second law of quantum mechanics that I have to tell you. So this second law
+ of quantum mechanics explains, you know, what happens when you put a particle in
+ a superposition state into a measuring device and a spoiler alert. What happens
+ is random. It's like literally something that is probabilistic that occurs in our
+ universe. So this is law of quantum measurement. And actually, another thing is
+ like it's basically, if I give you like one minute to like guess, like what is the
+ rule for like what happens probabilistically, there's only one thing that
+ you would guess. And like that is the correct thing. So you can guess it as I'm
+ writing. Given a measurement device for the basic states zero and one. Okay, like
+ here, you would call like getting blocked, measurement outcomes zero and getting
+ a submitted measurement outcome one. Suppose you measure a qubit in the state. And
+ let me just say like henceforth side note, I'm going to stop saying the phrase
+ superposition state and just say state. State, you know, means one of these things
+ that's like x amplitude on zero and y amplitude on one. Then I guess I should
+ continue it over here. Then you see the different measurement outcomes with
+ different probabilities. And as I said, you can probably guess it. The probability you
+ see measurement outcomes zero is x squared. And the probability you see measurement
+ outcome one is y squared. Say then measurement outcome is zero with probability x squared.
+ And it's one with probability y squared. Okay. And this makes sense in the following
+ way. I mean, the one thing that we know about these superposition states is that
+ these x and y's are numbers whose squares add up to one. That's always true.
+ And I mean this statement makes sense because x squared is not a negative
+ number. If it's negative, you square it becomes positive or not negative. So this is
+ like a non-negative number. This is a non-negative number and they add up to one.
+ So this is like a sensible statement. I'll do the example in one second.
+ Let me just also say verbally without writing it down that there's a similar law.
+ I mean, the analogous law for if you have like an object with like six basic
+ states, like if you get incredibly good at manipulating objects and you can have
+ like a die that can have some amplitude of being one, some amplitude of being two,
+ some amplitude of being three up to some amplitude of being six.
+ And then you put it into like a die measuring device.
+ You know, if the amplitudes are a, b, c, d, e, f, g, you'll see one in your measuring
+ device outcome with probability a squared and two with probability b squared and
+ six with probability f squared. And again, that makes sense because these
+ squared numbers add up to one. Okay. So as an example, this example that I erased,
+ like if you put like a photon, it's like photon, that's in the state, you know,
+ 0.8 amplitude on horizontal. And negative 0.6 amplitude on vertical.
+ That's its state. Like you shoot it into like the sunglass lens.
+ Then what happens is it's blocked with probability 0.8 squared, which is 64%.
+ And it's transmitted with probability negative 0.6 squared, which is 36%.
+ And similarly for like the Stern-Gerlach device, you put in like an electron with
+ like 0.8 amplitude and spin down and negative 0.6 amplitude on spin up.
+ You shoot it through. Be like 64% chance it hits this one, 36% chance it hits this one.

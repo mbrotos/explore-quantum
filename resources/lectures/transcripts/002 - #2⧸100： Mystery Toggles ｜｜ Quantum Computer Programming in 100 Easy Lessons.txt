@@ -1,0 +1,231 @@
+ So it's kind of like we're going to see like a game that I call mystery toggles.
+ We're going to see this mystery toggles game, mystery toggles.
+ And it's kind of like a 20 questions kind of game.
+ So it's, you know, there's 20 questions.
+ There's like a secret and like you have to ask like a bunch of questions.
+ And like you want to figure out what the secret is.
+ You're trying to ask as few questions as possible.
+ Okay, so I've got like a, this is a subroutine in scratch, right?
+ It's called mystery toggles.
+ And right now has some code in it, some quantum code of this type.
+ And I'm going to promise you like this is actually the secret in our like 20 questions like game.
+ There's going to be, this code is always going to act on six qubits called x1 through x6.
+ Instead of AVCD, I call them x1 through x6.
+ And there's like one more qubit called answer, but I just abbreviated as A-N-S.
+ Okay, so there's actually in this code, there's always going to be seven qubits.
+ It's x1, x2, x3 up to x6 plus answer.
+ And seven qubits is fine, my little scratch guy can easily simulate that.
+ Okay, and this mystery toggles code, it's always going to have a special format.
+ It's always going to look kind of like this.
+ So you see here, we only have these instructions, if x1 then toggle ants.
+ If x3 then toggle ants, if x4 then toggle ants, if x5 then toggle ants, okay.
+ And mystery toggles is always going to look like this for some set of like the six possibilities.
+ Okay, like it might contain, I'll show you what it could contain.
+ This is like the maximum it could possibly be, is if it looks like this.
+ Whoops, whoa, that's too much.
+ Okay, this is the most it could be, it might look like this, if x1 then toggle ants.
+ Think about what this is doing by the way, in the back of your mind as I'm talking.
+ Or it might contain a subset of these instructions.
+ So it might contain just like, oops, it might just contain the first five.
+ Or like maybe it'll contain none of them, it'll contain zero of them.
+ Or like maybe it'll just contain, I don't know, x2 and x3.
+ Okay, so since there's six x's, right, there's 64 possibilities for what this mystery toggles could be.
+ To the power of six, any subset of the six things could be in there.
+ And like in this game, you're gonna have to try to guess which of the six, or sorry, 64 possibilities it is.
+ Okay, so what it's gonna work is like, I'll pick one of the 64 possibilities, and then you're gonna have to like guess what's in there in this code by making calls to this function.
+ Okay, every time you call this function, that's like asking a question, that counts as like one question.
+ And like, you know, in 20 questions, you're trying to figure out the secret while minimizing the number of questions you ask, okay?
+ So I'll set it up with some mystery toggles or 64 possibilities.
+ And then you can make calls to this and try to figure out what is the code inside.
+ That's the game.
+ Okay, so let's kind of play it.
+ But in order to really play along, like, you know, you're not supposed to know it's in mystery toggles, so, okay, so everybody close their eyes.
+ We'll do this for like 20 seconds, okay, ready?
+ So close your eyes, go. I'm gonna like quickly put some toggles in here, which I put in, I'm almost done.
+ Okay, hopefully, that's good.
+ Okay, you can open your eyes, okay, good, okay.
+ So mystery toggles, I set it up, it's got one of the 64 possibilities.
+ Maybe I'll put nothing in there, maybe I'll put everything in there, you don't know.
+ Okay, so we got to make calls to it and try to figure out what's in there.
+ So this is like my, let me zoom out a little bit.
+ This might, oh, I don't want to reveal what it is by zooming out.
+ Let's put it like this.
+ Okay, this is my mystery toggles code.
+ And, okay, it's really long, but it's just because I didn't implement the feature of like allocating all the variables in one shot.
+ So like, you know, as I said, you're gonna try to figure out what's inside by calling this like mystery toggles.
+ And so obviously, you know, you should allocate all the variables that, so small, let me, let me, let me try to do this.
+ I don't even really need this.
+ Okay, so let's, okay, so we got all the variables allocated here.
+ So, yeah, so we got to make calls to mystery toggles to try to figure out what's inside there.
+ So let me do this.
+ I'm gonna like, I'm gonna execute this code right here.
+ Just, I'll give you this one for free, okay, this one's not charging you, this is like a demo.
+ What if I just like execute mystery toggles and then, you know, extract all right now?
+ This is actually quite a bad idea because, well, somebody tell me, what will it print out?
+ Yeah, it will print out all zeroes.
+ Yeah, see if you can read it, 0, 0, 0, 0, 0, 0.
+ Because all the variables, when you initialize them, are all 0, and then in that mystery toggles, whatever it is, like, it's doing, like, if this, then toggle, if this, I tell them.
+ But they're all 0, so nothing gets toggled.
+ So answer stays 0, you sent all in the qubits at 0, so like, it's just gonna say all 0s.
+ Okay, so that was, that was like a dumb question, but don't worry, that was your freebie.
+ Okay, I always have to make sure I restart or otherwise it'll screw up.
+ So, okay, let's, let's do this.
+ So let's run this, this is like a much smarter question, it's a good question.
+ So what I'm gonna do is, after I allocate all the qubits, I'll toggle x1, okay?
+ So now x1 is 1, all the rest of them are 0.
+ Now we're gonna run mystery toggles.
+ Okay, so think in your mind about like what might happen, okay?
+ And now we're gonna do a really gonna spend a question here, by running this code, so here we go.
+ Okay, so what came back?
+ 1, that makes sense, cuz we set x1 to 1, right?
+ So let's say 1, 0, 0, 0, 0, 0, 1, okay, so answer came back as 1.
+ So actually now we, I claim we know some stuff about like what secret instructions I hit inside mystery toggles.
+ So what fact did we learn here?
+ Yes?
+ Yeah, we'll even write this on the board.
+ So like we kinda now know, um, yeah, I can erase it.
+ We kinda now know that if x1 is in there, because otherwise how did an answer get toggled to 1?
+ I mean, answer came back 1, every, all the other x's, all the other controls were 0, so it must have, if x1 in there.
+ Okay, so, uh, not what sheet we do.
+ Well, this seemed good, let's do this, let's just toggle x2, and then run mystery toggles.
+ Okay, so let me restart it, okay, so everything is 0 now.
+ Now I'm gonna toggle x2 to 1, run this mystery toggles, extract all, and let's look what happens.
+ Okay, we got 0, 1, 0, 0, 0, 0, 0, 0, 0, 0.
+ Okay, so answer came back 0.
+ So now what can we infer?
+ That's right, there's no x2 line, because, you know, everything else was 0, uh, but x2 was 1, but answer came back 0, so it didn't get toggled, it's only opportunity to get toggled was based on x2, but it didn't get toggled, so x2, this line with x2 couldn't have been in there.
+ Okay, so actually, at this point, how many possibilities are left?
+ Uh, 16, yeah, there used to be 64, right, because there was 6 possible toggle instructions, so like there's, each one could be either in there or not in there, so that's 2 to the 6 and 64.
+ Now we know this one is in there, this one is not in there, um, so there's 2 to the 4 possibilities left, there's 16 possibilities left.
+ So we've made good progress, we've narrowed it down to 16 possibilities, any questions right now?
+ Okay, now we can do whatever we want, let's restart this, oops, okay, um, let's say we do this, x3, x4, I mean we can do whatever instructions we want, it only costs us like one question when we call a mystery toggle, so I'm going to execute this block of code,
+ I don't know if this is a good idea, but I'm going to do it, okay, I did it.
+ So that was our third question, and let's see, I toggled x3 and x4, so they're both 1, and then answer came back 0, so we did actually learn something here, can somebody articulate what we learned from this, yeah?
+ Yeah, you see, I mean, basically there were two possible toggles, and answer came back 0, which either means it got toggled never or it got toggled twice, so it could be that like, maybe, um, maybe both are in here, or maybe neither, both like the x2, x3 and x4 in here, or maybe neither.
+ So on one hand, it doesn't feel like I did such a smart question there, because like this was real great information that we like understood, we were making progress, this seems kind of less good, although is it so bad?
+ For example, actually, does anyone know how many possibilities are left? There used to be 16.
+ Yeah, you want to say?
+ Yeah, eight, yeah, you have to think about this a little bit, but actually, once you know this,
+ it kind of effectively narrows down half of the remaining possibilities, right?
+ Like, there's four possibilities for how this looks before, and now you cut it down to two, so actually narrows it down to half.
+ Actually, if you think about it, it's actually kind of an equally good question.
+ There's eight possibilities left, and now, for example, if we're going to do like the simple thing, like, let's say we're going to do the simple thing, and like, say, like, all right, now I'm going to ask about x3 in a very plain fashion.
+ Let's say I was going to run this code, where I just like toggle x3, and then do the mystery toggles, let's do it.
+ Actually, you see, ants came by zero, which means that x3 is not in here, which also means x4 is not in here, based on our previous question.
+ So, actually, we know we know it's like no x2, x3, or x4.
+ So far, we made four questions, and actually, we just don't know about x5 and x6, so there's two possible instructions, so there's four possibilities left.
+ And, you know, I could do it like kind of, like, I could do it like in a tricky way, like, I don't know, I could toggle x1 and x5 and x6, and like reason about the possibilities, but let me just do it the most obvious way.
+ So, let me restart, and then I'll check x5.
+ You see, the answer came back one, so we know that actually x5 is in there.
+ That was our fifth question.
+ And let's do a sixth question, we'll check x6, x6.
+ Okay, and x6, the answer came back one again, so we know that if x6 is also in there, and now we know.
+ So, it took us six questions, but now we know exactly what should be in mystery toggles unless we screwed it up, and now, if your eyes open, check it out.
+ Yeah, we got it right, x1, x5, and x6, so great, we did it.
+ One thing to think about, I think it's pretty intuitively clear, it's not very hard to prove, but you should think about it.
+ If you have six of these x variables, then if you ask, you cannot win, you cannot figure it out exactly unless you ask at least six questions.
+ It's kind of easy to see, like every question, you kind of only get back like one bit of information, and you kind of need to figure out six bits of information.
+ So, you cannot win this game unless you ask at least six questions.
+ On the other hand, you can win the game if you ask six questions.
+ You can do it in like some slightly weird way, like the way we did it, or you can do it in like the most simple way where you just like,
+ I'm just going to only send in x1 is one, and the rest are zero, then I'm going to only send in x2 is one, and the rest are zero, et cetera.
+ Okay.
+ And if we play the same game with like 100 x's, like x1 through x2 through x100, then, you know, it would be a similar situation where like you cannot win the game if you only ask 99 questions, if you only make 99 calls in mystery toggles,
+ well, you can win the game if you ask like 100 questions.
+ Okay.
+ So far, like, nothing quantum has happened, except that all these seven variables, x1 through x7 and n's, happen to be qubits.
+ But we didn't really really use them as qubits.
+ We just use them like, or like in a very fancy way.
+ We just use that they're like zero and one, you know, and we have like toggles and stuff.
+ Okay, but now, like, this is like the demo part, like, I want to show you how, like, you can use like the power of superposition and this like fancy quantum instruction, how to mart all to do something better.
+ So, uh, let's, let's make a new mystery toggles, why not?
+ So, I don't know, we'll make it one x2, x5, x6, I don't know.
+ Okay, so, like, if you didn't know that, and I was like, okay, time to play the game, start asking your questions.
+ We kind of know that if you want to figure out that it was like one, two, five, and six, you would need six questions.
+ But, okay, let's check this out.
+ So, let's restart this.
+ Now, hopefully I remember how to do this code.
+ Uh, so let's start out by, uh, let's start the code out by toggling ants, which seems like kind of a weird thing to do.
+ Why would you do that?
+ I mean, you can do it.
+ Why would you do that?
+ I don't know.
+ Uh, here's the instruction, how to mart all.
+ Let's do it.
+ We don't even know what it does.
+ I'm not going to explain what it does, but it does something quantumy.
+ That's what we'll find out in the next couple of weeks.
+ Okay, and now I'm going to do mystery toggles.
+ So, that's my one question.
+ Okay.
+ And then, uh, I'm going to do how to mart all again.
+ For some reason.
+ Okay.
+ And then I'll extract all.
+ So, this is the code I'm going to run in one second.
+ Toggle ants, how to mart all.
+ Mystery toggles.
+ That's my one question.
+ How to mart all.
+ Extract all.
+ Okay, let's find out what happens.
+ Hopefully I did this right.
+ Okay, now actually something kind of weird happened.
+ I don't know, hopefully you can see it.
+ Um, you know, initially when we sent it in, well, okay, at least at this point, before the quantum business,
+ uh, all the X's were zero and ants was one.
+ Now, when it came back and printed at the end, ants was still one.
+ So, you're like, okay, that's fine.
+ But, like, X1 through X6, like, are now zeros and ones, which is maybe weird.
+ I mean, you don't really know what this does, so maybe it's not weird.
+ I don't know.
+ But I like you to check out, like, which ones are zero and one.
+ So, like, if you can see my mouse pointer here, like, X1 is one.
+ X2 is one.
+ X3 is zero.
+ X4 is zero.
+ X5 is one.
+ X6 is one.
+ So, we got ones in spots one, two, five, and six.
+ And do you remember, like, what mystery toggles was?
+ It was this.
+ It was one, two, five, and six.
+ Okay?
+ And this is not a coincidence.
+ This, like, always happens.
+ So, like, if you know that it's gonna work like this, then you see, um, you can find out the entire contents of mystery toggles.
+ With just one question.
+ You only call this mystery toggles one time.
+ But you figured out everything that was inside it.
+ Okay?
+ And this is, like, an example of, like, quantum advantage over a classical computing.
+ Because before, um, when, you know, we didn't use the quantum instruction, like, we saw that we would need at least six questions to solve this, we solved it with one.
+ With the quantum instructions.
+ And, in fact, if there had been, like, a hundred X's, it would have taken us a hundred questions if we just used the classical type instructions with the, uh, with, like, zeros and ones.
+ But it still only takes one question with, like, a quantum cubit, quantum power.
+ Okay?
+ So, this is, like, uh, an example of, like, you know, uh, really tremendous, like, speed up you can get for some kind of problem.
+ Uh, using, uh, quantum computing.
+ Now, uh, that's really cool.
+ And, uh, as I said, in the next couple of weeks, we'll figure out, like, why this works.
+ And we'll also figure out, like, can we use this, like, I don't know, this magic to do anything else?
+ Like, really cool.
+ Because it's, uh, actually arguably not that cool.
+ Because, okay, like, it's like a neat party trick, you know, it's like a fun demo and something.
+ But what the heck is this problem?
+ Like, what, what is this bizarre situation where, like, first of all, somebody tells you, oh, I wrote this code that has a bunch of, like, if X then toggle things inside it.
+ And you gotta figure out what they are.
+ Like, that's, what, that's weird, right?
+ Like, I didn't want to solve that problem.
+ So, I'm not that impressed that, like, you can solve it.
+ Also, like, what is this scenario?
+ Like, I mean, here's, I can solve it with zero questions, right?
+ I just, like, look at the code, and I'm like, oh, I didn't ask any questions.
+ And there it is, X1, X2, X5, X6.
+ So, like, what is this, like, weird scenario where somehow this is, like, an obfuscated black box.
+ You cannot tell what's inside it, but you can still run it.
+ It's, one struggles to imagine, like, a real-world scenario in which this would be relevant.
+ But, you know, it's still kind of cool.
+ I mean, it shows that, like, something amazing is happening.
+ And, you know, the, in some sense, the goal of quantum computer is, like, let's try to figure out what other amazing things could happen.
+ Maybe we can solve some more, like, cool and interesting problem that we actually wanted to solve, like, way faster using quantum computing.

@@ -1,0 +1,288 @@
+ Okay, so we're actually hardly going to say much more about like the actual physics of like physical objects that implement qubits.
+ We're pretty much just going to remember these like mathematical properties like you have a qubit.
+ That means it can be zero or one, but it can also be like any superposition that looks like this as long as x squared plus y squared equals one.
+ And we're going to take it for granted that like you can find some device that measures a qubit and shows like different probabilities of seeing zero or one that satisfy this law.
+ And you can attempt to like get together like lots and lots of these like photons and lots and lots of these electrons and try to build a quantum computer out of them.
+ You know, just like you can try to build a computer in Minecraft by putting your like pistons or whatever together and they can represent bits.
+ But mostly in this course, we're going to forget about this physical implementation now and just assume that we have some physical, you know, particles or whatever that obey these mathematical these like simple mathematical laws and we'll just try to do computer programming with these mathematical laws.
+ The actual way that like present day, people are trying to build quantum computers. They don't use either of like these electrons or photons for trying to use their make qubits.
+ I don't know, they use like ion traps and like just some junctions and other physics engineering stuff.
+ Yeah. All right, back to quantum. Let's do it. Right.
+ Okay. So, yeah, now I told you a little bit about like what's under the hood, but now we have like, now we're just going to abstract that all away and just imagine we have qubits and we can manipulate them.
+ You remember last time I was showing you this quantum code and had like a bunch of instructions and all those instructions, mostly were about manipulating the super position state of the cubits involved like somehow changing these like x's and y's.
+ Okay.
+ And that's how it is in quantum programming. There's most of the instructions are like cubit manipulation instructions in the same way in like, you know, in basic programming.
+ It's more or less like your instructions are about manipulating your data.
+ But there's actually two special cases. There's like two kinds, let me summarize what I'm saying here, of quantum instructions.
+ There's like the main kind, which I'll just call state manipulation instructions.
+ And these are the ones like, I don't know if you remember from last time, like a toggle.
+ Some cubit or like if this cubit, then toggle that oops toggle some other cubit.
+ And then there's like this had them all is also an example like this.
+ Okay, all those are state manipulation instructions.
+ And then there's like two kind of edge cases, two like special cases that are a bit different.
+ And that's the creation instruction of cubits.
+ And kind of like the destruction of cubit.
+ So we're like in computer programming terms, it's kind of like, you know, allocating memory and like freeing memory.
+ And here by this I mean like this is like the particular instruction that was like new cubit, you know, called whatever.
+ That's like the special creation instruction for like introducing cubits into the world.
+ And this destruction is also kind of like measurement.
+ So in fact this part like corresponds to the instruction we saw last time, it was called extract all.
+ And it's sort of like taking your cubit with like a special, you know, quantum state and like, you know, measuring it or like extracting like a classical bit or some classical bits of information from it.
+ Okay, so in the next lecture we'll get all into the state manipulation instructions.
+ But like today we'll sort of take care of like the two special case instructions.
+ Okay, so let's start with the two special cases.
+ So like in our pseudo code, we have this instruction called like new cubit.
+ And you can put like any, you know, cubit name you want, you know, as I said, the traditional names are like A, B, C, D, et cetera.
+ But you know, you can call it anything, so maybe you'll call it like apple.
+ And now you have a cubit called apple.
+ Okay, it's like a variable called apple.
+ And this way it creates, you know, I'll just say the obvious.
+ It creates a cubit named apple.
+ And it initializes it to the basic state zero.
+ Okay, let's just how like our rules work.
+ And every, you know, every quantum code instruction, logical instruction corresponds to like a physical action that you could take in the real world.
+ So like really, every like branch of quantum code really corresponds to instructions for like, I don't know, human to carry out a physical experiment involving electrons or photons or whatever.
+ And this like instruction kind of tells the human like, okay, like get out of photon.
+ Give it the name apple.
+ So that's your photon.
+ His name is apple.
+ And somehow get it so that it's like horizontally polarized.
+ There's like a way to do that.
+ You're saying, I don't know, filters actually.
+ And like that's it.
+ Okay, so that's what it corresponds to in the real world.
+ And, you know, as I saw last time, just in my pseudo code, like, you know, you can also, you know, allocate a couple at the same time, so you can call them banana and cherry.
+ And if you do that, it's like telling the experimenter like, okay, find two more photons and name them banana and cherry and also arrange for their basic state to be zero.
+ Okay, so that creates, make them horizontally polarized.
+ Actually, one reason like photons are not so popular, like, physical implementation for trying to build quantum computers is very hard to like just keep them still.
+ Like, you can't just like have a photon and be like, you stay there, right?
+ Like, you have to make it travel in a circle or like, bounce between mirrors or stuff.
+ Whereas other things can sort of more or less stay put.
+ On the other hand, the good thing about trying to use photons, if you want to try to do it in photonic quantum computing, is it's like no problem to get like a million photons or a trillion photons.
+ It's super easy.
+ Like, if you just get like a $2 laser pointer, that shoots out like a trillion photons at the push of a button.
+ So it's plus or minus this.
+ Okay, so like, for example, if you were to like, you know, execute these two lines of code, then at a logical level, you would have three qubits.
+ You know, named, okay, like, apple, I'll just write a fancy apple, banana, and cherry.
+ And in the basic state, maybe the full way to write this basic state would be like, a is zero, let me write properly.
+ B equals zero and C equals zero.
+ Okay, this is like, remember a little bit while back, I was like, oh, if you want to store three bits,
+ maybe of three little magnets, like bar magnets, and you sort of treat them as like a triple magnet is like a super object that has like eight possible basic states.
+ It's similar here.
+ Like, now that you have three qubits, you kind of have like a triple object, like one super object with like eight possible basic states.
+ So you can also like abbreviate this.
+ And abbreviation here would be writing this like, oh, the state is like A, B, and C are zero, zero, zero.
+ We just stack all of them together inside these funny brackets.
+ Or sometimes you'll just say like, oh, now these qubits are in the basic state zero, zero, zero.
+ Okay, and just thought you got to just remember that like, if you write it like this, the order is, I don't know, the order you created them, ABC.
+ You should just tell the person who's reading your code, the order you're doing them in.
+ Okay.
+ Actually, while we're here, this is like a good place to do a timeout and make like a little comment.
+ In words so far, I've even using like a phrase like basic states and also the phrase like superposition state.
+ But what I want to say now is that like basic states are just considered also superposition states.
+ So like a considered very simple kind of superposition state.
+ So then in some sense like it's always, state is always a superposition state.
+ So what I mean is like, for example, a two qubit basic state like, for example, zero, zero is considered to just be like a special kind of superposition state.
+ Considered to be just another superposition state in which, and I'll use like some somewhat imprecise words like all one of the amplitude
+ on zero, zero and like none of the amplitude is on the other three possibilities.
+ Okay, so in other words like, you know, if you have two qubits to say that they're in basic state, zero, zero, it's really just like shorthand.
+ For that they have like one amount of amplitude on zero, zero.
+ And even this is shorthand for like the most, maybe correct thing to say, which is that these two qubits have like one amplitude on being zero, zero, zero amplitude on being zero, one, zero amplitude on being one, zero.
+ And zero amplitude on being one, one.
+ Okay, maybe this is like the most correct way to describe the state of two qubits that we were formally considering to be like zero, zero.
+ So like they're both, the first two qubits here, if they're both like horizontally polarized, this is maybe the real way to describe them.
+ This is an example of like a super object or like an object that has four basic states.
+ The four basic states of two qubits are zero, zero, zero, one, one, one.
+ And the rule of quantum mechanics tells us that like the actual state, the superposition state can be like any amplitudes a, b, c, d, as long as a squared plus b squared plus c squared plus d squared equals one.
+ Okay, and that checks out because, you know, one squared plus zero squared plus zero squared plus zero squared is one.
+ Okay, so this is like a valid state of something that has four basic states.
+ Um, yeah.
+ It's just like we get in the habit of omitting stuff where there's like zero amplitude.
+ If there's like zero amplitude, we just like choose not to mention it.
+ And moreover, if there's like one amplitude on something, we just describe it as itself.
+ You know, it's like an algebra if you have like one times x plus zero times y.
+ You just call it x.
+ Okay, I can good progress here.
+ Um, okay, any questions?
+ So that's the new qubit instruction, and it's pretty easy.
+ So let's do the other special case instruction, which we called extract all.
+ Um, maybe that's our pseudo code name.
+ The real name of it is like measure all, measure all the qubits.
+ And, um, again, this is just like a logical instruction corresponding to some physical thing you're supposed to do.
+ And the physical thing you're supposed to do is to like put all your qubits into the measuring device.
+ So if they're all electrons, put each of them into a stern girlac tube.
+ Or if they're all photons, you're using sunglasses like pass, try to pass each of them through like a sunglass lens and see what happens.
+ And, um, as I said, I'm also going to call this measuring or destroying qubits because it's also a little bit analogous to like, you know, freeing variables.
+ Okay, so as I said, like this extract all command corresponds to putting all the qubits, the physical qubits, into a measuring device.
+ And when you do that physically, let's say you just have one cube at first.
+ And when you do that physically, you like fits like this, you know, tube that has two phosphorous and screens, like the user sort of sees displayed to them.
+ Like either zero, meaning like it hit the bottom screen, or one, meaning the top screen.
+ So like an abstract level, like this action like corresponds to like a display or a print or something, right?
+ So when you do this, like the user sees a basic outcome, you know, which, for example, is either zero or one if it's one qubit.
+ And this kind of corresponds to the outputs or output bits.
+ Okay, so like actually another way to think about it, and okay, which you see corresponds to this rule, which I'll just remind you of a second.
+ And so it's kind of random, you get a random output based on this law.
+ Another way you can think about this alternatively is the user kind of sees a classical bit, like a regular old bits.
+ So this is also kind of like a typecasting instruction.
+ It's one qubit, like one qubit of data type qubit, when you do this extract all command, it kind of converts it for the user into like a plane bit.
+ So it was in some superposition state here, because it's a qubit.
+ After you do this, you're like, oh, now I have like one classical bit.
+ Okay.
+ And let me do my boards backwards.
+ I'm going to go over here.
+ You know, the result is random as per the law of quantum measurement.
+ Okay, so I'll do an example.
+ Okay, so say you create two qubits called a and b.
+ Okay, you created them with like two like new qubit instructions, and then like you did some qubit manipulation instructions, which we're going to talk about next time.
+ And somehow manipulated them to change their state to this state.
+ Oops.
+ I'm going to do this 0.8 amplitude on 0, 0, and 0.4 amplitude on 0, 1, and negative 0.2 amplitude on 1.
+ On 1, 0, and 0.4 amplitude on 1, 1.
+ Okay.
+ And actually, as soon as I say that, you should say to yourself, wait a minute.
+ Is he cheating me?
+ Is this a valid state?
+ So in order for it to be a valid state, the squares of these numbers have to add up to 1.
+ So let me just do that on the side.
+ 0.8 squared is 0.64.
+ 0.4 squared is 0.16.
+ Negative 0.2 squared is 0.04, positive 0.4.
+ Of course, 0.4 squared is 0.16.
+ Okay, if you add these up, it's like 0.80, 0.84, 100.
+ So that's 1.
+ Okay, so let's check it out.
+ Okay, so this is a valid state for the two qubits, maybe these two photons to be in.
+ And it's a bit more of a subtle state.
+ There's somehow this amount of amplitude of them being both horizontally wiggling
+ and this amount of amplitude of them, the first one being horizontal
+ and the second one being vertically wiggling.
+ And somehow there's this amount of amplitude of the first one being vertical
+ and the second one being horizontal, and so forth.
+ Okay, so suppose you get them to this state and then you, now you do extract all.
+ Okay, so at a physical level that's telling the experimenter, like take the first photon
+ called A, shoot it towards like a sunglass lens, take the second photon called B,
+ shoot it towards a different sunglass lens, and then just find out, did the first one go through?
+ Did the second one go through?
+ And so you get back two classical bits of information.
+ And as we know, well, in fact, you'll, the outcome is that you'll see displayed on your screen
+ or just, you can think of it logically as you get this back as the user.
+ You'll see zero, zero.
+ And here, like I'm not writing the funny angle brackets because these are regular bits.
+ Like this is like A and B displayed to be zero, zero with probability 64%.
+ And 16% of the time you'll see zero and one.
+ And 4% of the time you'll see one and zero.
+ And 16% of the time you'll see one and one.
+ So when you actually do this, for example, 16% of the time, both of them will be
+ passing through.
+ And 64% of them time, like both of them get blocked.
+ Okay. Any questions about that?
+ Okay.
+ So now I want to write an extremely important point.
+ If I can find the eraser.
+ At the level of abstraction and code and, you know, those sort of the logical level.
+ It's like a feature of quantum code.
+ It's very important to know that, like, extract all, like, destroys the
+ qubits.
+ This is super important.
+ Okay. So if you, like, in your code,
+ you do some manipulations, you have some qubits, you do extract all, like it
+ displays some, you know, classical bits to you.
+ At that point, it's like those variables have been freed.
+ They're deallocated.
+ These no longer exist.
+ You cannot refer them to, again, you can make a new variable that had the same
+ name as the old variable, but it's just a totally new qubit.
+ Okay. This is, like, super important.
+ Okay. Because of this, like, you will
+ typically see extract all at the very end of the code.
+ Because, like, sort of the end.
+ You know, you took some qubits, you manipulated them to the state.
+ Like, the main part of your code was manipulating their state.
+ And at the end, you did extract all.
+ And in that way, like, gain some actual normal information about what state they
+ were in.
+ You know, at a physical level, it's like you took these electrons,
+ you put them through the tube, they, like, hit the screen.
+ The screen glowed.
+ One of the screens glowed.
+ And, like, okay, now you don't have that electron anymore.
+ Okay. So this is, at least, the, I mean,
+ actual in reality, like, the physical electron is still there.
+ So maybe later I'll talk about the fact that physically the electron is still
+ there.
+ But let's just say for now, at a logical level, like,
+ it's game over for that variable after you extract all.
+ You've gained your information, and that's it.
+ And one actually thing you can take away from that is, like,
+ let's say you got some code, and it manipulated them.
+ Let's say you, like, we're walking down the street,
+ and you just found two photons.
+ And you're like, I wonder what state they're in.
+ Like, I wonder what these amplitudes are.
+ It's not too easy to tell.
+ In fact, the only thing you can do, you can put them into a measuring
+ device, and then you'd see one of these possibilities,
+ with these, maybe these percentages.
+ Maybe you didn't know these numbers, but, like,
+ maybe you saw a zero, zero, or a zero one.
+ It gives you very little information about what the
+ amplitudes were.
+ Like, if you measure and you see one one, you're like, well,
+ possibly the amplitude on one one was, like, kind of high.
+ But you don't really know, and you don't really have that much
+ information about the other amplitudes.
+ But then that's it.
+ Like, you cannot, like, measure them again.
+ Like, it's over for those qubits.
+ So, in this way, like, you kind of lose a lot of information
+ about the qubit states when you do a measurement on them,
+ or when you do this extract all of them.
+ Now, of course, if you've got these qubits from, like,
+ running some code that initialized them, and, like,
+ it always got them into this state, that's perfectly fine
+ to run your code, like, a thousand times.
+ And, like, you know, about 640 times, it'll out with this.
+ And about 16, 160 of the time it'll out with this.
+ That's fine, but it means you have to, like, really sort of
+ regenerate the qubits physically and redo the experiment.
+ Like, every time you want to do a trial like that.
+ OK, there's one more thing that I want to say, which is this.
+ It's a question you might have.
+ You might say, like, I notice you gave us this command
+ called extract all, but, like, do you always have to extract all?
+ In other words, once you know that, like, what does extract
+ all correspond to, like, if you have three qubits, like,
+ if you have three electrons, it corresponds to taking the first
+ one, putting it in the measuring tube.
+ The second one goes into the measuring tube.
+ The third one goes into the measuring tube.
+ You can say to yourself, well, in physical reality,
+ I can take just the second one and put it through the measuring
+ tube, and just hang on to the first and the third.
+ Like, it seems like I could, you know, if I have qubits
+ called A, B, and C, like, can I just do extract B?
+ And the answer is, yes.
+ I mean, you can do it in reality, so it has to correspond to something.
+ There's a minor butt, though.
+ Here are the two things.
+ The math of explaining what happens when you just extract or
+ measure, like, a subset of the qubits.
+ It's, like, a little bit more complicated than just, like,
+ this law of quantum measurement that we talked about.
+ It's not, like, super complicated.
+ It's, like, a little bit more complicated.
+ And also, you actually, technically, never need to do this.
+ Like, if somebody gave you a quantum programming language and
+ it only gave you the command extract all, and it didn't also
+ allow you to do extracting individual qubits, you'd be like,
+ this is annoying, but it's still possible for me to, like,
+ write any quantum computer program that I want, or, like,
+ implement any quantum computer behavior I want.
+ It's just, like, kind of more annoying.
+ So, because of these reasons, like, for now, at least in the
+ beginning part of the course, we're just going to, like, have
+ extract all, we're just going to remember this, like, simple
+ rule, and I'll say for, I don't know, 40% of the way through
+ the course, the slightly more complicated explanation of what
+ happens if you just measure a subset of the qubits.
+ [MUSIC]

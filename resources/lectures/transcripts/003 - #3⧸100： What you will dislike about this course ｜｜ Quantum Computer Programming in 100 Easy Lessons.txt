@@ -1,0 +1,546 @@
+ So the price pantry.
+ So at the beginning of every class, every time you show up
+ for class, you get like one ticket.
+ You put your name on the ticket.
+ It will go in this pencil case.
+ And then on randomly selected days, I got some dice.
+ Well, randomly-- each day will randomly
+ decide whether we're going to have a drawing.
+ And then we're going to have a drawing.
+ And then if we draw your name, you win a prize if you're here.
+ So it's like 50/50 raffles at the pens game.
+ Like we draw your name, you're not here.
+ Sorry.
+ You don't get it.
+ And then if you win, you can choose a fabulous prize
+ from this bag of prizes.
+ Yay!
+ So now I'm going to tell you a lot of downers.
+ I'm going to tell you a lot of disclaimers.
+ I'm going to tell you all the things you won't learn
+ in this class.
+ And I'm also going to tell you why quantum computing is not
+ cool.
+ And I want to say this, all this stuff up front,
+ so you're not disappointed.
+ And then if you're still here on Thursday, then great.
+ I know you'll be on board for what we're going to do in this
+ course.
+ And I always want to say this.
+ I'm always tinkering.
+ Last few times I taught this course.
+ I asked my wife, I want to tell them about why quantum
+ is cool, but I also want to give all these disclaimers.
+ What should I do in lecture one?
+ Tell them the cool stuff or the disclaimers?
+ And she was like, you should tell them the cool stuff.
+ And it's like, OK.
+ And that's what I did in previous years.
+ But this year, I'm tinkering.
+ I'm going to try it at the opposite way.
+ I'm going to tell you all the bad stuff right at the beginning.
+ And then we'll enjoy 25 lectures of greatness after.
+ OK, so let us start with this topic, which is what this
+ course will not cover.
+ You know, maybe some of the most well-chosen title
+ for the course, Undergraduate Quantum Computation,
+ because I imagine you just deleted the word quantum.
+ And the course was just called computation.
+ There would be a lot of possibilities
+ for what that course could actually be about, right?
+ And similarly, there's a lot of possibilities
+ for what this course could be about.
+ So let me tell you what it's not about.
+ Well, we will not cover.
+ This blue is not too powerful.
+ Let's try purple.
+ OK, for the most part.
+ Now, actually, I say what we will not cover in this course,
+ but nevertheless, feel free to ask about it.
+ So you know, on Piazza or in class,
+ like if I say, well, it's kind of outside the scope of the class.
+ Nevertheless, ask about it.
+ It's fine.
+ I'll do my best to answer.
+ So one thing that we will not really cover in this class
+ is physics.
+ So I actually don't know that much about physics,
+ to be honest.
+ And quantum computing is based on taking advantage
+ of the laws of quantum mechanics, which
+ are the true laws of physical nature that govern the world
+ that we live in.
+ And you know, they're kind of weird,
+ and they have maybe you're not used to them.
+ But we won't actually get into any physics topics.
+ For the purpose of quantum computation,
+ you just need to know the most basic axioms
+ of quantum mechanics.
+ And the basic axioms of quantum mechanics
+ are like four lines that you can write on a cocktail napkin.
+ And then that's all you need to know from physics
+ in order to do quantum computing.
+ And that's basically how it's going to go.
+ I'll tell you these basic simple mathematical laws
+ of quantum mechanics, and then we'll just
+ take that as given and use them.
+ But I'll try to tell you a little bit about what's
+ going on physics-wise, and feel free to ask.
+ But basically, we're not going to talk about physics.
+ Another thing we're mostly not going to talk about
+ is like, let's say, engineering details
+ about present-day quantum computers.
+ So there's all sorts of efforts going on at companies
+ and national governments and universities
+ to build quantum computers.
+ So I mean, theoretically, we know
+ how quantum computers will work and how quantum mechanics works.
+ But that doesn't necessarily mean you can easily build them.
+ Theoretically, we can travel to Mars,
+ but it's a lot of effort and difficulty in practical engineering
+ problems to fly a car on Mars, even though there's
+ nothing in the laws of physics that says you can't do it.
+ So people are working on it, and they're
+ trying all sorts of different methods
+ to actually make physical cubists.
+ There's superconducting cubists, and ion traps,
+ and photonic quantum computing, and all
+ these other implementation details and challenges.
+ It's not really clear which one will work the best.
+ And we're not going to get into it.
+ In the same way that when you take 251
+ and you learn about the nature of quantum computing,
+ you don't also study how DRAM works and how the capacitors
+ inside your computer store bits.
+ You're just like, oh, we have a mathematical model.
+ We assume our computer can store bits,
+ and we can write them and read them and change them
+ and manipulate them.
+ And similarly, in this course, we're
+ just going to imagine that it's the future,
+ and we have a nice working quantum computer,
+ and we can have as many cubists as we want,
+ and we can do whatever instructions we want,
+ and it just works.
+ So we're getting ready for the future here.
+ Another thing we want cover is like actual, like current day,
+ like quantum programming languages, or, I don't know,
+ like frameworks.
+ So again, all these companies have--
+ they're working really hard to build quantum computers,
+ and they're also making quantum programming languages,
+ like Kiskit or whatever.
+ And they're like, you can use it to program hypothetical quantum
+ computers, which don't exist.
+ Or you can use them to program our actual quantum computers,
+ which operate on eight qubits, and you can just write
+ 20 lines of scratch that will let you do the same thing.
+ So I'm not going to teach you any of these things.
+ In the time it takes you to learn the syntax of Kiskit,
+ you could just write your own quantum computer simulator
+ yourself.
+ Yeah, so we're just going to use pseudo code like we did today.
+ And I'll also tell you-- thank you--
+ we'll tell you the actual names of the instructions
+ are not like if x, then toggle z.
+ They're called like c-naut and stuff.
+ They have these four-letter assembly language-style command
+ names.
+ I will teach you those names as well, eventually,
+ so that you can read other textbooks.
+ But we'll just stick to pseudo code.
+ Question?
+ I mean, I think it'll be like--
+ OK, so you'll need to know all these like--
+ I'll put this eventually on Piazza and I'll tell you
+ that if a and b, then toggle c is called c-c-naut.
+ And like Hadamard is called h.
+ And if you know these assembly language-style shortcuts,
+ there's only like seven instructions.
+ Then I don't know, they just go like--
+ and Kiskit or whatever, it'll be like your qubit.c-naut-ab
+ or something.
+ So you'll be able to easily figure it out.
+ Correct.
+ It's all like difference in tactic sugar over the same like--
+ well, we'll definitely get into the details
+ of what quantum instructions-- what
+ are all possible quantum instructions, which is kind of
+ like the same as what are all possible computer programs.
+ You know, when you build computer program,
+ like you choose like a programming language, which
+ has like some fixed set of instructions.
+ And you're like, OK, as long as I get enough instructions,
+ I can build any other operation I want.
+ And if you read textbooks about quantum computing,
+ they'll all more or less choose the same four or five or--
+ there's only like four or five or six or seven instructions.
+ Maybe they'll idiosyncratically choose
+ some different subset of them.
+ But they can all like build anything you want
+ in the computing out of some base set of instructions.
+ And then they also like might have some syntactic sugar,
+ like pseudocode names for these instructions.
+ That will be different from language to language.
+ So in this class, I'll have my own pseudocode names.
+ But like, there's nothing that you can--
+ like, it's literally true that like 100% of everything
+ you can do in any quantum computing implementation
+ can be done with these instructions
+ that I've erased from the board, like toggle, and if a
+ then b, then toggle, and Hadamard.
+ And like, they might give you some other ones, like swap.
+ You can build swap from some of these other instructions.
+ Actually, on this subject, so this pseudocode that I'm going
+ to use is kind of idiosyncratic.
+ Like, I just chose it myself.
+ And you may find that annoying.
+ So this is my warning on day one.
+ You may find it annoying, but it's
+ like, why don't you just choose like CC0, the real name?
+ Well, like, who remembers what CC0 means, you know?
+ Like, I know it if a and b, then toggle C means.
+ Some people like previous messages were annoyed by that.
+ So I'm just warning you now about that.
+ Hopefully, you'll find it more helpful than annoying.
+ Right.
+ So yeah, so we really-- they said, well, it'll be really--
+ this course will be like maybe most similar in spirit
+ to these other CS classes, like 15, 251, maybe 15, 259,
+ whereas kind of theoretical.
+ Like, we are just interested in, like, really
+ the inherent nature of computation.
+ OK, and we'll assume we have some physical computers
+ we can use, but we want to really just
+ study the inherent nature of quantum computation.
+ What is possible, theoretically, with quantum computation?
+ And, you know, this is a probability in computing.
+ I mean, it also be kind of similar to that in the sense
+ that we're going to be studying the mathematics of quantum
+ randomness and its application to algorithms and stuff.
+ OK, so that's one batch of, like, disappointments
+ I want to spring on you.
+ Now I'm going to tell you some even more disappointing things.
+ And it's so-- from one perspective,
+ I'll clarify myself later.
+ But from one perspective, as far as we know, quantum
+ computers are going to be pretty useless.
+ Let me explain myself.
+ So this is like a warning.
+ OK, so let's assume we're in this position
+ where large-scale quantum computers have been built.
+ And we can just program them as we wish.
+ So, like, let's say, if and when large-scale quantum
+ computers are built, they say, all right, what are we going
+ to do with them?
+ I mean, I saw you this crazy demo for the mystery toggle.
+ So that's not actually as full.
+ It's cool, but what's the useful things?
+ OK, so here's what we know for sure.
+ Even when we know for sure, we will
+ be able to do if we have quantum computers.
+ We can definitely ruin something.
+ So it will ruin a lot of current-day cryptography.
+ So this is actually a negative.
+ And why will it do it?
+ Because we know that quantum computers
+ can solve this factoring problem efficiently.
+ So like the task, I give you a 2,000-digit number
+ and say, please factor this into its prime factors.
+ This problem, you actually never really
+ want to do this in real life normally, right?
+ Why would you care to know the factors of a 2,000-digit number?
+ But people notice, in the '70s, this
+ seems like a really hard computational task.
+ It's like a puzzle that we don't know
+ how to do with an efficient algorithm,
+ like the fastest algorithm we know for factoring 2,000-digit
+ numbers would take the age of the universe.
+ So they were like, let's make lemonade out of lemon
+ and use this for cryptography, like in code, like our secrets,
+ using factoring in some way.
+ And then the only way to break the code
+ will be if you can do factoring.
+ So OK, you've probably learned about this in 251
+ with like RSA and this kind of thing.
+ So that was cool.
+ And every time you type HTTPS in your browser,
+ like it makes a little cryptographic puzzle
+ that we assume can't be cracked by anybody because we assume
+ there's no efficient way to factor giant numbers.
+ But the sky's sure in 1993 showed that if you had a quantum
+ computer, there'd be an efficient algorithm for factoring
+ these giant numbers.
+ And that would ruin cryptography.
+ Well, it would ruin a lot of current cryptography.
+ Now that we know about this, there's
+ been a lot of work to develop new kinds of cryptography
+ that cannot be broken by--
+ well, that we don't know how to break with quantum computers.
+ In some sense, future cryptography
+ is hopefully probably pretty safe.
+ But like current day cryptography, we'd kind of get ruined.
+ OK, so that's one thing.
+ For sure will happen.
+ Here's another thing.
+ If you had a quantum computer, you could solve the SAT problem.
+ Remember the SAT problem is like one of the most famous
+ problems in computer science.
+ You've probably learned about it in 251, P versus NP.
+ It's the classic NP complete problem.
+ In time, let's say not 2 to the n time,
+ like the exponential time algorithm for SAT
+ takes like 2 to the n time, but 1.4 to the n time.
+ Just still exponential time.
+ But the base of the exponent is lower.
+ So if you were like, oh, I can manage to do like n equals 50,
+ then you're like, oh, now I can do n equals 100.
+ But it's still an exponential time algorithm.
+ This number is actually square root 2, not 1.4.
+ So it takes this famous NP hard problem,
+ and it solves it in slightly less exponential time.
+ So that's due to Grover in 1994, and that's it.
+ Well, maybe it's not literally it.
+ But let me-- OK, I'll slightly qualify that.
+ That's more or less it, as far as we
+ know, for-- let me put it ellipses here--
+ for solving classical problems more efficiently.
+ I forgot to say something here, which
+ is that 1 billion times in this class,
+ I'll say the word classical, the definition of classical
+ is not quantum.
+ It just means non-quantum, like the usual.
+ So there's an upside to this, which
+ is that there's really only, in terms
+ of solving classical problems more efficiently
+ using quantum computers, there's really only two things
+ to learn, and you're going to learn both of them in this course.
+ So then at the end, you'll be like, I know it all.
+ So that's an upside.
+ It's not maybe literally true.
+ People have some other quantum algorithms
+ for solving classical problems, but maybe they're
+ a bit like the demo.
+ They're like, oh, we can solve way more efficiently
+ this mystery-toggles problem when you're not
+ allowed to look inside the mystery-toggles thing.
+ And you're like, well, do I care about that?
+ The third most interesting quantum algorithm--
+ it would take me 10 minutes to describe it, 10 minutes
+ to explain why maybe it's relevant,
+ and you would not be that impressed.
+ So this is why I call it a warning,
+ like prepare to be a little bit disappointed about that.
+ In particular, I hope you don't think, wow,
+ I want to learn in this course all the quantum computing
+ programming paradigms, because there's only two algorithms.
+ So at best, there's one paradigm.
+ We're two paradigms, OK?
+ And we will learn these paradigms.
+ We'll learn about the quantum Fourier transform
+ and phase estimation, which are basically maybe
+ the two quantum programming paradigms
+ for trying to solve classical problems more efficiently.
+ But yeah.
+ And we'll also learn about, OK, understanding
+ of why quantum computers maybe won't solve some problems
+ really efficiently that we want to solve.
+ For example, we're quite confident
+ that quantum computers will not solve NP-complete problems
+ efficiently.
+ We're quite confident that it will take them
+ like exponential time also.
+ Yeah.
+ OK.
+ So you might be like, wow, this really was a downer.
+ What am I doing here?
+ Why would anybody study quantum computing?
+ So now I'll try to answer that question.
+ Like, why study quantum computing anyway?
+ I guess we don't need this.
+ OK, I'll just go here.
+ So yeah, why study quantum computing?
+ So I'll give you the three answers.
+ Yeah, I'll probably write this many times as well,
+ QC for quantum computing.
+ OK.
+ So one, it's a little bit like 251 style answer.
+ We've got to learn-- I kind of think
+ it's obligatory to study quantum computing,
+ because we all learn the true nature of what's
+ computable, it's like power and nature of computation.
+ You know, in 251, you studied all these grand questions
+ about like, what is the nature of computation?
+ What is the definition of computation?
+ What does it mean to solve a problem?
+ What does it mean to solve a problem efficiently?
+ What can be actually computed?
+ And except maybe the one lecture about quantum computing,
+ it was missing a piece, because we
+ live in a universe where the true laws of nature
+ are quantum mechanics.
+ And if you remember that your quantum computers
+ are like physical devices that operate in the real world
+ and obey the laws of quantum mechanics,
+ then there are things that you can do
+ that you cannot do if you don't take advantage of these facts.
+ Like, we saw in the demo, like, if you do not take advantage
+ of the fact that, you know, you can have qubits
+ and do like this Hadamard instruction,
+ this quantum instruction, you need six questions
+ to solve this like, mystery toggles problem.
+ But you only need one question if you, like,
+ take full advantage of qubits.
+ So if you really, you know, want
+ to actually know the true limits in nature and power
+ of computation, then you have to study quantum computing.
+ So that's one reason I think it's good to be here.
+ Another reason is this.
+ This is like, to me, this is like one of them,
+ well, they're all good reasons, but this
+ is a very important reason.
+ It says only quantum computers can solve quantum problems.
+ So I'll tell you what I mean by this.
+ So I put this like a hedge a little bit here.
+ When I talked about, like, maybe this is all quantum computers
+ we know are good for for solving classical problems.
+ What do I mean by classical problem?
+ I mean a problem, like in 251, like, there's an input,
+ which is, I don't know, a string of bits.
+ And there's a correct output, which is also
+ like maybe a string of bits.
+ And you're trying to, like, make a program that
+ takes the input and produces the correct output.
+ OK.
+ That's like in, like, this factoring problem.
+ Like, the input is like some number.
+ And the correct answer is the prime factors of that number.
+ And you've got to take that number and spit out
+ the prime factors.
+ OK.
+ But what if the input is some qubits?
+ Then by definition, like a classical computer,
+ it cannot solve this problem.
+ It cannot operate on qubits.
+ Or what if the problem, like, requires
+ you to produce qubits, outputs, in some qubit state?
+ Then by definition, like, a classical computer cannot
+ solve this problem.
+ Only a quantum computer can solve this problem.
+ And these are problems that you might actually
+ want to solve, like take some qubits and manipulate them.
+ Or, like, take some input and produce
+ some qubits that have some kind of state.
+ So in this regard, I think it's extremely similar
+ to probabilistic computing.
+ So let me-- I have a few more minutes.
+ Let me make-- I'll just say in words.
+ I'll compare some with probabilistic computing.
+ In fact, probably also in 251, right?
+ You talk about computation for a while.
+ And then there's a section written on randomized computing.
+ And these are very, very, very similar topics--
+ probabilistic computing and quantum computing.
+ So like both of them were first studied and instigated
+ by physicists, like decades ago.
+ Both of them have the flavor that they're like,
+ oh, they're like regular computation,
+ but you get like one extra instruction.
+ Like in probabilistic computing, that like one extra
+ instruction is like a random number generator.
+ You just take programming, and now I say, oh, I get an
+ instruction that can give me random numbers.
+ Like, how does this increase the power of me to compute?
+ And you can ask, can I solve some of these classical problems
+ more efficiently using randomness, even though they're
+ not inherently randomized?
+ And maybe you can.
+ But along the lines here, like if your task is like output
+ a random number, then only a probabilistic algorithm could
+ do this.
+ Or if your task is like, do you like a probabilistic simulation
+ of this, I don't know, weather environment or this
+ molecule or something?
+ By definition, you cannot do this with a classical computer.
+ You can only do this with a probabilistic computer.
+ And yeah, probabilistic computing even has a lot of
+ similarities to this, in the sense that you can ask
+ yourself, like, oh, are there any classical problem that
+ you can solve much more efficiently using
+ randomness than without?
+ And the answer is basically no.
+ In fact, we know that if you want to solve SAT using the
+ probabilistic algorithm, it still takes you-- well, we're
+ very convinced it also takes you two to the end time.
+ So you don't even get the savings.
+ And there's one problem that you can solve somewhat more
+ efficiently using probability.
+ This is a problem of testing if a number is prime.
+ You maybe encountered this in some previous class,
+ primality testing.
+ The most efficient way to test if a number is prime is
+ this like Miller-Raven algorithm that if you want to
+ run it on 1,000 digit numbers, maybe it'll take a
+ million steps.
+ It's like a quadratic time algorithm.
+ And it uses randomness.
+ And it gives you the correct answer with high
+ probability.
+ And the most efficient algorithm for primality testing
+ that doesn't use randomness runs in something like
+ n to 6 steps, so like a million, million, million steps
+ on 1,000 digit number.
+ So similarly to quantum, there's like one number
+ theoretic problem, which can be sped up a lot with
+ probabilistic computing.
+ And that's basically the one problem that we know, the
+ classical problem that we know, where probabilistic
+ computing has an advantage.
+ And it's like a little similar for quantum computing.
+ Except it's actually kind of better.
+ Factoring, we speed up from exponential time, this is
+ the best classical algorithm we know, to efficient
+ algorithms.
+ And we get like a little bit of an exponential savings
+ for SAT.
+ Yeah, so you might say like, oh, now that I told you
+ probabilistic computing can hardly solve anything, like,
+ you just sit around and cry in this 259 class
+ after lecture one.
+ No, there's a lot of great things to do.
+ You study the mathematical nature of probability, probabilistic
+ computing.
+ You recognize the fact that it's something you can use in
+ your computation to maybe do something more powerful.
+ And you recognize that like, oh, only probabilistic
+ algorithms can choose random secret keys for cryptography,
+ or outputs, random strings, or do Monte Carlo simulations.
+ And similarly, I think a lot of the most interesting things
+ in quantum computation are like, the actual input is like
+ some, the qubits that like represent the state of some
+ quantum molecule.
+ And you have to analyze it.
+ And that can really only be done with a quantum computer.
+ OK.
+ All that said, in this class, we're going to try to learn
+ the basics.
+ So this class, in some sense, will be building up to just
+ these algorithms.
+ OK, and the last reason to study quantum computation is,
+ to me, it's just fun.
+ I really like it.
+ It's really like, you ever play a really good video game,
+ and then it ends, and you're kind of sad.
+ But then there's the second class.
+ You can play it all over again, and it's a little bit
+ different, or some DLC comes out, and you're like, oh, I get
+ to do some cool new twist on all those things I experienced
+ before.
+ It's really like that with quantum computing.
+ You learned all this stuff about computation.
+ But now you're going to learn how it really works in the
+ real world, and you're going to do it all again with some
+ cool, magic, new twists on it.
+ So yeah, that's what we're going to start to do in the
+ next lecture.
+ [BLANK_AUDIO]

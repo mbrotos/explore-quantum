@@ -1,0 +1,377 @@
+ >> Okay. Good morning. Quantum enthusiasts.
+ Today is lecture three,
+ and we're going to talk about the real quantum code instructions,
+ the ones that actually manipulate the states of qubits.
+ Depending on how far we get today,
+ I think by the end of it,
+ like you will know everything there is to know about understanding how quantum code works,
+ at least in principle.
+ We're going to have some tricks and concepts that we learned along the way.
+ But I think you'll be able to go back
+ and like in principle understand how that mystery toggles worked and like,
+ you know, understand everything.
+ So it's going to be pretty exciting.
+ Okay. So last time, you know,
+ I mentioned that there's like your main quantum instructions,
+ and there's two kind of like edge case instructions,
+ these ones like new qubit that like makes a new qubit,
+ and the extract all instruction,
+ which kind of converts qubits to bits through measurement.
+ Those are like the edge cases,
+ but the main instructions are the ones that manipulate
+ the states of qubits, and that's what we're going to talk about today.
+ And we're going to continue to work at like an abstract level.
+ So I should mention that like every instruction that we talk about today,
+ like, you know, if a then toggle B,
+ this is like an instruction for a physical action that you can do
+ to real like particles that represent actual qubits.
+ So like, you know, we'll say an abstract level,
+ we'll say like if a then, you know,
+ or maybe we'll say like toggle a,
+ but then that corresponds to an actual thing you can do with like,
+ you know, a photon.
+ If you're using photon polarization to represent your qubits,
+ then like, you know, doing toggle on a qubit might correspond to like
+ having it pass through like a slab of quarts of a certain width.
+ Like that will like implement, you know, the toggle instruction
+ if you get things just right.
+ But we're not going to talk about that.
+ We're just going to talk about, you know,
+ the abstract high level operations that you can do.
+ Now, among the qubit manipulation instructions,
+ you can arguably also divide them into two categories.
+ And that's what we'll do today.
+ And I might call these two categories the classical reversible instructions
+ and the superposition creating instructions.
+ So let's get into what we mean by this.
+ So I'm going to start with these ones,
+ the classical reversible instructions.
+ And I'll just write on the board some of the ones
+ in this category that we've seen thus far.
+ In previous lectures, we talked about like this toggle instruction,
+ which operates on one qubit.
+ And if its name is A, we know what that does.
+ And we also saw this one.
+ If A then toggle B, this is an operation that you do in two qubits.
+ And we also saw this one.
+ If A and B then toggle C, this is an operation
+ that you can do on three qubits.
+ And as I said in the first lecture,
+ these are actually just my personal pseudocode names
+ for these instructions.
+ Each of these has like more like official like
+ assembly language style name in quantum computing.
+ This one is called not A, this one's called like C not,
+ A, B, and this one's called C, C not, A, B, C.
+ So a little bit more inscrutable,
+ maybe the first one makes some sense.
+ I'll explain these names a little bit later.
+ So it's even more confusingly sometimes called X on A.
+ That one's really confusing.
+ Yeah, so these are the three sort of most basic instructions,
+ quantum instructions in this classical reversible
+ category.
+ And one actually other small comment
+ that I want to make right now is that since this instruction,
+ for example, like operates on three qubits, A, B, and C,
+ like when you actually do it physically,
+ you need like three actual qubits to put
+ into your like contraption that like executes this instruction.
+ And in particular, that just means
+ that have to be like different qubits.
+ So like unlike maybe in regular programming,
+ you're not allowed to reuse like the same like variable
+ inside one instruction.
+ They always have to be different.
+ So let me write it in red just to indicate that it's not allowed.
+ This is not valid if A then toggle A.
+ Okay, so this is like a rule to always remember
+ like all the qubits in an operation have to be distinct.
+ Okay, so if you've done some of the homework actually,
+ you've sort of seen that, you know,
+ once you have like these instructions,
+ you can like put them together in different ways,
+ maybe like little short programs,
+ and thereby build up like composite instructions.
+ And here's some more like composite instructions
+ that let me just say are also allowed
+ in the pseudo code language that we'll use.
+ So here's a couple more.
+ We've got if A or B, then toggle C.
+ And how about if not A, then toggle C.
+ Oh, sorry, toggle B, let's say.
+ I mean, it doesn't matter what I call them,
+ but just to be consistent.
+ And like here's another popular one swap, A, B.
+ Okay, so let's say in this course,
+ like, you know, we'll take it like these six instructions
+ will be like our instruction set
+ for a classical reversible instructions.
+ I'll talk about why I call them classical reversible in a second.
+ You don't really like need all of them.
+ Like maybe as you saw,
+ like if you just have these three,
+ you can like program these ones with like a couple of instructions.
+ And it might be even possible to like squeeze some of these ways.
+ Like maybe you don't necessarily need this one
+ depends on, yeah, I guess probably you don't actually need this one.
+ You only need these two.
+ But it's not very important exactly which ones you select as your,
+ you know, basic set.
+ So we'll go with these six,
+ even though like these are the most common ones
+ and they have like, you know, sort of official names.
+ This one is also just called swap,
+ even in these like weird assembly language shorthand,
+ but these don't even have like typical names.
+ Okay.
+ So why do I call these classical reversible instructions?
+ Let's talk a little bit about this terminology.
+ I guess I'll go with blue.
+ So first of all, why do I put this, you know,
+ adjective classical in the title?
+ It's because they have the following all these operations,
+ these three or six operations have the following property,
+ which I'll call the basic state and basic state out property.
+ Okay.
+ So like if you have, you know, one qubit,
+ it's like A, it's basic states are zero and one.
+ And this toggle instruction has the property that if, you know,
+ A state is a basic state,
+ then when you do toggle, it's still a basic state.
+ I mean, it switches zero and one.
+ Okay. And if you have two qubits,
+ then there are four basic states for them,
+ zero, zero, zero, one, one, zero, and one, one.
+ And, you know, if you think about it,
+ and if you just do this instruction,
+ if A, then toggle B, then as we saw before,
+ the new state of the qubits A and B is just like some zeros
+ and one.
+ So it'll also have some basic state, zero, zero, zero, one,
+ one, zero, one, one.
+ Okay. Now, so we know you can get qubits into, like,
+ superposition states.
+ And you might ask, like, oh, if I have some qubits
+ that got into a superposition state,
+ like 0.8 amplitude on zero and 0.6 amplitude on one,
+ then what happens if you do toggle to that qubit?
+ Well, we'll come to it.
+ But just for now, remember that these properties,
+ these instructions have this property.
+ So one thing that means is like these instructions,
+ are all instructions that would make sense
+ if the variables were bits.
+ Okay?
+ I mean, these instructions all make sense
+ if A and B and C are just of data type bits.
+ So that's another reason, like, why, you know,
+ you can call them classical.
+ Now, that's said, still somehow talking to me here.
+ Okay.
+ Anyway, that said,
+ not every, you know, classical instruction
+ that manipulates bits is a valid qubit manipulation instruction.
+ Okay. Like, I didn't give you like every possible instruction
+ that you could imagine that operates on bits.
+ I said, like, oh, these are the only ones,
+ let's say, that are allowed for now.
+ And for example, here's a, you know,
+ perfectly normal looking instruction
+ that you could do on bits,
+ which is like not a valid quantum instruction.
+ Maybe I'll write it over here.
+ A colon equals one.
+ That's a pretty normal looking instruction for bits.
+ You just like set the variable A to one.
+ This is not allowed.
+ It's not allowed.
+ It's not a valid quantum instruction.
+ Okay. So you might fairly ask.
+ So like, well, which, I mean,
+ which, you know, operations on bits are allowed
+ as quantum instructions.
+ I mean, you can just take my word for it
+ if you want to be kind of unquestioning,
+ like these are the allowed ones and just deal with it.
+ But what is what's going on?
+ What's, what's sort of the rule?
+ So it's to do with a law of physics.
+ There's basically a law of physics
+ that says the following.
+ All qubit manipulation instructions
+ are reversible.
+ I'll say what I mean by that in a moment,
+ but that also explains the second word in the name.
+ They're all reversible.
+ So we'll talk about this actually more in a later lecture,
+ but it's sort of a property of the laws of physics
+ that like every thing that can happen in nature,
+ like the time reversal of it can also,
+ is like can happen in nature.
+ And because of this, you know,
+ the only thing that can happen to qubits
+ is things that can be reversed.
+ And, you know, another way to put it is that
+ for every valid, you know,
+ if a qubit manipulation instruction is to be valid,
+ it has to have like an undue instruction,
+ an instruction that like does the,
+ that like undoes it or sort of does the opposite.
+ So it has to be,
+ it has to have an undue instruction.
+ Okay, so let me try to clarify what I mean by this.
+ You know, given an instruction,
+ like let's say toggle A,
+ by an undue instruction for it,
+ I mean like an instruction that you can do,
+ such that like if you were to do that right after toggle A,
+ it would be like exactly undo it.
+ It would be as though you had done nothing.
+ Okay, so should maybe you can tell me,
+ what instruction can you do
+ that will exactly like cancel out doing toggle A?
+ Yeah, that's right.
+ Yeah, so like I'll write it in red,
+ you know, the, I'll write it over here.
+ So the undo of toggle A is to just toggle A.
+ If you toggle something twice,
+ let me shed work joke.
+ I remixed remix and it was back to normal.
+ If you like toggle A twice,
+ then you get back to itself.
+ And what about this one?
+ If A, then toggle B,
+ like what's an instruction you can do?
+ Like if you just did this instruction,
+ and what's like another instruction you can do
+ that will exactly undo that.
+ Yep.
+ Yeah, it's kind of funny actually.
+ If A, then toggle B is like the way to undo this one.
+ That way somebody stole the eraser.
+ So we have not the best erasing ability.
+ So if anybody happens to have like a whiteboard eraser,
+ let me know.
+ Oops, if A, then toggle B.
+ This one actually also exactly undoes this one.
+ It's sort of funny, but like, you know,
+ neither of these instructions like,
+ well, this instruction doesn't change A's value.
+ So A's value never like changes here.
+ And then like B might get toggled if A is true.
+ So if B does get toggled if A is true,
+ then this will like toggle it right back.
+ And if A was false, so B didn't get toggled,
+ this will also like not do anything.
+ Okay.
+ Actually, I mean, for similar reasons,
+ you can actually check for yourself
+ that like all six of these instructions
+ have the property that they're their own undo.
+ For any of these instructions,
+ if you do them twice in a row,
+ it's equivalent to doing nothing.
+ Now, I'm here to tell you
+ that that's actually kind of a coincidence.
+ It's kind of a coincidence that that's true.
+ And you shouldn't assume that that's always true.
+ It's just like somehow these are like
+ some of the simplest instructions.
+ They happen to be their own undo.
+ But it doesn't have to be like that.
+ For example, I'll give you another example
+ of a valid qubit manipulation operation.
+ It's not one of these basic instructions,
+ but it's one you can build up easily
+ from these basic instructions.
+ And again, if you did the homework,
+ maybe you did it.
+ So consider this operation,
+ which I'll call left cyclic shift.
+ ABC.
+ So this is a hypothetical operation
+ that takes in three qubits.
+ And, you know, if they're in a basic state,
+ oh, thank you.
+ Oh, what a champion.
+ Thank you so much.
+ Should give you like an extra ticket.
+ You know, if they're in some basic states of zeros and ones,
+ then they will be after you do this instruction.
+ And how does it work?
+ I guess just like the new value of A is whatever B was,
+ the new value of B is whatever C was,
+ and the new value of C is whatever A was.
+ So it's like a left shift,
+ except you also like wrap around.
+ So this is like a classical instruction.
+ Like it, you know, if you give it zeros and ones,
+ it gives you back zeros and ones.
+ And it is reversible.
+ It has an undo,
+ but it's undo is not this instruction.
+ But probably you can guess what it's undo is.
+ It's like the instruction.
+ Yeah, the instruction that you would call
+ like right cyclic shift that like shifts to the right,
+ except it also wraps around.
+ Okay, and unlike like the usual like left shift
+ and right shift in like, you know,
+ assembly language programming,
+ like you need this like wrap around property
+ in order to make it, um, undoable.
+ Okay, so, um, yeah, in general,
+ not a reconstruction is its own undo,
+ but like these ones happen to have this property.
+ So, uh, let me say a couple of things.
+ It's possible to implement
+ this left cyclic shift operation on three qubits
+ without like creating or touching any other qubits,
+ like using only, you know,
+ other instructions that are on the board
+ that operate on A, B, and C.
+ And that's what I had in mind when I was talking about that.
+ Now, as we'll see later,
+ if you want to implement like more complicated
+ classical operations,
+ you may sort of want to like
+ do this trick of like,
+ oh, I'm going to allocate a few more qubits
+ and like do some operations
+ that jointly involve,
+ you know, the qubits I'm given,
+ plus those new things.
+ And maybe or maybe not,
+ I'll try to clean up or free those qubits I created later.
+ Uh, we're going to talk about all of that
+ in upcoming lectures.
+ Um, but, uh,
+ in some sense, um,
+ the sort of special case operations
+ of like, for example, creating new qubits,
+ they don't arguably have this reversible property.
+ So they're a little bit outside the scope of this discussion.
+ We're going to only talk about instructions
+ that many of you like qubits that like you already have.
+ Um, yeah, just for a non-example,
+ remember before I told you like,
+ we have a colon equals one.
+ This is like an invalid instruction.
+ And that's because it's not reversible.
+ There's no instruction like, you know,
+ classical type instruction that you can always execute after this,
+ and it'll just restore the state.
+ So you have to somehow remember what value A used to have.
+ Um, okay.
+ So you can take this like, reversibility or like,
+ undo existence property as like,
+ some property that all these valid
+ classical type qubit manipulation instructions have.
+ Um, or I can just also tell you like,
+ it's a law of, it follows from a law of physics
+ that like, um, the set of classical type
+ or basic state in, basic state out instructions
+ that, um, you can actually physically do to qubits
+ is exactly all those ones that are reversible that have an undo.
+ [BLANK_AUDIO]

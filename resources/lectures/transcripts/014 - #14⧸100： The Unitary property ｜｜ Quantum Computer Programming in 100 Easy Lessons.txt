@@ -1,0 +1,164 @@
+ So let's kind of away from like these nitty-gritty calculations and try to think about some slightly
+ more conceptual questions you might have at this point of view, at this time.
+ So okay, I gave you initially, I gave you like, I don't know, six instructions or something
+ like toggle and if A, then toggle B, there's these classical reversible instructions, a
+ few of them. And then I was like, you can also have Hadamard, which has this little, you
+ know, definition with square root halves and pluses and minuses. And I was like, oh, you
+ can also have this weird clockwise I invented that, you know, has this definition. And then
+ I was like, okay, that's it. These are your basic instructions. But of course, from these,
+ you can code lots of new things. You can code new subroutines or new manipulations or these
+ new composite instructions and each of them has its own, you know, definition, it's matrix
+ or it's paths diagram. So one question you could ask is like, what are all the possible
+ operations you can get? Or like, what is, what is the nature of like all these composite
+ instructions that you can build up? So let's say question one, like, what are all the possible
+ instructions? Okay, that's a kind of a bit philosophical or high level. A more concrete
+ question you might have is, you know, apparently whenever you do some quantum operations, you
+ know, the law of quantum mechanics says you'll get to a state where the sum of the squares
+ of the amplitudes is one. And indeed, that did happen every time. But you know, at this
+ point, you're probably like, this is like, why did this happen? This was like a miracle.
+ We did all these like weird instructions on numbers and like somehow like this happened.
+ Like why did that happen? To put it another way. Like our quantum operations seem to
+ have following magical property, which is mathematically called the unitary property,
+ which is, you know, given a valid state, and by valid, I mean one that obeys the laws
+ of quantum mechanics of like squared amplitudes sum to one. If you apply the operation, the
+ new quantum state or the new state is also valid in the same sense. So it preserves the
+ sum of the squares of the amplitudes. And why is it called unitary property? It's like
+ mathematicians invented this term, but it's because like, you know, you have one unit
+ of squared amplitude coming in, and this magical property is that like you do the operation
+ and you still have like one unit of squared amplitude coming out. So it always keeps you
+ at one unit of squared amplitude. So why does this keep happening? I mean, it's good
+ that it happens, and it evidently kind of has to happen if, you know, the laws of quantum
+ mechanics are true, but why? And answering this question why will also help us answer
+ question one. Well, I guess maybe I'll sort of tell you now maybe the last law of quantum
+ mechanics that you need to know in this course, which is about the nature of what quantum
+ transformations are possible physically. So this is like a law of quantum transformations.
+ Goes together with our law of quantum mechanics about like, you know, every valid state has
+ to have squared amplitude something to one, and maybe the law of quantum measurement
+ that tells you how you use the probabilities with which you see different measurement outcomes.
+ So let me write this. So suppose a k qubit, k is like one or two or three or anything
+ really, but a k qubit manipulation subroutine or operation has a two to the k by two to
+ the k matrix or equivalently pass diagram. I mean, you know, you write down all the amplitudes
+ for how it transforms all the two to the k different basic states. And furthermore, suppose
+ this happens to have the unitary property. So you might have a hard time understanding
+ whether a given transformation has this unitary property that it always preserves the squared
+ amplitude something to one. But let's just say that you understand that it does have
+ this unitary property. Then this transformation is physically possible, well, at least in
+ principle I'll say. But, you know, just it's physically possible. And conversely, by which
+ I mean, these are all the physically possible transformations. OK, so this is sort of telling
+ us a law of nature that the physicists worked out like if you want to know like how the state
+ of some anything, the state of some particles can change, well, it can precisely change
+ by, you know, a pass matrix operation, a pass diagram operation that has this unitary property.
+ In some parts of it like, you know, are obvious in the sense that like, you know, we already
+ told you there's a lot of quantum mechanics that the state of some particles always has
+ to have squared amplitude summing to one. And therefore, like, apparently if you do a physical
+ transformation, it must keep the sum of the squares of the amplitudes being one. But the
+ other half of this is saying is like the converse, which is that if you describe, you know, matrix
+ which has this property that always keeps the sum of the squares of the amplitudes one,
+ and this is a transformation that can occur in our physical universe. Now, you know, just
+ like lots of things, there's nothing in the law of nature. There's no law of nature that
+ presents us from getting, prevents us from having flying cars on Mars. That's consistent
+ with the laws of physics. It doesn't mean it's like easy to accomplish this, but you
+ know, there's nothing in the laws of physics that says we, you know, the laws of physics
+ said you could have some flying cars on Mars. That's fine. It could be very hard to arrange
+ for it, but it's possible. And similarly, for some, you know, thousand qubit manipulation
+ instructions defined by like two to the power 1000 by two to the 1,000 matrix that has the
+ unitary property, it could be very difficult to cause this transformation to occur in nature,
+ but in theory, it's possible. Okay. So maybe one thing we should check or reflect upon
+ is I just told you at the beginning of the course like, oh, toggle A, that's a valid
+ quantum transformation, and how to Marty, that's a valid transformation. And if A and
+ B then toggle C, that's a valid quantum transformation. So maybe we should go back and check that
+ these all have the unitary property. And we'll also see, we'll see that they have the unitary
+ property. And that's good. Once we check our basic instructions, well, I shouldn't say
+ basic, I don't know, are given instructions, pseudocode instructions, have the unitary property.
+ One thing that's good about this is that it just follows that any subroutine you can
+ build up from them also has the unitary property. Because each of your little instructions never
+ changes the fact that the squared amplitude sum to one, then you do like ten of them in
+ a row, then you never change the sum of the squares of the amplitude. It stays one. And
+ therefore the composite instruction also doesn't change the sum of squares of the amplitudes
+ from one. The composite instruction also has the unitary property. Okay. So by checking
+ that our little basic pseudocode instructions have unitary property, we check that at least
+ everything that we can program using these instructions is also unitary, and therefore
+ is physically possible. We kind of know that similarly, like if each of these little instructions
+ corresponds to physically doable thing, then you can just do them all in a row according
+ to the code, and that's also physically doable. But you know, let's check it. Actually, let
+ me say one more thing before we check that. Once we check that, what we'll have seen
+ is that any code that we can build up from our primitive pseudocode instructions has the
+ unitary property, and is therefore physically possible. But you might think about ask about
+ the converse of that, which is like apparently anything with the unitary property is physically
+ possible. Does that mean anything with the unitary property, we can code up using these
+ primitive instructions. And whether or not that's true actually depends on which pseudocode
+ instructions I gave you. If I was like, the only code you get is toggle. You'd be like,
+ I don't expect to build up all possibilities. There's no way I can build up how to mark
+ if all you give me is toggle. So I'm like, okay, I also give you how to mark and so forth.
+ That question is like harder to answer. I'll just tell you the answer, which is that it's
+ fine. Don't worry about it. But this requires like some mathematical theorems that we're
+ not going to get into. But I'll summarize it in words. It's a theorem that, okay, I'll
+ tell you a theorem that's not quite true, but I'll revise it. Something that's not quite
+ true is the following reassuring fact. Every qubit manipulation operation that has the
+ unitary property can be programmed using those seven instructions like if, then, toggle,
+ toggle, and Adamard and the ones that I've given you. That's almost but not quite true.
+ What's literally true is that like for any transformation with the unitary property,
+ you can program it to arbitrarily good accuracy. You can't maybe literally exactly get it,
+ but like you can get maybe a slightly different matrix where every like amplitude is correct
+ within 1%, or 10%, or like 0.1%, or 0.001%. Any tolerance you want, you can program it.
+ So it's a bit of a math thing. You can maybe literally program every single one, but you
+ can get arbitrarily close to any single one. The takeaway message, therefore being don't
+ worry that I didn't give you enough pseudocode instructions. We've proven that like these
+ seven instructions, or whatever, are sufficient to program anything you want up to arbitrary
+ accuracy. And also, there's one more twist. I didn't give you any instructions that let
+ me make complex amplitudes, because let's keep it simple. But here you should also allow
+ complex amplitudes. Again, you can take my word for it that anything you can do in quantum
+ computing with complex numbers you can do without complex numbers. Or if you really
+ want to get those complex numbers, you can give yourself like one little new instruction
+ called phase, which has like this matrix, 1, 0, 0, i. And then if you have this one,
+ then you can really get everything with complex numbers. Okay, but this was just to maybe try
+ to reassure you that like the pseudocode instructions that we have are, you know, going to be sufficient
+ for doing everything. And now let's try to check that, okay, these at least have this
+ unitary property. So probably we've got halfway through this check, which is fine. So let's
+ start with this question. Why are the classical reversible instructions unitary? Remember I
+ divided all the qubit manipulation instructions into two categories earlier. You know, the
+ classical reversible ones, the ones with the ifs and the ands and the toggles and so forth.
+ And then maybe the superposition creating ones like Hadamard, and I suppose this clockwise
+ as well. And we'll do this check again in two parts. So this one is actually not hard
+ to see. It's particularly, there's an intuition behind this. So what's up with classical reversible
+ instructions? Well, remember their paths diagram, they're defined by their paths diagrams. And
+ they look kind of simple. So let's say you have a classical reversible instruction that
+ operates on two qubits like if a then toggled b or swap a b. Then it's, it's paths diagram.
+ Okay, how's this on the top? And how's this on the bottom? All the possibilities for basic
+ states on the bottom. And because it's like kind of classical, it means that like, you
+ know, if you start in a basic state, you just with all the amplitude go to some other basic
+ state. So we just have like arrows and like all of them are implicitly labeled by one.
+ That's the classical part. What about the reversible part? The reversible part means, well, you
+ cannot have like this. This will never occur in a classical reversible instruction because
+ like this, it's not reversible. It does not have an undo because like it couldn't have
+ an undo because like, if it had an undo, where would the undo send one zero? You're like,
+ I don't know, like I might have come from zero one or I might have come from one zero.
+ I don't know how to undo this. So in order to be reversible, you see that everything in
+ the output has to have in degree one. It has to come from like a unique, I don't know,
+ it has to come from a unique basic state. Okay, so if you don't have in degree one, you
+ can't be reversible. And on the other hand, if everybody has in degree one, then it's perfectly
+ reversible. Really, I'm just saying like this is a directed matching. It's like a permutation.
+ So all the classical reversible instructions have positive diagrams that look like this.
+ And from this fact, like once you know this, it's kind of clear why these things have the
+ unitary property. Actually, maybe I'll ask you if you can suggest why that's true. Yes,
+ that's exactly how I would put it. The incoming, so why are these unitary? So yeah, so like
+ if the incoming state is as was suggested like, you know, a amplitude on zero zero, b amplitude
+ on zero one, c amplitude on one zero and d amplitude on one one with a squared plus b
+ squared plus c squared plus d squared equals one. It's like saying if you're given a valid
+ state where the squared amplitude is out up to one, well then the, you know, three stooges
+ noises here like outgoing state, you know, you'll have in this case, if you have a amplitude
+ on zero zero, then you get a amplitude on zero one. And then if you had b here, you have
+ b amplitude here and so forth. You would just get them permuted around. So you'll have like
+ still has amplitudes a, b, c and d just permuted. And therefore the squared amplitude is still
+ sum to one. In fact, hypothetically, if the squared amplitudes were allowed to sum to
+ something other than one, then if you did a classical reversible operation and just blindly
+ following the rules, the sum of the squares and the amplitudes would be the same thing
+ it was before. So, you know, mathematically doing this classical reversible operations
+ does not change the sum of the squares of the amplitudes. In particular, if it starts
+ at one, then it stays one. Okay, so these ones are unitary and this kind of really relied
+ on these operations being reversible. That was like kind of key to it. So that's clear.
+ Next time we'll see why, for example, Hadamard operation also has the unitary property. And
+ it's not really so much there's an intuition. It's just you got to check that Hadamard luckily
+ has this property. And that's why we focus on Hadamard. It's like one of the few lucky
+ operations that has this unitary property. So we're like, great, we'll take it. So next
+ time we'll see why that happens.

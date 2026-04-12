@@ -1,0 +1,219 @@
+ Last time we saw how you could use probability trees to analyze probabilistic code, and hopefully
+ that was reasonable and made sense.
+ And I'll just again emphasize that the process of analyzing quantum code is 100% literally
+ exactly the same except you just say the word amplitude instead of probability.
+ So in the interest of efficiency, I drew the tree structure we're going to need.
+ Obviously you wouldn't know this in advance.
+ You would draw it from top to bottom, but I pre-drew this for us, but we'll go in and
+ put in the amplitudes right now.
+ So I should emphasize that the nodes of the tree are always labeled by all the possible
+ variable values.
+ So we have only two variables here, A and B. So we're always going to list the values
+ in order A, B. So this node is talking about the situation where A has value 1 and B has
+ value 0.
+ So first instruction allocates these new qubits, A and B. So we just start out as 0 and 0,
+ so that's this node right here.
+ Okay, next instruction, toggle A. So this is like a classical reversible instruction.
+ It's deterministic, so you just have one arrow coming out, and you toggle A from 0 to 1.
+ So all these arrows get annotated by an amplitude.
+ This is the probability with the amplitude with which you go to the next state.
+ You would say like probably 1, I go from this state to this state because this is a deterministic
+ instruction.
+ And the same with amplitude 1, you go from this state to that state.
+ Okay, so now some branching happens, we go into different worlds just like in probability
+ you flip a coin, there's two different worlds you have to start to keep track of depending
+ on whether it came up heads or tails.
+ So this is a superposition creating instruction, Hadamard, and so we have to do some branching.
+ So this is Hadamard on A, so here's of course A right here, B is zero, we don't touch B,
+ so B is just going to end up zero in both these different worlds.
+ But what happens with A?
+ Well, you have to remember the rules of the Hadamard instruction which you just got to
+ memorize it, so I told you last time please memorize it, and so I'm sure you have memorized
+ it.
+ And what is the rule?
+ If you apply Hadamard to 1, then you go to zero with amplitude, I almost said probability,
+ with amplitude, positive root 1/2, and you go to 1 with amplitude negative root 1/2.
+ So that's it, now we got two worlds to keep track of when we get to line 4.
+ So line 4 is also a deterministic kind of classical instruction which is why we don't
+ have any branching, these amplitudes are just going to be 1, with all of the amplitude you
+ do this stuff, but we have to pay attention to what change happens.
+ So this instruction is if A is in toggle B, and this world A is zero, so we don't do
+ any toggling and we just stay zero, zero.
+ This world A is one, so we do toggle B and we get to 1, 1.
+ If I make a mistake or do something confusing, please stop me, don't wait until the end to
+ point out that I made a mistake way at the top.
+ Okay, next line is this one, Hadamard B.
+ So you know, it starts to get more and more annoying, we have more and more branches as
+ we go along.
+ But okay, we just do it, so let's focus on this world.
+ We're Hadamard B, so we're not touching A, so A is just zero, we don't touch it, it's
+ just going to stay zero, okay, and okay, but we're Hadamard B here, B is zero, and remember
+ okay, if you Hadamard zero, you go to zero with amplitude root 1/2, that's zero to zero,
+ and you go to 1 with amplitude also root 1/2, that's zero to 1, okay, and we can do the
+ same thing over here, again, A is one, we don't touch it, just A is going to be one
+ here and here, but B is one, so remember, just from up here, if you're one, you go to
+ zero with amplitude root 1/2, and you go to 1 with amplitude minus root 1/2, okay, good.
+ And by the way, you can see here as I'm doing this, like in order to understand how to draw
+ the next part of the tree, you only need to know how the instruction you're working on
+ acts on basic states, like zeros and ones, in principle, as I'll mention later, like you
+ can figure out what happens when you operate on superpositions, but for the purposes of
+ drawing the tree, like in every like world when you're trying to figure out what happens
+ next, you just need to know what happens for zeros and ones, okay, second to last instruction
+ is if B then toggle A, that's deterministic, so all these amplitudes are one, and perhaps
+ you can check that I got it right, let's look at, I don't know, if B then toggle A, so we'll
+ look at this one, here B is zero, so we don't do any toggling, and it just A is one and
+ we stay one zero, but here we did toggle A, and finally, we're getting there like last
+ instruction, how to mark B, so you should check that, you know, in each of these worlds
+ where we're going to how to mark B, the A value just stays the same, like zero stays to zero,
+ one stays to one at the beginning, and we've got to put in the, basically we've got to put
+ in the signs correctly, that's the real thing, these root halves are basically here just
+ to annoy us, the real interesting thing is just the signs, positive and negative, but
+ anyway, we'll put in the root halves, okay, so here from zero you go to zero with, well
+ if it's B is zero, like both these amplitudes are a positive root of half, here it's one,
+ so you got to pay attention, it's like root half and negative root of half, here it's
+ zero, so they're both root of half, and here it's one, so you got to pay a little attention,
+ it's root of half and minus root of half, okay, any questions about this, did I just
+ watch it, yep, hopefully not, okay, so you're basically done, but there's still more to
+ do actually, so I guess you're not basically done, you know, just like in a probability
+ tree, you know, these are all like sort of the probabilities, I mean the amplitudes of
+ doing each of these steps, but like there's like a final probability of getting to these
+ outcomes, so I'll call these like the outcome amplitudes, and you get it just like you do
+ with probabilities, you multiply the numbers along the path, so here, you get to here with
+ amplitude root half, well one times root of half times one times root of half times one
+ times root of half, let's do that over here, well one times root of half times one times
+ root of half times one times root of half, obviously we can get rid of one, so this is
+ root of half times root of half times root of half, oops, root of half, okay, so what
+ number is this, it's so annoying, it's like 0.35 or something, but what, yeah, yeah, I
+ like to think of it as root 1/8, of course we're always using this rule that I know you
+ know, like root p times root q is root pq, but while I'm here, I do want to point out
+ that another thing it's equal to is you can be like, oh, I'm also going to do this multiplication
+ first, root of half times root of half is a half, and then I'll have to do this multiplication
+ next, it's also equal to half times root of half, which I'll use in a moment, yeah, that's
+ why these stupid root halves are so stupid, but we're going to get rid of them later,
+ but for now we'll just deal, so anyway, this is root 1/8, you can actually see because
+ we had three Hadamard instructions, we have three layers where like the number root of
+ half is written everywhere, so every path will like bump into like three root of halves,
+ so we're actually going to get plus or minus root 1/8 everywhere here, and actually, you
+ know, this is related to how we're eventually going to get rid of them, like we're going
+ to be like, at the beginning we could say, you know what, there's three Hadamards in
+ this, we're going to be collecting up three root of half, so I'll just write like root
+ 1/8 all the way along the bottom, and then I just have to pay attention to the sign,
+ okay, so now we have to pay attention to the sign, so what signs do we collect, I'll
+ just try to visually do it, we didn't collect anything, so it's plus, so it's plus, plus,
+ still plus, minus, I got right minus, minus, minus, two minuses, three minuses, so check
+ what I wrote, I think I got it right, okay, so these are all the final outcomes, amplitudes,
+ but we're still not quite quite done, just like in probability trees, we would say like,
+ well, you know, if I ask you what are the final probabilities for all the four possibilities,
+ you'd be like, well, there's eight outcomes here, but I know there's only four basic states,
+ 0, 0, 0, 1, 1, 0, 1, 1, so you have to kind of collate them, okay, I'm going to probably
+ say this sort of few times, like sum them up or collate them, in the sense that, okay,
+ there's multiple ways in which you could get to this 0, 0, I think you could get it by
+ this branch, or you get it by this branch, and just like in probability trees, you just
+ add it up, okay, that's like the total amplitude by which you get to 0, 0, so, we're kind of
+ still not done with this tree, we'd say like, okay, the final, final amplitude, this is
+ a show for amplitude on 0, 0 is, okay, and we just add this up, so we get plus root 1/8,
+ plus this one also has plus root 1/8, and that adds up to, what is that add up to? It adds
+ up to root 1/2, because root 1/8 is half of root 1/2, so each of these is half of root
+ 1/2, so it adds up to root 1/2. Again, that's why I said it's so annoying, but that's the
+ deal. All right, so this is what I'm using here to do this calculation. Okay, so you're
+ like, that's fine, but now something very interesting is going to happen when we check
+ out the next one, so, okay, let's just calculate them in order, so now we also want to find
+ the final amplitude on 0, 1, so we're like, all right, where's 0, 1, here we got a 0,
+ 1, we got amplitude root 8, root 1/8, and then where's 0, 1, here, ooh, it's amplitude
+ minus root 1/8, and that adds up to 0, which is, okay, it's just like another number, it's
+ an amplitude that's 0, and since there's nothing overly special about, you know, an
+ amplitude being 0, but, well, it's kind of funny, we got like, cancellation, like you
+ could in, like, words say, oh, there is no amplitude on 0, 1 at the end, and this is
+ something, as I mentioned last time, cannot happen with probability trees, because you
+ never have negative numbers in probability trees, so things only like accumulate, but
+ here they can like cancel each other out, and that's, that's life, that's how quantum
+ works, so let's do the rest of them, so the final amplitude on 1, 0, there is, we got
+ a positive root 1/8, and here's the other one, negative root 1/8, so these also are, it's
+ the same thing, the same thing, it also adds up to 0, and finally we got 1/1, and it adds
+ up to, okay, so 1/1 here, we got negative root 8, and negative root 8, negative root
+ 8, plus negative root 1/8, not adds up to, well, it's the negative of this, so it's negative
+ root 1/2, okay, and now we're finally done, we like, phew, we analyze this whole code,
+ and we could say something like, you know, the final state, you know, of A and B, is,
+ you know, it's a genuine superposition state, it's, it's root 1/2, amplitude on 0, 0, and
+ minus root 1/2, amplitude on 1, 1, and here if I'm using the convention that like, if
+ an amplitude is 0, you just don't mention it, so I mean, really, really, you know, if
+ you're extremely scrupulous, you would add, okay, and 0, amplitude on 0, 1, and 0, amplitude
+ on 1, 0, but, you know, after a while, we just don't say the ones that are 0, and that's,
+ this is, that's how we have manipulated the state of these qubits into this kind of interesting
+ superposition state. Now, let me make some comments about this, first of all, you know,
+ you'll remember this law of quantum mechanics that I mentioned, maybe in lecture one, that's
+ said, you know, like every quantum superposition state, you know, it's defined by having an
+ amplitude on each of the basic states, here are four basic states, 0, 0, 0, 0, 1, 0, and
+ 1, and the squares of these amplitudes should add up to 1. So, let's check that, it did
+ check out, right, because, well, these are the four amplitudes, and their squares do
+ add up to 1, like root 1/2 squared plus 0 squared plus 0 squared plus negative root
+ 1/2 squared is 1/2 plus 1/2, which is 1. So, this is a check you can do, maybe to make
+ sure you didn't make a mistake, because this should always happen. Now, one thing I can
+ say is, we did like a lot of, I don't know, combinations of numbers and adding and subtracting
+ and like, this fact that it adds up to 1, it checks out at the end, may seem kind of like
+ a miracle, and it is a bit of a miracle. We're going to see why this happens always later,
+ but I just want to show you, it's not, it's far from obvious that like, your final four
+ numbers will have this property. This is not obvious, but they do, and they will, and we'll
+ see why. You know, another thing I want to say is, you might say like, okay, well, I
+ got this number, but like, what's the intuition? Like, why was this the final state, you know,
+ from this code? There is no intuition, okay? Don't be like, oh, what's the intuition?
+ I'm sad, I don't know it. There's no intuition. I just made up these instructions, like arbitrarily,
+ there's no way you just like, look at this code and like, have some intuition for what
+ the answer is going to be. In the sense that if I just gave you this like code, remember,
+ I gave you basically this code, but with like these like, one-third noise instructions
+ in there, and like, you can think about it somewhat, but there's basically no intuition
+ for like, what the answer is, you just got to do this stupid calculation, and yeah, so
+ that's how we got to the answer. Now, later we're going to try to like, design some code
+ where there will be some like, intuitions behind what's going on, and we'll have some
+ intentionality about it, but sometimes, you know, it's just, it is what it is. Like,
+ if you make up some stupid code, then you could just get some arbitrary answers. Yeah,
+ what else? Well, the only other thing I want to say is if now that we finally completed
+ everything, we could like, tack on like eight, extract all, extract all, it's kind of like
+ our print statement, and by the law of quantum measurement, we know what would happen. You
+ would see each of the four possibilities, with the probabilities are exactly these squares.
+ So if you ran this code, specifically, half the time we would print out, oh, a is zero
+ and b is zero, half the time we would print out a is one and b is one, and it would never
+ print out, you know, that there's zero, one or one, zero. Yeah? Eight. If you're trying
+ to use a quantum computer to like solve a problem, your dream is that, like, it gives
+ you the correct answer 100% of the time. That's desirable. And if you were imagining that somehow
+ this were solving a problem, then it doesn't look like it's fulfilling the dream because
+ it's giving a two different answer to the 50/50. So you're like, this is not giving me
+ a good answer. Yeah, so what we'll eventually see is it's a bit restrictive to try to use
+ the quantum computer to get the correct answer 100% of the time. If you really insist on
+ this, then there are some things you can do with quantum computing that maybe you can't
+ do with normal computing. For example, that mystery toggle the demo actually is a property
+ that gives you the correct answer 100% of the time. That's a little bit rare. We're
+ going to try to get the tickets over to this side. Let's do it. But we'll see eventually
+ that like with like the factoring algorithm, we'll eventually see, for example, like, you
+ know, be set up so that you give it a number to factor and it will give you the correct
+ answer like 99% of the time. So we will want this, that it gives you the correct answer
+ with like high probability. And that's going to be good enough for us because, you know,
+ code gives you the right answer 99% of the time. It's very satisfactory because you're
+ like, okay, I'll just run it like 100 times and then I'll really get the right answer
+ for sure after that. So yeah, we will eventually be okay with getting the right answer with
+ high probability. Yeah? The probability trees, well, probability has the additional positive
+ that it like, it's intuitive. It corresponds to not only have these mathematical rules
+ where you're like, okay, if you're here and you do this instruction, you make this branches
+ and write these numbers, there's an intuition for why you're doing that. You're mentioning
+ oh, I run this a million times and like 30% of the branches, if this number is 0.3, it's
+ probably because like 30% of the traces will look like this and so forth. In quantum, well,
+ it's maybe different. It is different. So I compared it to probability trees because
+ the process of the analysis is literally exactly 100% the same. But the intuition is maybe
+ not the same because yeah, if you're like, what does it mean to like you have, you're
+ in this state with amplitude point three and a dot state with amplitude point minus point
+ three and so overall you get amplitude zero. I don't know, like at some point, you maybe
+ just have to say like, well, apparently after 100 years of experiment, like this is like
+ the mathematical picture you could work out that explains the experiments you run and
+ yeah, you can daydream about what it all means. At some point, you just like, well, I'll also
+ calculate it. Yeah, in fact, I want to show you examples that like exactly get to these
+ like questions. But actually on this subject, I should also add that I just always remember
+ too that these are like abstract instructions that we think about mathematically, logically,
+ but like they're actually also instructions for like a physical process experiment you
+ can do with like two electrons or whatever. Each of these corresponds to like, you know,
+ shooting some microwaves of the electrons or whatever. And you can actually physically
+ do this. And like when you physically, you know, do this last step and you like look
+ at which of the two phosphorescent screens, I guess there'll be four phosphorescent screens
+ in this case like glowed or lit up. Yeah, you'll see this phenomenon like 50% of the
+ time you'll get the outcome corresponding to zero zero and 50% of the time you get the
+ outcome corresponding to one one. Yeah, so in some sense like the math of this was like
+ back formulated just by trying to explain these physical experiments.

@@ -1,0 +1,338 @@
+ Although you might think like, okay, yeah, I get it.
+ Like, toggle A, if A, then toggle B, I get it.
+ I'm gonna like actually, you know,
+ be labor at the point a little bit
+ about exactly how these operations worked
+ because it'll give me the opportunity
+ to talk about like another concept
+ that we need to talk about, which is what I would call
+ sometimes the, but it's kind of like the analog
+ of the truth table for these instructions.
+ And sometimes we'll call it the path diagram
+ for these instructions,
+ or you can also call it the matrix representation
+ of these instructions.
+ Okay, so I'm gonna go through that.
+ And that'll be useful when we start to talk
+ about superposition creating instructions.
+ Okay, so let's do it.
+ Let's just do it here.
+ So I'll just focus on these as like the most popular
+ and basic of all classical reversible instructions.
+ Okay, so if I were to like, extremely like belabor
+ the point of like, what is the definition
+ of the toggle A instruction or toggle instruction?
+ Or as a reminder, it's sometimes called, you know, not A.
+ I could make the following explicit definition.
+ I would say like, okay, well, I mean,
+ I'm gonna write all the possible,
+ oops, I'm gonna write all the possible incoming basic states.
+ So that's, it could be zero, or it could be one.
+ And then let me write outgoing basic states.
+ And because I know it's a classical type instruction,
+ it has this basic state and basic state out property.
+ So if you give it basic states,
+ it'll always, you know, return the qubit in a basic state.
+ So I'll just write them here like zero, one.
+ And, yeah, I threw it in a weird way on my notes,
+ but, you know, we could draw this like diagram.
+ It just says, you know, you apply it to zero,
+ you get one, you apply it one, you get zero.
+ Kind of easy.
+ Okay, so I'll sometimes call this
+ like the path diagram for this toggle instruction.
+ Now, I want to make this a little bit more fully fleshed out,
+ because one thing I want to remember is that,
+ you know, although the output of this instruction,
+ these two cases zero, one, these are basic states,
+ as I mentioned last time, you know,
+ in general, we have, it's possible for a qubit
+ to be in like one of these superposition states
+ with like, let's say x amplitude on zero and y amplitude on one
+ as long as x squared plus y squared equals one.
+ And as I commented last time, you should even,
+ or can even think of like basic states themselves
+ as like superposition states,
+ just in kind of a little bit of a degenerate way.
+ So let me recall that like,
+ when you see like the basic state zero,
+ this is really like sort of short-hand,
+ this is really like sort of short-hand
+ for one amount of amplitude,
+ I want to somehow like, okay, one amplitude on zero
+ and no amplitude on one.
+ This is sort of like the full way in which, you know,
+ this is a valid state for a qubit.
+ And remember, these two numbers,
+ when you square them, they add up to one.
+ And similarly, this basic state, you know,
+ which we call basic state one,
+ this is like no amplitude on a basic state zero,
+ like one amplitude on basic state one.
+ Okay, and here's where it's like,
+ it's like a little confusing because,
+ I mean, you have like so many zeros and ones floating around,
+ but they're playing like different roles, right?
+ So like, this is just like sort of like the names
+ of basic states, these ones with the weird brackets.
+ And these are just like regular old numbers, real numbers.
+ Okay?
+ So like, you know, to say things like more fully,
+ you know, the toggle instruction,
+ if you're at basic state zero,
+ it maps you to basic state one,
+ which means that it maps you to having no amplitude on zero
+ and one amplitude on one.
+ So I'm actually gonna draw,
+ you can also draw this diagram
+ like more extensively like this.
+ If you're at zero,
+ then you kind of go to one with amplitude one,
+ and you go to zero with amplitude zero.
+ Now this is like kind of like,
+ confusing because there's lots of like zeros and ones,
+ but like, this is saying if you're at zero,
+ sort of you get amplitude one on one
+ and you get amplitude zero on zero.
+ Okay.
+ And similarly, if you start out at basic state one,
+ well, we kind of know you go to basic state zero
+ and that's like one amount of amplitude on zero,
+ which I'll write here.
+ And zero amount of amplitude on one, which I'll write here.
+ Maybe I'll put this one over here.
+ It's a little bit better.
+ Yes, I wanna say like this diagram,
+ like Mar fully specifies exactly what superposition state
+ you go to starting from zero.
+ And this specifies what superposition state you go to
+ starting from basic state one.
+ So this is like the most confusing diagram like so far
+ 'cause there's all these zeros and ones
+ that have different roles,
+ but is there a question right now?
+ Okay.
+ So later, I'm gonna like use this like shorthand convention
+ where like this is like the most full version of the diagram,
+ but I'll do sort of the usual thing
+ where like if an arrow has like zero amplitude on it,
+ I just won't draw that arrow.
+ Hey, and if also if an arrow has like one on it,
+ I'll just not write the one.
+ It's like in algebra, you know,
+ if you have like one times X, you just don't write the one.
+ And if you have like zero times X,
+ you just don't write anything.
+ Same story here.
+ Okay, in which case, like this diagram
+ will just look like these two arrows.
+ Okay.
+ And I'm gonna get to it in a moment,
+ but we're gonna like do the same thing for like,
+ let's say this operation.
+ And so there'll be like four basic states
+ that you could start in going across the top,
+ zero, zero, zero, one, one, zero, one, one,
+ and there'll be like four on the bottom.
+ And like the diagram will become like more clutter.
+ And especially if you were like fully explicitly writing
+ all these like zero and one amplitude,
+ some of the edges will become very cluttered.
+ So I want to show you like a different way.
+ You can organize this diagram.
+ That's a bit less cluttered.
+ And it's to like, you can also arrange
+ the arrows, labels into a matrix.
+ Okay, so if you have a qubit instruction
+ that operates on one qubit,
+ so there's like two incoming states
+ and two outcoming states,
+ this will be like a two by two matrix.
+ Okay.
+ And here's how you gotta remember it.
+ The incoming states will always be labeled across the top
+ on like the columns.
+ It's like incoming.
+ And like the outgoings, basic states kind of will be
+ always labeled on the rows.
+ So you really think of like the action is like this.
+ This arrow is like from into out.
+ And then like you put the entries on the matrix,
+ record all these edge labels.
+ Okay.
+ And you know, if you fully have like a diagram like this,
+ you have like one edge label for every pair of incoming
+ and outgoing basic states.
+ So like for every entry in this table.
+ So here, like, let me put this, there's like a one here.
+ Okay, let me not circle them.
+ But there's like a one here.
+ And this one is this one.
+ Okay, from the going from basic state zero
+ to basic state one, you have amplitude one.
+ Okay, and if you're in basic state zero,
+ you end up with amplitude zero on basic state zero.
+ And conversely, if you're in basic state one,
+ when you toggle, you get one amplitude on zero
+ and you get zero amplitude on one, okay?
+ So you can always, when you see this like matrix representation,
+ this is a matrix representation,
+ or kind of like the truth table, if you will, of toggle,
+ kind of always read it column by column,
+ like first state to yourself, like, okay, column one tells me
+ if I start in basic state zero,
+ then end up with no amplitude on zero
+ and one amplitude on one.
+ And if I start in basic state one,
+ I end up with one amplitude on zero
+ and zero amplitude on one.
+ And so the question was kind of like,
+ it was related to this question of like,
+ here I've sort of explained how toggle works
+ if A's value, like when incoming value
+ is either like basic state zero or basic state one.
+ And you might say, like, what if it's like, you know,
+ not like this, what if it's a superposition state?
+ Like point eight on zero and point six on one.
+ So two things to say.
+ Shortly, like later in this lecture,
+ I'll explain to you like what happens
+ when you do like an instruction like that
+ on something that's in a superposition state.
+ But another thing that I didn't make clear,
+ which I should, I'm making clear now is,
+ as we'll see, it's sufficient to define an instruction
+ by saying only what it does to basic states.
+ Okay?
+ For reasons I'll eventually say,
+ if I tell you how an operation works
+ when all the qubits are in basic states,
+ that fully defines how it works
+ on any superposition state,
+ according to a rule, which I'll explain later.
+ And therefore, like when somebody's like defining
+ a new instruction to you, they kind of only need to tell you
+ what does it do to like the basic states?
+ Like what does it do to basic state zero
+ and what does it do to basic state one?
+ And then via a rule, I'll explain later,
+ you can infer what it does to any superposition state.
+ And that's why if you sort of write the truth table
+ or like the defining matrix for an instruction,
+ like we've just done,
+ it's sort of you only need like one column,
+ you have like one column for each of the possible basic states
+ and that's sufficient to define it.
+ Okay, excellent question.
+ Okay, so let me do another example here
+ and we'll do it for, okay, if a then toggle b.
+ So how about this one?
+ If a then toggle b.
+ So I mentioned the thing that people really call this
+ as C not AB, this stands for controlled not.
+ And the meaning of that is like,
+ it's kind of like you do a not on B,
+ but whether or not you do it is controlled
+ by the truth value of A.
+ Okay, so like controlled not means like controlling on A,
+ A is true, you do the nots,
+ and if A is not true, you don't do the nots.
+ That's why it has its name C not.
+ Okay, so let's draw the path diagram for this.
+ It's pretty simple.
+ If I were following my convention,
+ I'd use like blue for the basic states,
+ but let me just stick them in black.
+ We write down all the possible basic states.
+ There's four of them, 'cause it's operating on two qubits
+ and therefore there are four possible basic states for them.
+ These are incoming, these are outgoing.
+ And I'm gonna use the shorthand where we like,
+ don't draw amplitudes of zero
+ and we don't write amplitudes of one.
+ So let's look at zero, zero.
+ If A and B are zero and zero, then like A is false,
+ so you don't toggle B, so you just, they stay zero and zero.
+ Okay, so we draw this arrow.
+ And if we were really scrupulous, we'd write like one here
+ and we'd write like zero on all these other arrows.
+ To indicate that if you start in basic state zero, zero,
+ you end up with amplitude one on zero, zero
+ and like no amplitude on the other possibilities.
+ But I won't write that.
+ Okay, what if you start out in zero one?
+ So then it's like A is zero and B is one,
+ so A is false, so you don't toggle B, so it just stays.
+ So you have this arrow.
+ What if A is one and B is zero?
+ Well, A is a true, so you do toggle B,
+ so A stays one and B becomes one.
+ You have this arrow, and here if A is one and B is one,
+ you do toggle B, so it becomes zero, so you go to one, zero.
+ And I should always remember like,
+ you know, we're writing these in order A, B, A, B, A, B.
+ Okay, so I call this like the path diagram
+ for the if A then toggle B instruction
+ or the C not instruction.
+ And I could similarly make a matrix representation of it.
+ It's like a bit more tedious, but I'll do it.
+ So, when we put the incoming possibilities on top,
+ and we put like the outgoing basic states,
+ that's labels on the rows.
+ Sometimes I like to draw this arrow.
+ Okay, and then we could fill in,
+ we sort of fill in like all 16 amplitudes
+ that are written in this diagram,
+ except we were kind of lazy
+ because like all the arrows are sent for an amplitude of one
+ and all the missing arrows stand for an amplitude of zero.
+ But if we were to plunk it all in, it would look like this.
+ We get like a one here, a one here, a one here,
+ and one here, everything else is zero.
+ And again, just like as a way to read this,
+ you know, what's going on with let's say this column,
+ this column is indicating that if you, you know,
+ are doing this C not operation,
+ the incoming bits are in basic state one zero,
+ then the outgoing state will have no amplitude on zero zero,
+ no amplitude on zero one, no amplitude on one zero
+ and one amplitude on one one.
+ So these matrices look a little bit like kind of like overkill
+ for these classical reversible instructions,
+ but when we get shortly to the superposition creating instructions
+ where you actually have like amplitudes
+ that are not just one and zero,
+ they'll maybe be helpful for us.
+ So let's do this last instruction here,
+ if A and B then toggle C. So I'll just do the path diagram here.
+ So this is a classical reversible instruction
+ that operates on three qubits.
+ So they're eight possible basic states zero, zero, one,
+ zero, one, zero, zero, one, one, run at a room, one, zero, zero, one, zero, one, one, zero,
+ one, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one,
+ zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one,
+ zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one,
+ zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero,
+ zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero, one, zero,
+ one, zero, one, zero, one, zero, one, zero, one,
+ and one. And outgoing states, there's like zero, zero, zero. Okay, I won't put in the brackets, but
+ zero, zero, one, zero, zero, one, one, zero, zero, one, zero, one, zero, one, one, one, one, one, one, one, one, one, one, one, one. And it's a pretty boring diagram, actually. Um, let's just think about it as long as like, okay, at the end of A and B, first of all, the A and B's value don't change.
+ So whatever the first two qubits are, like, you'll have the same two qubits later. Uh, so actually, it'll like kind of be divided into four blocks based on that. And then, um, see only changes when A and B are both one. So like A and B are both one is like way over here in the corner.
+ And when A and B are both one, C gets toggled to one. So we have this like diagonal arrow. We have like this diagonal arrow. And then everything else doesn't change.
+ Okay, so this kind of crazy thing. Is like the paths diagram for this instruction.
+ And I will not draw the eight by eight matrix because that's very tedious, but you can do it.
+ Um, oh, and I should mention that this instruction is also sometimes called, well, usually called CC not.
+ On A, B and C. Uh, that stands for controlled C not or controlled controlled not. And it's, if you think about it, you know, it's like fun to think about it.
+ It really does look like this. It's sort of, it's like a, it's a C not on B and C controlled by A. So it's like, if A is true, then do C not on BC. If A is false, don't do anything.
+ And then if you expand that in your mind, it's like, if A is true and B is true, then you toggle C, otherwise you don't do anything.
+ So that's an explanation for why this instruction is usually called CC not.
+ And finally, just so we're all in the same page, you know, here I did an example where I showed the paths diagram, but I didn't show the matrix. Let me do the reverse now.
+ I'll show the, the matrix, but not the path diagram. So we'll do this for, um, the classical reversible instruction called swap.
+ You know, swap, baby.
+ And we draw the matrix.
+ It's going to actually look like this.
+ You know, if you're a sophisticated, like you don't put the row and columns and column labels in, but I'll do that for you in a second.
+ But this is like the matrix for the swap operation and looks kind of inscrutable, but the reason is you remember what the incoming labels are and outgoing labels are.
+ It looks like this. So for example, if you do swap when a is one and B is zero, then the result is a is zero and B is one. So like you get all the amplitude on that and no amplitude on the rest.
+ You notice it's like not genuinely so important to like remember and work with these matrices. It's like mostly important. Just remember like, you know, swap, you know, it swaps or like how these things work, but like, especially if you read other textbooks, they'll be like talking a lot about the matrix for different instruction. So why don't you explain that.
+ [BLANK_AUDIO]

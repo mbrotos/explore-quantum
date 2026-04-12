@@ -1,0 +1,282 @@
+ All right, good morning, quantum enthusiasts.
+ Welcome.
+ I'm glad you found the room and everything.
+ There's some tickets going around.
+ The instructions on how to deal with the tickets are there
+ on the board.
+ I'll explain about that later.
+ But this is me, Ryan O'Donnell, and this quantum computation.
+ So let's start talking about quantum computation.
+ So here's my definition of a quantum computer.
+ I'll write this on the board.
+ So quantum computer is a programmable device
+ that natively supports a certain data type called qubit.
+ OK, so this is a weird word if you haven't seen it before.
+ QU, B-I-T, that's pronounced qubit.
+ And I'll talk about what this definition means as we go along
+ and even a little bit today.
+ But the key thing about it is there's
+ a new kind of data type that's not like int or float or string.
+ It's like qubit and it has some special properties
+ and things you can do with it.
+ And quantum computer is just a computer
+ that can realize this data type natively.
+ OK, so what's going on with this data type?
+ So qubit is like a logical concept, like a mathematical concept.
+ And in some sense, there's two possible values for a qubit,
+ just like there's two possible values for a bit.
+ So it's a new data type.
+ And it has two, what I'll call, basic values.
+ OK, and they're basically 0 and 1.
+ But I don't want you to get confused with the usual bit 0
+ and 1 or the number 0 and 1 or the ASCII character 0 and 1.
+ They're like special qubit 0's and 1's.
+ So we're going to write them like this.
+ Maybe I'll get another color.
+ I'm going to write them like this.
+ And some kind of weird asymmetrical brackets.
+ So that's 0 and that's 1.
+ So those are two basic values that a qubit can have.
+ And as we'll see, these are just like the basic values
+ that a qubit can have, 0 and 1.
+ And maybe you've heard that like what's
+ cool about quantum computers and qubits,
+ is that actually, if you have a variable that's a qubit,
+ it can be in some kind of combination of 0 and 1,
+ or like superposition of 0 and 1, where it's
+ like some amount of 0 and some amount of 1 at the same time.
+ We'll get into that.
+ I mean, that's the magic of it.
+ But before we get into that, I want
+ to show you some quantum code that just uses 0's and 1's.
+ We won't get any superposition.
+ So I'll just start by calling it like boring quantum code.
+ So this is like a block of code that you can run
+ if you have a quantum computer.
+ So right now, well, some companies
+ are spending a lot of money to try to build quantum computers.
+ And maybe they can get one that can allocate like 7 qubits
+ and execute 20 instructions.
+ But we're just going to imagine in this course,
+ as I'll tell you, that we have quantum computers
+ and we can just execute quantum code on them.
+ OK, so I will now write some quantum code for you.
+ OK, so this is going to be a pseudo code.
+ So hopefully, you'll just be able to guess what's going on.
+ So new qubit.
+ Actually, I'm going to get my other marker out.
+ A, B, C, D. OK, now I'm just not going to use colors.
+ It's a little bit too challenging.
+ I'm not a black pen, red pen over here.
+ If A then toggle B, if A and B then toggle C,
+ 5, if A then toggle D, 6, if D then toggle A, 7, extract.
+ Oh, OK, that's my block of code.
+ OK, so let me say a few things about this.
+ So this is a legitimate quantum code
+ that you can run if you had a quantum computer that
+ could support for qubits, like variables, A, B, C, and D.
+ And I wrote in some pseudo code that we're
+ going to use in this course.
+ You see, we don't really have quantum computers yet,
+ so I think it's a bit premature to get really
+ into some specific programming language for quantum computers.
+ They exist.
+ There's like kids' kid and some other q sharp things.
+ But in this course, we're just going to use pseudo code,
+ which I hope is more understandable.
+ And I'll tell you, if you read a textbook,
+ you will not see my personal pseudo code style in there.
+ But later in the course, I'll tell you
+ the real names of these instructions.
+ But hopefully, by using pseudo code,
+ you'll be able to just intuit what's going on here.
+ And I'll put some comments here.
+ So this is like four qubits.
+ I don't give you a hint.
+ These are in my pseudo code.
+ And also, it's kind of like standard in quantum.
+ When you start with a new qubit, it defaults to value 0.
+ That's kind of common.
+ And then maybe this is not obvious,
+ but like this, at least in my pseudo code,
+ this will print something out on the screen.
+ Prints stuff out.
+ I was thinking about calling this print all.
+ But for some reason, you'll see later,
+ I decided to call it extract all.
+ The real name of this instruction is measure,
+ but this is what we're going to call it.
+ And these are variables of type qubit, A, B, C, and D.
+ It's somehow traditional in quantum
+ to use capital letters from the beginning of the alphabet
+ for your variables or registers that they're called.
+ You can call them whatever you want, like variables.
+ But we'll stick with like A, B, C, and D.
+ And another comment I want to make
+ is you can mix in normal code too.
+ If you want, you can allocate some ints and strings
+ and do whatever you want.
+ But this code just happens to use only quantum instructions.
+ So yeah, so as I said, if you had a quantum computer
+ and you ran this code, it would print something,
+ it would display something at the end.
+ So can somebody guess what it will print at the end?
+ [INAUDIBLE]
+ This is what it'll print out, I think.
+ And let's check it.
+ So we can just check it by tracing through the code,
+ like using the fact that what you probably
+ guess about the instructions is indeed correct.
+ So let's see.
+ So this is like after step number one.
+ Well, I kind of told you.
+ We have like four qubits, A, B, C, and D.
+ And I told you that they're like initially zero.
+ So indeed, we have like A equals 0, B equals 0, C equals 0,
+ D equals 0.
+ OK, we're going to abbreviate this.
+ I'll just abbreviate this to 0, 0, 0, 0, 0.
+ Also in these like weird brackets.
+ And if I'm feeling a little bit more expansive,
+ I might say like A, B, C, D equals 0, 0, 0, 0.
+ And when I like list variable values like this,
+ it'll always be like, I don't know, A, B, C, D.
+ What this means are four variables are 0, 0, 0, 0.
+ OK, so then we go on to line two.
+ And line two says toggle A, so like no surprise,
+ that switch toggle like switch is 0 and 1.
+ It's like a logical knot.
+ So after this, it's like 1, 0, 0, 0.
+ OK, so this first one is A. OK, next instruction
+ says if A then toggle B. So you should also think,
+ I mean, hopefully you naturally do, that 1 is kind of like true
+ and 0 is kind of like false.
+ So if A, well, A is 1 at this point, so it's true.
+ So you know, you should toggle B. So B is 0, and we toggle it,
+ and we get 1, 1, 0, 0.
+ Maybe I'll go to the next part of the board.
+ OK, so step four, so it says like if A and B,
+ oh, well, luckily now A and B are both like 1 or true,
+ then toggle C. So OK, we'll toggle C.
+ So we got to like 1, 1, 1, 0.
+ OK, if D, no wait, if A then toggle D.
+ OK, so A is true, D is false or 0, so we'll toggle all of them.
+ So now we're at 1, 1, 1, 1.
+ OK, now if D then toggle A, so D is 1, it's true.
+ So we're going to toggle A back to 0, 0, 1, 1, 1.
+ OK, and then we come to this printing instruction or extract all.
+ And actually, one reason I'll kind of give you
+ like a little info in advance, one reason I call it extract all
+ is it like takes a qubit, and it's kind of like a data type conversion.
+ It converts them to bits, just regular old bits.
+ OK, so in some sense, this kind of converts them
+ to like the usual bits, 0, 1, 1, 1.
+ And then like imagine you're like in Python interactive mode,
+ like it returns something, and then just prints it out on the screen.
+ So like, yeah, after 7, it prints 0, 1, 1, 1.
+ I guess sometimes my one font is like this, and one is like this.
+ You'll just have to.
+ Maybe I'll try to keep it like this, because it kind of looks like this stick.
+ Yeah, 0, 1, 1, 1.
+ OK, so that's great.
+ So we just like trace through like a first quantum code.
+ And OK, it was a bit boring, because it's like it only used
+ these like simple instructions that act on 0 and 1 in like a natural way.
+ And like you'll notice like there was no like super positions or anything.
+ Well that's because there's like one more instruction.
+ And actually, there's in a certain sense like more instructions,
+ but like in fact, to really do the full power of quantum computing
+ and to like run any quantum algorithm that's possible,
+ you just need like one more instruction beyond these instructions
+ that are already in this example code.
+ It's sort of like the magical quantum instruction that really makes
+ some super positions and makes things exciting.
+ And we'll see it shortly.
+ It's called Hadamard, or let me call it Hadamard.
+ All.
+ OK, this is like the one kind of quantum instruction.
+ Hadamard is like the name of some old French mathematician
+ that proved the prime number of theorem
+ and studied some specific matrix.
+ And that's how he got his name on this.
+ But you just have to take it as the weird name of an instruction.
+ OK, any questions right now?
+ Right, so yeah.
+ So actually, once you have all these instructions,
+ you see inside this code plus this Hadamard instruction,
+ you can do all of quantum computing.
+ I mean, if you have a quantum computer to run it on.
+ And quantum computer is like some device that can like take in code
+ like this and do it, but it needs to support like qubits.
+ And as I mentioned, like right now, we're
+ still working very hard people on Earth to build quantum computers.
+ And as I said, maybe like the fanciest million dollar quantum
+ computer can like run some code if it has like eight qubits
+ and like 20 instructions or something.
+ And that's not too impressive because you can't really do a lot with that.
+ In fact, that's like so unimpressive that you don't actually
+ need a real quantum computer to like run some quantum code that
+ has like eight qubits and 20 instructions in it.
+ You can just run it on like a simulator, like a classical computer
+ that's like simulating a quantum computer.
+ OK, so this would not be a quantum computer itself.
+ It's not like natively supporting like this qubit.
+ It's just like simulating what a quantum computer can do.
+ And maybe the point is that like, I mean, if you want to run some quantum code
+ with like 10,000 qubits and like a million instructions,
+ that's like too complicated for like a classical computer
+ to simulate in any reasonable amount of time,
+ you'd need like a real quantum computer in order to do that.
+ And if you had one, it would be fine.
+ Just in the same way, it's like completely fine for you
+ to run some code yourself that has like a million, I don't know,
+ variables and whatever I said, 10,000 variables
+ and like a million instructions, that's no problem.
+ But for such like baby kind of quantum code,
+ you can just write on your own computer
+ like a simulator for a quantum computer.
+ So that's what I want to show you.
+ I have a simulator.
+ And I'll show you some code that uses this special quantum
+ instruction in it.
+ Right, OK.
+ So I wrote my quantum simulator in my favorite programming
+ language, which is Scratch.
+ If you don't know what Scratch is, it's like a programming
+ language for children, but it's extremely enjoyable.
+ It's like one of my top one favorite programming languages
+ to program in just for fun.
+ Yeah, so it's like more than capable
+ of stimulating a quantum computer that only has 10 or 15
+ variables in it and actually any number of instructions.
+ OK, so what I want to show you now-- well, actually, first
+ of all, I mean, maybe if you can squint and see this,
+ this is actually the same-- self-same code as this.
+ Actually, I was like a bit lazy in setting up this new qubit
+ custom block to accept several variable names.
+ So you could allocate several variables in one shot.
+ So that's why I have to allocate them all one at a time--
+ new qubit called A, B, C, D. Then if I didn't screw it up,
+ it's the same code, right, like toggle A, if A, then toggle B,
+ if A and B, then toggle C, if A, et cetera.
+ OK, you can execute this code.
+ You can execute it one step at a time if you want, but let's
+ see, it's like a new qubit A. OK, so new qubit B, or whatever.
+ If we just run the rest of it, yeah, so there we did it, right?
+ A, B, C, D. Again, I don't know if you can see that.
+ Hopefully, you can see that A, B, C, D equals 0, 1, 1, 1.
+ So we checked out ourselves.
+ OK, so now what I want to show you
+ is some more cool quantum code that uses this instruction.
+ And it's going to be--
+ I just want to do it as a demo for where we're going.
+ I will not explain how it works or why it works.
+ In some sense, the first couple of weeks of the class
+ will be about learning all the basics of qubits
+ and how this how to mark works and everything like that.
+ And so maybe in two weeks, we can look back and say,
+ ah, now I understand how this code that he showed me
+ on the first day works.
+ But for the first day, I just want to show you as a demo.
+ [MUSIC PLAYING]
+ Bye, bye, bye, bye, bye, bye, bye, bye, bye, bye, bye, bye, bye, bye, bye.

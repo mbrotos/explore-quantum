@@ -1,0 +1,320 @@
+ Okay. So, yeah, the burning question on your mind is come up in a couple of questions is,
+ um, you know, I've told you in all these instructions like what state, you know,
+ the qubits get to you if you apply this instruction on a basic state.
+ And, you know, if they're classical reversible instructions,
+ we know they get you to some other basic state.
+ So we know exactly what happens if you just like keep doing a bunch
+ of classical reversible instructions.
+ But, you know, there's superposition creating instructions like this Hadamard and you do this,
+ like, you know, on a new qubit and now you're in the state root half amplitude
+ on zero root half amplitude on one and, like, now you do some instructions,
+ then what happens? Well, that's what we got to talk about now.
+ Um, so, uh, instead of me immediately telling you what happens,
+ I want to take a short digression, uh, I want to take a digression to tell you
+ about something I call, uh, probability trees, um, and, uh, how you can use them
+ to analyze probabilistic computation.
+ So I'm going to, like, insult your intelligence a little bit by, like,
+ say, like, forget everything about quantum for, like, 10 minutes.
+ We're going to talk about, like, a non-quantum topic.
+ Just forget everything.
+ We're going to talk about a non-quantum topic for 10 minutes.
+ We're going to talk about probabilistic computation,
+ not quantum computation, but probabilistic computation.
+ And, uh, there's a couple of reasons why I'm going to take this digression
+ into probabilistic computation.
+ Um, it's really an excellent analog for quantum computation.
+ And in fact, the laws of probabilistic computation are, I think,
+ like, uh, pretty intuitive and familiar, especially if you've taken,
+ like, 259 or analogous plots like you have.
+ I think, like, you know, when I show some probabilistic code and then,
+ like, analyze all the probabilities, you'd be like, yeah, I get it.
+ It makes sense.
+ But I want to do it because the laws and rules for how to analyze quantum code
+ are literally exactly the same.
+ They're literally exactly the same, except every time you're about to say
+ the word probability, just say the word amplitude instead.
+ And then it's literally the same.
+ Um, moreover, as you know, quantum computation to study it,
+ you need to know at least a little stuff about probability,
+ because we have this law of quantum measurement that,
+ you know, explains if you get some qubits
+ into a certain superposition state and you do extract all,
+ like, what are the probabilities you see different possibilities on your screen?
+ So probability is like an inherent aspect of quantum computation.
+ Therefore, it doesn't hurt to remember a little bit about probabilistic computation.
+ So, uh, what I mean by probabilistic computation is, you know,
+ just imagine you have, like, regular old deterministic code.
+ But then, like, you get that one magical instruction that lets you have,
+ like, randomness in your code, uh, probability in your code.
+ And when you have that happens, you need to remember a little bit about the rules
+ of probability to analyze, like, how all the bits in your code change values
+ in a probabilistic fashion.
+ So I'm going to remind you about that.
+ Um, just to make the analogy with quantum computing more obvious,
+ I'm going to, um, well, for simplicity or, I don't know, sure, simplicity.
+ It's not even simplicity, but for analogy.
+ I'm going to only study a probabilistic code that has these properties.
+ So the variables will all be bits.
+ They're all going to be updated type, uh, bit.
+ And, um, my deterministic regular instructions will all be classical reversible instructions.
+ Now, they don't have to be, of course, you know, in regular code,
+ you can use any kind of bit instruction, but, you know, just to make the analogy clear,
+ I'm going to happen to only give you examples that use the classical reversible instructions,
+ but, like, on bits.
+ And then I'm only going to give you, or I'm only going to use, like, one,
+ kind of, like, RNG type instruction, only one, like, uh, instruction that generates
+ probability, and it won't be the one for the homework just to, like, you know,
+ I don't know, makes things up, a, it won't be the instruction that, like,
+ gives you a 50/50 random bit.
+ It's going to be this new one that I'll call noise on B.
+ Okay.
+ So B is the name of a bit valued, or a bit type random variable.
+ And what does noise B do?
+ It toggles B with probability one third.
+ Why one third?
+ I just made it up.
+ This is just, like, I made up this instruction called noise just for, uh,
+ pedagogical purposes, toggles it with probably one third.
+ Or you can think of it as like, oh, right.
+ If Randent three equals one, then toggle B else don't toggle B.
+ And you might notice that you could make, um, a matrix or a path diagram for, uh,
+ this noise instruction to, it would just be that, like, the labels now would be
+ probabilities, not amplitude.
+ So like the path diagram for this noise instruction
+ would look like this zero one.
+ I don't put the angle brackets around it because they're not qubits.
+ These zero one are just bits.
+ Zero one.
+ And, uh, if you look at it, zero goes to zero with probability two thirds.
+ One goes to one with probability two thirds, zero goes to one with
+ probability one third and one goes to zero with probability one third.
+ Okay.
+ So now again, the, the labels on the edges are probabilities, not amplitudes,
+ but it's kind of the same.
+ Like if you start at zero and you do noise, you kind of get to the state two thirds
+ probability on zero one third probability on one.
+ So very similar to like what we're talking about before, just we're always
+ saying the word probability instead of amplitude.
+ Okay.
+ So now I'm going to write some probabilistic code down.
+ This probabilistic code, it's not trying to do anything.
+ It has no purpose.
+ It's just like I picked some instructions out of a hat and put them in a row.
+ So we're not, we're not trying to care what this code does.
+ It's just for illustrative purposes.
+ Okay.
+ But probabilistic code example.
+ And it's like a little function, it's going to have seven instructions.
+ And kind of random.
+ It's just a new qubit or sorry, new bit, new bit, a and b.
+ I'll call my variables here, lowercase a and lowercase b, toggle a.
+ I'm going to assume again that like when bits are newly initialized,
+ they get the value zero.
+ Now I'm going to do noise on a.
+ Now I'm going to do if a then toggle.
+ B, I'm going to do noise on B.
+ I'm going to do if B then toggle a.
+ And there's no real point here.
+ I just made this up and noise on B.
+ And you know what all the instructions mean and what noise means is said right there.
+ So now if this was like, I don't know, 259 or some other basic probability class,
+ I might say something like, okay, if we did print all now.
+ You know, with what probability do you see all the possibilities?
+ What's the probability of seeing.
+ Yeah, zero, zero, zero, one, one, zero and one, one.
+ This is like a and B's values.
+ And if I ask you this, you can be like, okay, I could do it.
+ Like give me a sheet of paper and I'll like work it out.
+ It's like a little bit annoying.
+ But let me show you like a, you know, a systematic way, which you could do it.
+ And you'll agree that like, yes, this works.
+ And then we'll use exactly that same systematic way to analyze quantum code.
+ Okay, and what this way of sort of systematically analyzing probabilistic code,
+ I call probability trees, you know, when I teach 259, I do exactly this in 259.
+ You know, I'm like, this is on, you know, lecture one is how we analyze probabilistic experiments.
+ And you know, if there was no randomness in the code,
+ then you would do the thing that's called like tracing and computer science.
+ You just go through the thing step by step and like remember, like all the variables,
+ values and how they change as you go through step by step.
+ Now, when there's like randomness in the code, like, you know, there's branching,
+ you know, you like branch into different worlds,
+ depending on like how the randomness turned out.
+ And you just got to keep track of literally all those branches of possibilities.
+ So it's kind of annoying, but we do it.
+ So in the probability tree, we're going to always be keeping track of the values of the variables.
+ And there's two variables here, A and B, and we're going to write them like this.
+ So they start out zero, zero.
+ So like in some sense, like this line, you know, gets us to hero.
+ OK, and then we do like the next instruction, we just like trace through.
+ So like we're toggle A and we're like, Oh, great.
+ This is a simple instruction.
+ When we talk of a, we just get to like one zero.
+ But I'm not going to leave it at that.
+ I'm going to draw a line here, very much like in the path diagram.
+ I'm going to draw a line or an arrow.
+ And I'm going to label this arrow with one.
+ And that's to signify like with probability one, we get to this state.
+ It's kind of obvious because it's like a deterministic instruction.
+ There's no randomness, but I'll just like spell it out.
+ Like with probability one, we go from here to here.
+ That's what is signified so far.
+ Now we come to like an instruction that has like some randomness in it.
+ So like, you know, we have to branch into like two different worlds,
+ depending on like what happens.
+ So we're going to do noise on a, B is ignored.
+ So B is going to stay zero, but A is one.
+ So two thirds of the time, it'll stay one.
+ And one third of the time, it'll get toggled to zero.
+ I always like to put my zeroes on the left and my ones on the right.
+ So I'm going to do it like this.
+ We have like a branch here, you can branch into the world where A got toggled.
+ That happens with probably one third.
+ And we can branch into the world where A didn't get toggled.
+ That happens with probably two thirds.
+ Okay. Hopefully this makes sense.
+ Okay, then the next line says like if A then toggled B.
+ And we're like, well, I just have to like now keep track of two.
+ You know, I'm making a tree here.
+ I have to keep track of like two completely, you know, different world trees.
+ I have to recurse the same process on each of these situations.
+ So I'm like, okay, in this world, like A is zero, B is zero.
+ So A is not true.
+ So we don't toggle B.
+ So we just stay zero zero.
+ And we like say like, okay, that happens with probability one.
+ In this world, A is one and B is zero.
+ So A, we do toggle B and we get to like one one.
+ And that happens deterministically with probability one.
+ Okay. Now we come to the next line, line five, and we're like, oh, man, this is annoying.
+ Noise B. So we're going to have more branching here.
+ So we're like, okay, it's going to be branching like here, here, here, here.
+ Here A is zero.
+ It doesn't change.
+ B might change either zero or one.
+ We're noising B.
+ So the chance that it stays zero is two thirds.
+ Chance that it gets toggled to one is one third.
+ Okay, over here, what are we doing?
+ Noise B, so one zero, that's one third, one one, that's two thirds.
+ Hey, now we're doing if B then toggle A.
+ So that's a little bit annoying, but okay, zero zero, it's probably one.
+ This is actually one one with probability one.
+ This is one zero with probability one.
+ This is B then toggle A is zero one.
+ It's probably one.
+ I'm going to do it.
+ I'm going to noise B.
+ It's like very annoying because we have to like branch, but okay.
+ Actually, the fact that it's very annoying is
+ it's intriguing.
+ It actually indicates that if you want to actually compute all this, you need like
+ to do an exponential amount of work.
+ Exponential in the number of branching operations, really.
+ So it's kind of funny that you can just run this code and it's like no problem.
+ But like the analysis of this code under the hood takes like an exponential amount of work.
+ Anyway, I'm going to copy off my paper here just so I don't mistake.
+ Okay, zero zero zero one, one zero one one, one zero one one.
+ If you detect an error, let me know.
+ I assume you'll be like a little bit too lazy to try to detect an error, but we'll do it.
+ Okay, so that's the last instruction.
+ Now I'm going to like write something down here.
+ So these are sort of like all the possibilities, like all the worlds that could have happened.
+ But I want to write at the bottom.
+ I'll call the probability outcomes, which is the probability of every each of the possible traces.
+ So each of these like paths down to a leaf.
+ Or outcome probabilities.
+ Each of the paths down to a leaf is like one particular trace that the code could have taken.
+ And I hope you'll agree like the probability of it taking this trace.
+ Let's say this leftmost trace that ends up with a and b being zero zero is the product of the probabilities along the paths.
+ That's sort of how probability works, right?
+ So this is eight over twenty seven.
+ Why is it eight over twenty seven because it's like one times a third times one times two thirds times one times that's a two two thirds.
+ That's eight twenty sevens.
+ And the probability that your code like followed this almost same trace, but ended up here with a equals zero and b equals one is like one times a third times one times two thirds.
+ That's four ninths so far times one times one thirds.
+ That's four twenty sevens.
+ Okay, and the rule is always that the outcome probabilities are gotten by multiplying the probabilities down the path.
+ Uh oh, there's obviously a mistake.
+ Yeah.
+ Did I multiply it right?
+ Okay, four twenty sevens. Hopefully I did it right.
+ Okay, I will now write copy again for my paper.
+ I got like one twenty sevens two twenty sevens or twenty sevens two twenty sevens four twenty sevens eight twenty sevens.
+ Actually, there's like a nice check I should be able to do here to make sure I didn't make any errors.
+ Like what check could I run on these numbers?
+ Yeah, I want four plus two plus one plus two plus four plus eight is twenty seven. So yeah, check out.
+ Good.
+ So, uh, hopefully you're like, yes, this makes sense.
+ Um.
+ Now, uh, to answer this question like, you know, what's the chance that you'll print out zero zero?
+ You're kind of not done with the analysis because like, actually, you see here there's like a four over twenty seven chance that the code would do this and end up with zero zero, but there's actually several ways.
+ Well, more than one way you can get to zero zero.
+ You can also get final answer of zero zero by following this branch that gets you to four over twenty seven.
+ And therefore the total probability of getting to.
+ Of zero zero is four over twenty seven plus four over twenty seven, which is eight over twenty seven. That's why I had eight over twenty seven in my mind.
+ Uh, the total probability of getting to zero one that's two twenty sevens and eight twenty sevens that's 10 twenty sevens to getting to one zero is one twenty seven and four twenty sevens.
+ That's five twenty sevens.
+ And we're getting to one one is two twenty sevens plus two twenty sevens.
+ That's like four twenty sevens.
+ That's like eighteen twenty seven twenty sevens twenty seven twenty sevens it adds up to one that checks out.
+ Okay, so indeed like if I, you know, said like okay if you run this code and then do print all what's the chance you get like zero zero, you would say it's eight over twenty seven, which is like twenty nine point five percent.
+ So, you know, I remember all this by like once you draw the tree.
+ These are some of the like the sum, all these numbers are like the sum of path products.
+ Like a little slogan I remember to remember this like we get all these things by taking the products of the probabilities along the paths.
+ And then you sum at the end to kind of collate together all the ones that lead to the same outcomes.
+ It makes sense.
+ Okay, so hopefully you're like yeah I get it that's fine.
+ And the reason I bring it up is because like you do literally the same thing for a quantum code.
+ I will basically give you the example quickly but next class will like, you know, take more care.
+ So in quantum code, we just right here for quantum code.
+ We just do the exact same thing except everywhere we say amplitude instead of probability.
+ So we're going to do the exact same thing except we'll build what I'll call like an amplitude tree.
+ Okay. So, I'm going to actually use the exact same code.
+ So for small couple small differences first following conventions I'm going to call the variables A and B or capital A and B because I don't know somehow the convention is that we use capital letters for qubits.
+ And these are qubits not bit so I'll write new qubit.
+ This is not a valid instruction on qubits noise that doesn't make sense but we're going to change it to Hadamard.
+ That's the one nice super position creating.
+ So everywhere changes to Hadamard.
+ And let me just say, the old probabilistic code I had here is doing something different from the quantum code I did here like I made the same example just so I could conserve like board writing.
+ Space like it's kind of a coincidence like I just want to say forget a little bit about the probabilistic code.
+ We're going to imagine you wrote down this like combination of classical reversible instructions and super position creating instructions.
+ And then I asked the same thing like if you do extract all now.
+ What's the probability that you'll print out zero zero zero one one one one zero and one one.
+ What's the probability of this question.
+ Well, the main thing we have to do is work out this question like what is the super position state.
+ Of, you know, a and B.
+ At the end here.
+ Once we know that it'll be something like you know, a amplitude on zero zero.
+ A amplitude like W amplitude on zero zero X amplitude on zero one Y amplitude on one zero and D amplitude on one one.
+ Once we figure out what W X Y and Z are then we can answer this using the law of quantum measurements.
+ Right then the probability of seeing zero zero will be like W squared and X squared and Y squared and Z squared.
+ So like the main work is to figure out like after we do all these instructions like what is the final state.
+ In the same work they way that here like we asked sort of ask ourselves once we do all these instructions like what are the final probabilities on zero zero zero one one zero one one one.
+ And I'll do this again next time but don't rustle up quite yet, but we're going to draw like an amplitude tree.
+ And it's going to work exactly the same.
+ We're going to sort of always be keeping track of like a basic state value for a and B.
+ It's just that these numbers will be different so I'll get started just to illustrate the point.
+ So you know we make new qubit AB so okay let's start some out at zero zero.
+ First instruction is like toggle a. So we're like no problem I mean we know what happens there it's like a basic state in basic state output kind of operation a classical reverse law operation we just go to a is one and B is zero.
+ We still write one year.
+ But like now that's the amplitude that's like the amplitude with which we go to one zero.
+ So this instruction is like Hadamard a.
+ Okay so we just illustrate this and then we'll stop and finish it next time.
+ Hadamard a so right now we're in the world where like a is one and B is zero.
+ So B is not involved in this instruction so just B stays zero that's why like in both of these worlds like B is just still zero.
+ One. Now you got to remember what is the definition of Hadamard the definition of Hadamard in particular if you had a mark on basic state one.
+ You get root half amplitude on zero and negative root half amplitude on one.
+ Well that's what changes here you get root half amplitude on zero that's like the one is changing to zero with this amplitude.
+ And the one changes to one or stays one with amplitude minus root half.
+ That's it like we did this instruction.
+ So like this is going to be the same these two thirds and one thirds will change to like various plus half root half and minus root half.
+ We'll check it next time.
+ And then everything else is the same like we are going to multiply all the amplitudes along each path to get these like outcome amplitudes.
+ And we're also going to do this sort of like collation step where we're like well you could get to zero zero via this path or this path so we'll like add up these two amplitudes and that'll be like the final amplitude.
+ But just answer one question like a cool thing can happen now because you know some of these numbers are negative.
+ So some of these numbers at the bottom could be positive and some could be negative.
+ And so when you do this collation step at the end you could have like you know some positive amplitude of getting to zero one over here and some negative amplitude of getting to zero one over here.
+ And maybe those could cancel out leaving you with like no amplitude of getting to zero one.
+ And that's like kind of the amazing thing that can happen in quantum that can't happen in probability probabilities are positive they can only add up.
+ But in quantum like you can get like interference where things cancel out.
+ Okay so we'll do this example in detail next time.
