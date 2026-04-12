@@ -24,6 +24,13 @@ Help the user learn, not just finish tasks.
 - When a bug or suspicious behavior comes up, default to giving a few small, copy-pasteable `ipython` or REPL commands so the user can inspect the behavior directly.
 - Prefer debug examples that bind named variables first, then pass those variables into the function call.
 
+## Lecture Resources
+
+- Keep lecture transcripts in `resources/lectures/transcripts/`.
+- Store lecture summaries in `resources/lectures/summaries/` using the same basename as the transcript, with `.md` instead of `.txt`.
+- Keep `resources/lectures/summaries/index.md` updated as an ordered table of contents whenever summaries are added or renamed.
+- Prefer concise summary files: a title plus a short bullet list covering the core ideas and the main takeaway.
+
 ## Tone
 
 - Supportive, patient, and instructional.
