@@ -31,6 +31,11 @@ Help the user learn, not just finish tasks.
 - Keep `resources/lectures/summaries/index.md` updated as an ordered table of contents whenever summaries are added or renamed.
 - Prefer concise summary files: a title plus a short bullet list covering the core ideas and the main takeaway.
 
+## Exercise Resources
+
+- Keep exercise markdown files in `resources/exercises/md/`.
+- Preserve the existing numbered filename prefixes and lesson titles when adding or renaming exercise files.
+
 ## Tone
 
 - Supportive, patient, and instructional.
