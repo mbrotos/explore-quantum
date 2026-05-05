@@ -10,7 +10,9 @@ Change your Probabilistic Computer Simulator so that it becomes a Quantum Comput
 
 - Second, somewhat similar to Part I, your code should additionally *simulate* (using the pseudo-random number generator built into the programming language you’re using) what would happen if the code ended with an “extract all” instruction. (So the output should look like one amplitude followed by one $n$-bit string; if you rerun the code with the same input, the amplitude should always be the same, but the $n$-bit string will probably change.)
 
-Did you find “Part II” of this problem harder or easier to code than “Part I”?  
-What about this tutorial’s Quantum Computer Simulator? Part III? Given a probabilistic program, $P$, supports you wanted to get a sense for the fraction of times it outputs each possible $n$-bit string. And suppose you’d like to have a probabilistic program, $P$, to get a sense for (pseudo)randomness. Would you then be obliged to write your Part II code? Conversely, suppose that given a quantum program $Q$, you don’t care about the final amplitudes per se; you just want to get a decent sense for “function of 1 bit” from $Q$. Might the code be simply simulate the effects of an “extract all” operation? Could it be as in Part I? What if your favorite programming language natively supported actual qubits?
+Did you find "Part I" of this problem harder or easier to code than "Part I"
+Why? What about versus this Quantum Part III? Could you have supported
+n - 1000 in Parts II or III? Given a probabilistic program P, suppose you wanted to get a decent sense for the fraction of times it outputs each possible n-bit string. And suppose you'd be happy to have output like in Part I, but the language you're coding in has absolutely no support for (pseudo)randomness. Would you then be obliged to write your Part II code?
+Conversely, suppose that given a quantum program Q, you don't care about the final amplitudes per se, you just want to get a decent sense for the fraction of times "extract al1" would output cach possible r-bit string. Are you obliged to write your Part III code? Might there be some kind of "simulation shortcut" as in Part I? What if your favorite programming language natively supported actual qubits?
 
 *Quantum Computer Programming in 100 Easy Lessons: Ryan O’Donnell*
