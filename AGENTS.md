@@ -36,6 +36,21 @@ Help the user learn, not just finish tasks.
 - Keep exercise markdown files in `resources/exercises/md/`.
 - Preserve the existing numbered filename prefixes and lesson titles when adding or renaming exercise files.
 
+## GoodNotes Raw Sources
+
+- Keep `raw/GoodNotes` as a symlink directly to the Google Drive `Undergraduate Quantum Computation` folder.
+- Treat `raw/GoodNotes/Exercises.pdf` and `raw/GoodNotes/Solution_Pics/` as primary handwritten exercise evidence.
+- When HEIC or PDF files need multimodal review, convert them to JPEG transport files in `raw/GoodNotes_JPEG/` and keep the originals unchanged.
+- For handwritten exercise review, use `opencode run -m openai/gpt-5.5` with one JPEG attached at a time; do not use local/classical OCR tools for the reading step.
+- Store model readings in `raw/GoodNotes_JPEG/llm-readings/` and cite both the original source and the derived reading when writing wiki notes.
+
+## Exercise Wiki Notes
+
+- Keep completed-exercise wiki notes in `wiki/` and update `wiki/index.md` when adding or renaming notes.
+- Prefer one compact source-backed note per exercise or closely related exercise cluster.
+- Each wiki note should state what was completed, the approach taken, the relevant quantum/programming concepts, and any source-quality caveats.
+- Do not overclaim completion from ambiguous handwriting; label ambiguous or partial evidence clearly.
+
 ## Tone
 
 - Supportive, patient, and instructional.
