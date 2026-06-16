@@ -4,12 +4,21 @@ entity_type: index
 source_files:
   - raw/GoodNotes
   - raw/GoodNotes_JPEG/llm-readings/
+  - raw/IBM_Qiskit_QInfo_Slides/
 source_quality_notes:
   - raw/GoodNotes is a symlink to the GoodNotes Undergraduate Quantum Computation folder.
   - raw/GoodNotes_JPEG contains JPEG transport copies used for multimodal model reading, not local OCR.
+  - raw/IBM_Qiskit_QInfo_Slides contains IBM Quantum Learning PDFs plus derived text, images, and lecture transcripts.
 ---
 
-# Exercise Wiki Index
+# Learning Wiki Index
+
+## IBM Quantum Learning Course Notes
+- [IBM Qiskit Basics of Quantum Information Course Overview](ibm-qiskit-qinfo-course-overview.md)
+- [IBM Qiskit QInfo Lesson 1: Single Systems](ibm-qiskit-qinfo-01-single-systems.md)
+- [IBM Qiskit QInfo Lesson 2: Multiple Systems](ibm-qiskit-qinfo-02-multiple-systems.md)
+- [IBM Qiskit QInfo Lesson 3: Quantum Circuits](ibm-qiskit-qinfo-03-quantum-circuits.md)
+- [IBM Qiskit QInfo Lesson 4: Entanglement in Action](ibm-qiskit-qinfo-04-entanglement-in-action.md)
 
 ## Completed Exercise Notes
 - [Lesson 1: Reversible Toggle Subroutines](exercise-001-reversible-toggle-subroutines.md)
@@ -31,3 +40,7 @@ source_quality_notes:
 - HEIC photos and the PDF page were converted to JPEG transport files in `raw/GoodNotes_JPEG/`.
 - Each JPEG was sent one at a time to `opencode run -m openai/gpt-5.5` for multimodal reading.
 - The model readings are stored in `raw/GoodNotes_JPEG/llm-readings/` and are treated as derived source notes with caveats.
+- IBM Quantum Learning slide PDFs are stored in `raw/IBM_Qiskit_QInfo_Slides/`.
+- IBM slide text was extracted with `pdftotext -layout` into `raw/IBM_Qiskit_QInfo_Slides/md/`.
+- IBM slide images were rendered into `raw/IBM_Qiskit_QInfo_Slides/images/` for visual review.
+- IBM lecture transcripts are stored in `raw/IBM_Qiskit_QInfo_Slides/lecture_transcripts/` and treated as explanatory but potentially ASR-noisy sources.
