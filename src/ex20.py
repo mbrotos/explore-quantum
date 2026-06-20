@@ -1,0 +1,169 @@
+"""Exercise 20: exact probabilistic bit-circuit simulator.
+
+This script tracks the full probability distribution over all 2^n bitstrings.
+Probabilities are stored exactly with `sympy.Rational` rather than floating-point
+numbers.
+
+The distribution is a dict mapping each bitstring, encoded as an int from
+0 to 2^n - 1, to its probability. Bit indices in instruction files are 1-based
+and are converted to 0-based indices internally.
+"""
+
+import argparse
+
+from sympy import Rational
+
+
+def parse_instructions(instruction_str, num_bits):
+    """Parse an instruction file into a list of (op, indices).
+
+    Indices are converted to 0-based.
+    """
+    instructions = []
+    for i, line in enumerate(instruction_str.strip().splitlines()):
+        parts = line.split()
+        if not parts:
+            raise ValueError("Empty instruction line.")
+        op = parts[0]
+        indices = list(map(lambda x: x - 1, map(int, parts[1:])))
+        for indx in indices:
+            if not (0 <= indx < num_bits):
+                raise IndexError(
+                    f"Line {i+1} contains an bit index which is out of range."
+                )
+        instructions.append((op, indices))
+    return instructions
+
+
+def apply_NOT(dist, i):
+    """Apply NOT (X) gate to bit i.
+
+    Move probability mass from each bitstring to the bitstring with bit i
+    flipped.
+    """
+
+    mask = 1 << i  # only the bit with index i from the right is 1.
+    dist_new = {}
+
+    for k, v in dist.items():
+        toggled_state = k ^ mask
+        dist_new[toggled_state] = v  # Move probability mass
+
+    return dist_new
+
+
+def apply_CNOT(dist, i, j):
+    """Apply CNOT with control i and target j.
+
+    For each bitstring, if control bit is 1, flip the target bit.
+    """
+    if i == j:
+        raise ValueError("CNOT indices must be unique.")
+
+    mask_control = 1 << i
+    mask_target = 1 << j
+    dist_new = {}
+
+    for k, v in dist.items():
+        if k & mask_control > 0:
+            # control bit is 1
+            k_new = k ^ mask_target
+            dist_new[k_new] = v
+        else:
+            dist_new[k] = v  # No change
+
+    return dist_new
+
+
+def apply_CCNOT(dist, i, j, k):
+    """Apply CCNOT (Toffoli) with controls i, j and target k.
+
+    For each bitstring, if both control bits are 1, flip the target bit.
+    """
+
+    if i == j or j == k or i == k:
+        raise ValueError("CCNOT indices must be unique.")
+
+    mask_control_i = 1 << i
+    mask_control_j = 1 << j
+    mask_target_k = 1 << k
+
+    dist_new = {}
+
+    for k, v in dist.items():
+        if k & mask_control_i > 0 and k & mask_control_j > 0:
+            # control bits i and j are 1
+            k_new = k ^ mask_target_k
+            dist_new[k_new] = v
+        else:
+            dist_new[k] = v  # No change
+
+    return dist_new
+
+
+def apply_RNG(dist, i):
+    """Randomize bit i to be 0/1 with probability 1/2 each.
+
+    Split probability mass for each bitstring into two outcomes where bit
+    i is forced to 0 vs forced to 1.
+    """
+    mask = 1 << i
+    dist_new = {}
+
+    for k, v in dist.items():
+        new_state = k ^ mask  # get the forced state
+        new_prob = v / 2  # split prob mass
+        dist_new[k] = (
+            dist_new.get(k, Rational(0, 1)) + new_prob
+        )  # untoggled states get 1/2 the prob
+        dist_new[new_state] = (
+            dist_new.get(new_state, Rational(0, 1)) + new_prob
+        )  # toggled gets 1/2 + current
+
+    return dist_new
+
+
+def apply_instruction(dist, op, indices):
+    """Dispatch one instruction to the appropriate transition."""
+    if op == "NOT":
+        return apply_NOT(dist, indices[0])
+    if op == "CNOT":
+        return apply_CNOT(dist, indices[0], indices[1])
+    if op == "CCNOT":
+        return apply_CCNOT(dist, indices[0], indices[1], indices[2])
+    if op == "RNG":
+        return apply_RNG(dist, indices[0])
+    raise ValueError(f"Unknown instruction: {op}")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Probabilistic Computer Simulator (Exact Distribution)"
+    )
+    parser.add_argument("num_bits", type=int, help="Number of bits")
+    parser.add_argument("instructions_path", type=str, help="Path to instructions file")
+    args = parser.parse_args()
+
+    n = args.num_bits
+    if n <= 0:
+        print("Number of bits must be positive.")
+        return
+
+    # Distribution over all bitstrings; start in |0...0> with prob 1.
+    dist = {0: Rational(1, 1)}
+
+    with open(args.instructions_path, "r") as f:
+        instruction_str = f.read()
+
+    instructions = parse_instructions(instruction_str, n)
+
+    for op, indices in instructions:
+        dist = apply_instruction(dist, op, indices)
+
+    # Probability of the all-zeros state is just the mass on bitstring 0.
+    p0 = dist.get(0, Rational(0, 1))
+    print("Prob of |0...0>: ", p0, "= ", float(p0))
+
+
+if __name__ == "__main__":
+    main()
