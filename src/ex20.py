@@ -1,20 +1,22 @@
-"""Exercise 20: exact probabilistic bit-circuit simulator.
+"""Exercise 20: Quantum Programming Paradigm 1.
 
-This script tracks the full probability distribution over all 2^n bitstrings.
-Probabilities are stored exactly with `sympy.Rational` rather than floating-point
-numbers.
+This exercise extends the earlier probabilistic simulator into a quantum
+computer simulator. The input format is almost the same as before, but the
+variables now represent qubits, and `HAD` (Hadamard) replaces the earlier `RNG`
+instruction.
 
-The distribution is a dict mapping each bitstring, encoded as an int from
-0 to 2^n - 1, to its probability. Bit indices in instruction files are 1-based
-and are converted to 0-based indices internally.
+The simulator should output two things: the exact final amplitude on the
+all-zero basis state |00...0>, and one sampled n-bit string representing what
+would happen if the program ended with an "extract all" measurement. The exact
+amplitude should be deterministic across runs; the sampled bitstring may change.
 """
 
 import argparse
 
-from sympy import Rational
+from sympy import Rational, sqrt
 
 
-def parse_instructions(instruction_str, num_bits):
+def parse_instructions(instruction_str, num_qubits):
     """Parse an instruction file into a list of (op, indices).
 
     Indices are converted to 0-based.
@@ -27,58 +29,59 @@ def parse_instructions(instruction_str, num_bits):
         op = parts[0]
         indices = list(map(lambda x: x - 1, map(int, parts[1:])))
         for indx in indices:
-            if not (0 <= indx < num_bits):
+            if not (0 <= indx < num_qubits):
                 raise IndexError(
-                    f"Line {i+1} contains an bit index which is out of range."
+                    f"Line {i+1} contains a qubit index which is out of range."
                 )
         instructions.append((op, indices))
     return instructions
 
 
-def apply_NOT(dist, i):
-    """Apply NOT (X) gate to bit i.
+def apply_NOT(amplitudes, i):
+    """Apply NOT (X) gate to qubit i.
 
-    Move probability mass from each bitstring to the bitstring with bit i
-    flipped.
+    Move each amplitude to the computational basis state with qubit i flipped.
     """
 
-    mask = 1 << i  # only the bit with index i from the right is 1.
-    dist_new = {}
+    mask = 1 << i  # only the basis-state bit for qubit i is 1.
+    amplitudes_new = {}
 
-    for k, v in dist.items():
-        toggled_state = k ^ mask
-        dist_new[toggled_state] = v  # Move probability mass
+    for basis_state, amplitude in amplitudes.items():
+        toggled_state = basis_state ^ mask
+        amplitudes_new[toggled_state] = amplitude
 
-    return dist_new
+    return amplitudes_new
 
 
-def apply_CNOT(dist, i, j):
+def apply_CNOT(amplitudes, i, j):
     """Apply CNOT with control i and target j.
 
-    For each bitstring, if control bit is 1, flip the target bit.
+    For each computational basis state, if the control qubit is 1, flip the
+    target qubit.
     """
     if i == j:
         raise ValueError("CNOT indices must be unique.")
 
     mask_control = 1 << i
     mask_target = 1 << j
-    dist_new = {}
+    amplitudes_new = {}
 
-    for k, v in dist.items():
-        if k & mask_control > 0:
-            # control bit is 1
-            k_new = k ^ mask_target
-            dist_new[k_new] = v
+    for basis_state, amplitude in amplitudes.items():
+        if basis_state & mask_control > 0:
+            # control qubit is 1
+            basis_state_new = basis_state ^ mask_target
+            amplitudes_new[basis_state_new] = amplitude
         else:
-            dist_new[k] = v  # No change
+            amplitudes_new[basis_state] = amplitude  # No change
 
-    return dist_new
+    return amplitudes_new
 
 
-def apply_CCNOT(dist, i, j, k):
+def apply_CCNOT(amplitudes, i, j, k):
     """Apply CCNOT (Toffoli) with controls i, j and target k.
 
-    For each bitstring, if both control bits are 1, flip the target bit.
+    For each computational basis state, if both control qubits are 1, flip the
+    target qubit.
     """
 
     if i == j or j == k or i == k:
@@ -88,27 +91,32 @@ def apply_CCNOT(dist, i, j, k):
     mask_control_j = 1 << j
     mask_target_k = 1 << k
 
-    dist_new = {}
+    amplitudes_new = {}
 
-    for k, v in dist.items():
-        if k & mask_control_i > 0 and k & mask_control_j > 0:
-            # control bits i and j are 1
-            k_new = k ^ mask_target_k
-            dist_new[k_new] = v
+    for basis_state, amplitude in amplitudes.items():
+        if basis_state & mask_control_i > 0 and basis_state & mask_control_j > 0:
+            # control qubits i and j are 1
+            basis_state_new = basis_state ^ mask_target_k
+            amplitudes_new[basis_state_new] = amplitude
         else:
-            dist_new[k] = v  # No change
+            amplitudes_new[basis_state] = amplitude  # No change
 
-    return dist_new
+    return amplitudes_new
 
 
-def apply_RNG(dist, i):
-    """Randomize bit i to be 0/1 with probability 1/2 each.
+def apply_HAD(amplitudes, i):
+    """Apply Hadamard gate to qubit i.
 
-    Split probability mass for each bitstring into two outcomes where bit
-    i is forced to 0 vs forced to 1.
+    Split amplitude from each computational basis state based on the following
+    single-qubit rules:
+    - |0> -> |0> with amplitude sqrt(1/2),
+    - |0> -> |1> with amplitude sqrt(1/2),
+    - |1> -> |0> with amplitude sqrt(1/2), and
+    - |1> -> |1> with amplitude -sqrt(1/2).
+
     """
     mask = 1 << i
-    dist_new = {}
+    amplitudes_new = {}
 
     for k, v in dist.items():
         new_state = k ^ mask  # get the forced state
@@ -120,37 +128,37 @@ def apply_RNG(dist, i):
             dist_new.get(new_state, Rational(0, 1)) + new_prob
         )  # toggled gets 1/2 + current
 
-    return dist_new
+    return amplitudes_new
 
 
-def apply_instruction(dist, op, indices):
+def apply_instruction(amplitudes, op, indices):
     """Dispatch one instruction to the appropriate transition."""
     if op == "NOT":
-        return apply_NOT(dist, indices[0])
+        return apply_NOT(amplitudes, indices[0])
     if op == "CNOT":
-        return apply_CNOT(dist, indices[0], indices[1])
+        return apply_CNOT(amplitudes, indices[0], indices[1])
     if op == "CCNOT":
-        return apply_CCNOT(dist, indices[0], indices[1], indices[2])
-    if op == "RNG":
-        return apply_RNG(dist, indices[0])
+        return apply_CCNOT(amplitudes, indices[0], indices[1], indices[2])
+    if op == "HAD":
+        return apply_HAD(amplitudes, indices[0])
     raise ValueError(f"Unknown instruction: {op}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Probabilistic Computer Simulator (Exact Distribution)"
+        description="Quantum Computer Simulator"
     )
-    parser.add_argument("num_bits", type=int, help="Number of bits")
+    parser.add_argument("num_qubits", type=int, help="Number of qubits")
     parser.add_argument("instructions_path", type=str, help="Path to instructions file")
     args = parser.parse_args()
 
-    n = args.num_bits
+    n = args.num_qubits
     if n <= 0:
-        print("Number of bits must be positive.")
+        print("Number of qubits must be positive.")
         return
 
-    # Distribution over all bitstrings; start in |0...0> with prob 1.
-    dist = {0: Rational(1, 1)}
+    # Amplitudes over computational basis states; start in |0...0>.
+    amplitudes = {0: Rational(1, 1)}
 
     with open(args.instructions_path, "r") as f:
         instruction_str = f.read()
@@ -158,11 +166,11 @@ def main():
     instructions = parse_instructions(instruction_str, n)
 
     for op, indices in instructions:
-        dist = apply_instruction(dist, op, indices)
+        amplitudes = apply_instruction(amplitudes, op, indices)
 
-    # Probability of the all-zeros state is just the mass on bitstring 0.
-    p0 = dist.get(0, Rational(0, 1))
-    print("Prob of |0...0>: ", p0, "= ", float(p0))
+    # Amplitude of the all-zero computational basis state.
+    amp0 = amplitudes.get(0, Rational(0, 1))
+    print("Amplitude of |0...0>: ", amp0, "= ", float(amp0))
 
 
 if __name__ == "__main__":
