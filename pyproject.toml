@@ -5,7 +5,8 @@ description = "Exploring quantum computing and software engineering."
 requires-python = ">=3.10"
 dependencies = [
     "black",
-    "pytest"
+    "pytest",
+    "sympy>=1.14.0",
 ]
 
 [tool.black]
