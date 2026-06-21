@@ -118,15 +118,18 @@ def apply_HAD(amplitudes, i):
     mask = 1 << i
     amplitudes_new = {}
 
-    for k, v in dist.items():
-        new_state = k ^ mask  # get the forced state
-        new_prob = v / 2  # split prob mass
-        dist_new[k] = (
-            dist_new.get(k, Rational(0, 1)) + new_prob
-        )  # untoggled states get 1/2 the prob
-        dist_new[new_state] = (
-            dist_new.get(new_state, Rational(0, 1)) + new_prob
-        )  # toggled gets 1/2 + current
+    for basis_state, amplitude in amplitudes.items():
+        untoggled_sign = 1
+        new_state = basis_state ^ mask  # get the toggled state
+        if basis_state < new_state: # then qubit i was |...1...>
+            untoggled_sign *= -1 # therefore, the untoggled state has -ev amp.
+        new_amp = amplitude * sqrt(Rational(1, 2)) # The new amplitude will be a factor of sqrt(1/2).
+        amplitudes_new[basis_state] = (
+            amplitudes_new.get(basis_state, Rational(0, 1)) + untoggled_sign * new_amp
+        )  # untoggled states get ±new_amp
+        amplitudes_new[new_state] = (
+            amplitudes_new.get(new_state, Rational(0, 1)) + new_amp
+        )  # toggled gets new_amp
 
     return amplitudes_new
 
@@ -143,6 +146,12 @@ def apply_instruction(amplitudes, op, indices):
         return apply_HAD(amplitudes, indices[0])
     raise ValueError(f"Unknown instruction: {op}")
 
+def format_all_amps(amplitudes, num_qubits):
+    all_amps = "Full quantum state:\n"
+    for basis_state, amplitude in sorted(amplitudes.items()):
+        all_amps += f"\t|{basis_state:0{num_qubits}b}>: {amplitude}\n"
+
+    return all_amps
 
 def main():
     parser = argparse.ArgumentParser(
@@ -172,6 +181,9 @@ def main():
     amp0 = amplitudes.get(0, Rational(0, 1))
     print("Amplitude of |0...0>: ", amp0, "= ", float(amp0))
 
+    print(format_all_amps(amplitudes, args.num_qubits))
+
+    # TODO: extract_all
 
 if __name__ == "__main__":
     main()
