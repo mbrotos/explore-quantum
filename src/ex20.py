@@ -121,17 +121,19 @@ def apply_HAD(amplitudes, i):
     for basis_state, amplitude in amplitudes.items():
         untoggled_sign = 1
         new_state = basis_state ^ mask  # get the toggled state
-        if basis_state < new_state:  # then qubit i was |...1...>
-            untoggled_sign *= -1  # therefore, the untoggled state has -ev amp.
+        if basis_state > new_state:  # then qubit i was |...1...>
+            # therefore, the untoggled branch has negative amplitude
+            # when the acted-on qubit is 1.
+            untoggled_sign *= -1  
         new_amp = amplitude * sqrt(
             Rational(1, 2)
         )  # The new amplitude will be a factor of sqrt(1/2).
         amplitudes_new[basis_state] = (
             amplitudes_new.get(basis_state, Rational(0, 1)) + untoggled_sign * new_amp
-        )  # untoggled states get ±new_amp
+        )  # untoggled branch get ±new_amp
         amplitudes_new[new_state] = (
             amplitudes_new.get(new_state, Rational(0, 1)) + new_amp
-        )  # toggled gets new_amp
+        )  # toggled branch gets new_amp
 
     return amplitudes_new
 
