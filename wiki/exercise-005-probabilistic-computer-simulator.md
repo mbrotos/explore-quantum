@@ -31,7 +31,7 @@ source_quality_notes:
 - Run the simulator with:
 
 ```bash
-python src/ex5_1.py 4 resources/instructs/i1.txt
+python src/ex5_1.py --num-bits 4 --instructions resources/instructs/i1.txt
 ```
 
 - Focused tests:

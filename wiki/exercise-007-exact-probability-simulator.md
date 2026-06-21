@@ -41,13 +41,13 @@ source_quality_notes:
 - Run the exact simulator with:
 
 ```bash
-python src/ex7_1_exact.py 4 resources/instructs/test3.txt
+python src/ex7_1_exact.py --num-bits 4 --instructions resources/instructs/test3.txt
 ```
 
 - Run the approximate simulator with:
 
 ```bash
-python src/ex7_1.py 4 resources/instructs/test3.txt
+python src/ex7_1.py --num-bits 4 --instructions resources/instructs/test3.txt
 ```
 
 - Focused tests:

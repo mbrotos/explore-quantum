@@ -121,9 +121,11 @@ def apply_HAD(amplitudes, i):
     for basis_state, amplitude in amplitudes.items():
         untoggled_sign = 1
         new_state = basis_state ^ mask  # get the toggled state
-        if basis_state < new_state: # then qubit i was |...1...>
-            untoggled_sign *= -1 # therefore, the untoggled state has -ev amp.
-        new_amp = amplitude * sqrt(Rational(1, 2)) # The new amplitude will be a factor of sqrt(1/2).
+        if basis_state < new_state:  # then qubit i was |...1...>
+            untoggled_sign *= -1  # therefore, the untoggled state has -ev amp.
+        new_amp = amplitude * sqrt(
+            Rational(1, 2)
+        )  # The new amplitude will be a factor of sqrt(1/2).
         amplitudes_new[basis_state] = (
             amplitudes_new.get(basis_state, Rational(0, 1)) + untoggled_sign * new_amp
         )  # untoggled states get ±new_amp
@@ -146,6 +148,7 @@ def apply_instruction(amplitudes, op, indices):
         return apply_HAD(amplitudes, indices[0])
     raise ValueError(f"Unknown instruction: {op}")
 
+
 def format_all_amps(amplitudes, num_qubits):
     all_amps = "Full quantum state:\n"
     for basis_state, amplitude in sorted(amplitudes.items()):
@@ -153,12 +156,19 @@ def format_all_amps(amplitudes, num_qubits):
 
     return all_amps
 
+
 def main():
-    parser = argparse.ArgumentParser(
-        description="Quantum Computer Simulator"
+    parser = argparse.ArgumentParser(description="Quantum Computer Simulator")
+    parser.add_argument(
+        "--num-qubits", "-n", type=int, required=True, help="Number of qubits"
     )
-    parser.add_argument("num_qubits", type=int, help="Number of qubits")
-    parser.add_argument("instructions_path", type=str, help="Path to instructions file")
+    parser.add_argument(
+        "--instructions",
+        "-i",
+        dest="instructions_path",
+        required=True,
+        help="Path to instructions file",
+    )
     args = parser.parse_args()
 
     n = args.num_qubits
@@ -184,6 +194,8 @@ def main():
     print(format_all_amps(amplitudes, args.num_qubits))
 
     # TODO: extract_all
+    # basically we will turn the amplitudes into probs and then sample.
+
 
 if __name__ == "__main__":
     main()

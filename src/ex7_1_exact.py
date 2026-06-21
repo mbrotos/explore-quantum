@@ -140,8 +140,16 @@ def main():
     parser = argparse.ArgumentParser(
         description="Probabilistic Computer Simulator (Exact Distribution)"
     )
-    parser.add_argument("num_bits", type=int, help="Number of bits")
-    parser.add_argument("instructions_path", type=str, help="Path to instructions file")
+    parser.add_argument(
+        "--num-bits", "-n", type=int, required=True, help="Number of bits"
+    )
+    parser.add_argument(
+        "--instructions",
+        "-i",
+        dest="instructions_path",
+        required=True,
+        help="Path to instructions file",
+    )
     args = parser.parse_args()
 
     n = args.num_bits
